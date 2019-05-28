@@ -19,8 +19,9 @@
 
 ```sh
 $ yarn add @sishuguojixuefu/react-native-form
-$ yarn add @sishuguojixuefu/antd-mobile-rn
 ```
+
+## @sishuguojixuefu/antd-mobile-rn 配置
 
 ### 链接字体图标
 
