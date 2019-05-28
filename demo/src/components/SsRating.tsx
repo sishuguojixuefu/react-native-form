@@ -69,29 +69,7 @@ export default class SsRating extends Component<RatingProps, {}> {
     const { label, required, form, id, onChange, defaultValue } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
-        {this.fieldDecorator(
-          // <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
-          //   <Label required={required} label={label} />
-          //   <AirbnbRating
-          //     reviews={[]}
-          //     showRating={false}
-          //     defaultRating={defaultValue}
-          //     count={5}
-          //     onFinishRating={onChange}
-          //   />
-          // </View>
-          <SsRatingView label={label} required onChange={onChange} defaultValue={defaultValue} />
-          // <Rating
-          // type='star'
-          // ratingCount={5}
-          // imageSize={35}
-          // fractions={0}
-          // // showRating
-          // onFinishRating={this.ratingCompleted}
-          // >
-          // <Label required={required} label={label} />
-          // </Rating>
-        )}
+        {this.fieldDecorator(<SsRatingView label={label} required onChange={onChange} defaultValue={defaultValue} />)}
       </ErrorTip>
     )
   }

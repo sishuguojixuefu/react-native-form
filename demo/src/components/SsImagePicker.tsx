@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { ImagePicker, WhiteSpace } from '@sishuguojixuefu/antd-mobile-rn'
 import { View, Image, Text, TouchableHighlight, StyleSheet, Modal } from 'react-native'
+// import { Modal } from '@sishuguojixuefu/antd-mobile-rn'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import PropTypes from 'prop-types'
@@ -22,7 +22,8 @@ export class SsImagePickerView extends Component {
 
   state = {
     value: [],
-    // imgs: [],
+    modalVisible: false,
+    curImgIndex: 0,
   }
 
   setImgs(imgs: never[]) {
@@ -31,10 +32,22 @@ export class SsImagePickerView extends Component {
     })
   }
 
-  _clickImgItem(index: number) {}
+  setModalVisible(visible: boolean) {
+    this.setState({ modalVisible: visible })
+  }
+
+  dismissModal() {
+    this.setModalVisible(false)
+  }
+
+  _clickImgItem(index: number) {
+    this.setModalVisible(true)
+  }
 
   private _delImgItem(index: number) {
-    this.state.value.splice(index)
+    this.state.value.splice(index, 1)
+    const { onChange } = this.props
+    onChange(this.state.value)
   }
 
   private _onAddImageClick = () => {
@@ -43,7 +56,7 @@ export class SsImagePickerView extends Component {
       waitAnimationEnd: false,
       includeExif: true,
       forceJpg: true,
-      maxFiles: 9 - this.state.value.length, // 动态递减 ios only
+      maxFiles: 9 - this.state.value.length,
       compressImageQuality: 0.5,
     })
       .then(images => {
@@ -63,6 +76,12 @@ export class SsImagePickerView extends Component {
 
   render() {
     const { label, required } = this.props
+    const imgUrls = this.state.value.map((item, index) => {
+      return {
+        url: item.url,
+      }
+    })
+
     return (
       <View style={{ paddingVertical: 10 }}>
         <Label required={required} label={label} />
@@ -82,6 +101,23 @@ export class SsImagePickerView extends Component {
           <TouchableHighlight onPress={this._onAddImageClick.bind(this)} style={styles.addBtn}>
             <Text>添加图片</Text>
           </TouchableHighlight>
+          {
+            <Modal
+              visible={this.state.modalVisible}
+              transparent
+              onRequestClose={() => {
+                this.dismissModal()
+              }}
+            >
+              <ImageViewer
+                imageUrls={imgUrls}
+                onCancel={() => {
+                  this.dismissModal()
+                }}
+                saveToLocalByLongPress={false}
+              />
+            </Modal>
+          }
         </View>
       </View>
     )
