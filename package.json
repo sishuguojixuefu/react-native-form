@@ -1,0 +1,54 @@
+{
+  "name": "@sishuguojixuefu/react-native-form",
+  "version": "0.1.1",
+  "description": "私塾动态表单组件",
+  "main": "dist/index.js",
+  "author": "sishu",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "postversion": "git push --tags && git push && npm publish",
+    "prepublishOnly": "tsc -p ./tsconfig.json",
+    "commit": "git add . && git commit"
+  },
+  "files": [
+    "dist",
+    "images"
+  ],
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@types/react": "^16.8.17",
+    "@types/react-native": "^0.57.55",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-import-resolver-typescript": "^1.1.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-native": "^3.7.0",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@sishuguojixuefu/antd-mobile-rn": "latest",
+    "@types/kind-of": "latest",
+    "@types/lodash.omit": "latest",
+    "dayjs": "latest",
+    "kind-of": "latest",
+    "lodash.omit": "latest",
+    "mathjs": "latest",
+    "nzh": "latest",
+    "rc-form": "latest",
+    "react-native-amap-geolocation": "latest",
+    "react-native-image-crop-picker": "latest",
+    "react-native-image-zoom-viewer": "latest",
+    "react-native-ratings": "latest",
+    "string-width": "latest",
+    "react-native-amap3d": "latest"
+  }
+}
