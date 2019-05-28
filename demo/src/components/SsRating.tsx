@@ -2,42 +2,40 @@ import React, { Component } from 'react'
 import { DatePicker, List } from '@sishuguojixuefu/antd-mobile-rn'
 import { View } from 'react-native'
 import { Rating, AirbnbRating } from 'react-native-ratings'
+import PropTypes from 'prop-types'
 import { RatingProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
-import PropTypes from 'prop-types';
 
-export class SsRatingView extends Component{
-
+export class SsRatingView extends Component {
   static propTypes = {
-    onChange:PropTypes.func,
-    label:PropTypes.string,
-    required:PropTypes.bool,
-    defaultValue:PropTypes.number,
+    onChange: PropTypes.func,
+    label: PropTypes.string,
+    required: PropTypes.bool,
+    defaultValue: PropTypes.number,
   }
 
-  constructor(props){
+  constructor(props) {
     super(props)
-    const{defaultValue} = props
+    const { defaultValue } = props
     this.state = {
-      value:defaultValue?defaultValue:5
+      value: defaultValue || 5,
     }
   }
 
-
   private ratingCompleted = (nValue: number) => {
     this.setState({
-      value:nValue
+      value: nValue,
     })
     const { onChange } = this.props
     onChange(nValue)
   }
 
-  render(){
-    const {label,required,defaultValue} = this.props
+  render() {
+    const { label, required, defaultValue } = this.props
     return (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
         <Label required={required} label={label} />
         <AirbnbRating
           reviews={[]}
@@ -47,7 +45,6 @@ export class SsRatingView extends Component{
           onFinishRating={this.ratingCompleted}
         />
       </View>
-
     )
   }
 }
@@ -69,7 +66,7 @@ export default class SsRating extends Component<RatingProps, {}> {
   }
 
   public render() {
-    const { label, required, form, id ,onChange,defaultValue} = this.props
+    const { label, required, form, id, onChange, defaultValue } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
@@ -83,12 +80,7 @@ export default class SsRating extends Component<RatingProps, {}> {
           //     onFinishRating={onChange}
           //   />
           // </View>
-          <SsRatingView
-            label={label}
-            required
-            onChange={onChange}
-            defaultValue={defaultValue}
-            />
+          <SsRatingView label={label} required onChange={onChange} defaultValue={defaultValue} />
           // <Rating
           // type='star'
           // ratingCount={5}

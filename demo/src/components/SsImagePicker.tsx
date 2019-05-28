@@ -3,24 +3,25 @@ import { ImagePicker, WhiteSpace } from '@sishuguojixuefu/antd-mobile-rn'
 import { View, Image, Text, TouchableHighlight, StyleSheet, Modal } from 'react-native'
 import ImageCropPicker from 'react-native-image-crop-picker'
 import ImageViewer from 'react-native-image-zoom-viewer'
+import PropTypes from 'prop-types'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 import { ImagePickerProps } from '../utils/PropTypes'
-import PropTypes from 'prop-types';
 
-export class SsImagePickerView extends Component{
+export class SsImagePickerView extends Component {
   static propTypes = {
-    onChange:PropTypes.func,
-    title:PropTypes.string,
-    placeholder:PropTypes.string,
+    onChange: PropTypes.func,
+    title: PropTypes.string,
+    placeholder: PropTypes.string,
   }
-  constructor(props: any){
+
+  constructor(props: any) {
     super(props)
   }
 
   state = {
-    value:[],
+    value: [],
     // imgs: [],
   }
 
@@ -30,9 +31,7 @@ export class SsImagePickerView extends Component{
     })
   }
 
-  _clickImgItem(index:number){
-
-  }
+  _clickImgItem(index: number) {}
 
   private _delImgItem(index: number) {
     this.state.value.splice(index)
@@ -54,7 +53,7 @@ export class SsImagePickerView extends Component{
           meta: { ...item },
         }))
         this.setImgs(this.state.value.concat(files))
-        const {onChange} = this.props
+        const { onChange } = this.props
         onChange(this.state.value)
       })
       .catch(e => {
@@ -62,33 +61,32 @@ export class SsImagePickerView extends Component{
       })
   }
 
-  render(){
-    const {label,required} =  this.props
+  render() {
+    const { label, required } = this.props
     return (
       <View style={{ paddingVertical: 10 }}>
-      <Label required={required} label={label} />
-      <View style={{ padding: 10, flexDirection: 'row', flexWrap: 'wrap' }}>
-        {this.state.value.map((item, index) => {
-          return (
-            <TouchableHighlight style={styles.imageItem} onPress={this._clickImgItem.bind(this, index)}>
-              <View style={{ width: 85, height: 85 }}>
-                <Image source={{ uri: item.url }} style={{ width: 85, height: 85 }} />
-                <TouchableHighlight style={styles.uprightDel} onPress={this._delImgItem.bind(this, index)}>
-                  <Text>+</Text>
-                </TouchableHighlight>
-              </View>
-            </TouchableHighlight>
-          )
-        })}
-        <TouchableHighlight onPress={this._onAddImageClick.bind(this)} style={styles.addBtn}>
-          <Text>添加图片</Text>
-        </TouchableHighlight>
+        <Label required={required} label={label} />
+        <View style={{ padding: 10, flexDirection: 'row', flexWrap: 'wrap' }}>
+          {this.state.value.map((item, index) => {
+            return (
+              <TouchableHighlight style={styles.imageItem} onPress={this._clickImgItem.bind(this, index)}>
+                <View style={{ width: 85, height: 85 }}>
+                  <Image source={{ uri: item.url }} style={{ width: 85, height: 85 }} />
+                  <TouchableHighlight style={styles.uprightDel} onPress={this._delImgItem.bind(this, index)}>
+                    <Text>+</Text>
+                  </TouchableHighlight>
+                </View>
+              </TouchableHighlight>
+            )
+          })}
+          <TouchableHighlight onPress={this._onAddImageClick.bind(this)} style={styles.addBtn}>
+            <Text>添加图片</Text>
+          </TouchableHighlight>
+        </View>
       </View>
-    </View>
     )
   }
 }
-
 
 export default class SsImagePicker extends Component<ImagePickerProps, {}> {
   private fieldDecorator: any
@@ -102,12 +100,10 @@ export default class SsImagePicker extends Component<ImagePickerProps, {}> {
   }
 
   public render() {
-    const { label, required, form, id ,onChange} = this.props
+    const { label, required, form, id, onChange } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
-        {this.fieldDecorator(
-          <SsImagePickerView  label={label} required onChange={onChange}/>
-        )}
+        {this.fieldDecorator(<SsImagePickerView label={label} required onChange={onChange} />)}
       </ErrorTip>
     )
   }
