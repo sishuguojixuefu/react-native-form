@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-<<<<<<< HEAD
-import { Checkbox, List, Modal } from '@sishu/antd-mobile-rn'
-=======
 import { Checkbox, List, Modal } from '@sishuguojixuefu/antd-mobile-rn-3'
->>>>>>> d24a592159cc3c5e664df9bde2c7a86ea763f8f4
 import { SsMultiSelectPropsType } from '../utils/PropTypes'
 import Label from './helper/Label'
 import getFieldDecorator from '../utils/getFieldDecorator'
