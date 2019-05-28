@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import stringWidth from 'string-width'
 import omit from 'lodash.omit'
 import { TouchableHighlight, View, Text, StyleSheet, PermissionsAndroid } from 'react-native'
-import { init, Geolocation } from 'react-native-amap-geolocation'
+// import { init, Geolocation } from 'react-native-amap-geolocation'
 import { LocationProps } from '../utils/PropTypes'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
@@ -26,10 +26,10 @@ export default class SsLocation extends Component<LocationProps, {}> {
   }
 
   public async componentDidMount() {
-    await init({
-      ios: '762f7a3c48b307506d7af02a62008439',
-      android: '',
-    })
+    // await init({
+    //   ios: '762f7a3c48b307506d7af02a62008439',
+    //   android: '',
+    // })
   }
 
   refreshLocation = () => {

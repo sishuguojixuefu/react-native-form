@@ -23,7 +23,6 @@
     "rc-form": "latest",
     "react": "16.8.3",
     "react-native": "0.59.8",
-    "react-native-amap3d": "^1.1.1",
     "react-native-image-crop-picker": "latest",
     "react-native-image-zoom-viewer": "latest",
     "react-native-ratings": "latest",
