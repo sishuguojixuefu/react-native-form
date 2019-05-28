@@ -327,13 +327,6 @@
 			remoteGlobalIDString = 3400A8081CEB54A6008A0BC7;
 			remoteInfo = imageCropPicker;
 		};
-		F3ECE02F229CCADD00E0A859 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F3ECE02B229CCADD00E0A859 /* AMapGeolocation.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 832C81801AAF6DEF007FA2F7;
-			remoteInfo = AMapGeolocation;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -370,7 +363,6 @@
 		B76A4C1EB4A2497098CDAA11 /* libAMapGeolocation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAMapGeolocation.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F3ECE02B229CCADD00E0A859 /* AMapGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AMapGeolocation.xcodeproj; path = "../node_modules/react-native-amap-geolocation/lib/ios/AMapGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		F3EF856D229BE1A9006D8AE2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -589,7 +581,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				F3ECE02B229CCADD00E0A859 /* AMapGeolocation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -665,14 +656,6 @@
 			isa = PBXGroup;
 			children = (
 				F3AA2C9122991570008AFE0E /* libimageCropPicker.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		F3ECE02C229CCADD00E0A859 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F3ECE030229CCADD00E0A859 /* libAMapGeolocation.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,10 +772,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = F3ECE02C229CCADD00E0A859 /* Products */;
-					ProjectRef = F3ECE02B229CCADD00E0A859 /* AMapGeolocation.xcodeproj */;
-				},
 				{
 					ProductGroup = F3AA2C8D22991570008AFE0E /* Products */;
 					ProjectRef = 0F5E253020A84A4488FD5A51 /* imageCropPicker.xcodeproj */;
@@ -1121,13 +1100,6 @@
 			fileType = archive.ar;
 			path = libimageCropPicker.a;
 			remoteRef = F3AA2C9022991570008AFE0E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		F3ECE030229CCADD00E0A859 /* libAMapGeolocation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libAMapGeolocation.a;
-			remoteRef = F3ECE02F229CCADD00E0A859 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

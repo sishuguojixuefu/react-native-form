@@ -21,20 +21,14 @@
     "mathjs": "latest",
     "nzh": "latest",
     "rc-form": "latest",
-    "react-native-amap-geolocation": "latest",
     "react": "16.8.3",
     "react-native": "0.59.8",
-    "react-native-amap-geolocation": "^1.0.2",
     "react-native-amap3d": "^1.1.1",
     "react-native-image-crop-picker": "latest",
     "react-native-image-zoom-viewer": "latest",
     "react-native-ratings": "latest",
-<<<<<<< HEAD
-    "string-width": "latest"
-=======
     "string-width": "latest",
     "react-native-amap3d": "latest"
->>>>>>> d24a592159cc3c5e664df9bde2c7a86ea763f8f4
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
