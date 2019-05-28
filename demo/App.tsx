@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { Button, Provider as AntdProvider } from '@sishuguojixuefu/antd-mobile-rn'
 // import Form, { Input, NumberInput, SsSelect } from '@sishuguojixuefu/react-native-form'
-import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker, SsLocation } from './src'
+import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker } from './src'
 
 import appSchema from './json/appSchema'
 
@@ -51,7 +51,6 @@ class App extends Component {
               <SsDescription id="SsDescription" label="真的超级超级长唱唱唱" />
               <SsRating id="SsRating" label="评分" required />
               <SsImagePicker id="SsImagePicker" label="上传图片" required />
-              <SsLocation id="SsLocation" label='当前位置' placeholder='刷新'/>
               {/* <Form items={appSchema.items} wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef}>
               <Picker
                 data={[{ label: '猫', value: '猫' }, { label: '狗', value: '狗' }]}

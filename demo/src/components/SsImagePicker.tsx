@@ -7,32 +7,36 @@ import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 import { ImagePickerProps } from '../utils/PropTypes'
+import PropTypes from 'prop-types';
 
-export default class SsImagePicker extends Component<ImagePickerProps, {}> {
-  private fieldDecorator: any
-  private static defaultProps = {
-    required: false,
+export class SsImagePickerView extends Component{
+  static propTypes = {
+    onChange:PropTypes.func,
+    title:PropTypes.string,
+    placeholder:PropTypes.string,
+  }
+  constructor(props: any){
+    super(props)
   }
 
   state = {
-    imgs: [],
+    value:[],
+    // imgs: [],
   }
 
-  public componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
-  }
-
-  setImgs(value) {
+  setImgs(imgs: never[]) {
     this.setState({
-      imgs: value,
+      value: imgs,
     })
   }
 
-  // public _onChange(imgs) {
-  //   const {onChange} = this.props
-  //   onChange(imgs)
-  // }
+  _clickImgItem(index:number){
+
+  }
+
+  private _delImgItem(index: number) {
+    this.state.value.splice(index)
+  }
 
   private _onAddImageClick = () => {
     ImageCropPicker.openPicker({
@@ -40,7 +44,7 @@ export default class SsImagePicker extends Component<ImagePickerProps, {}> {
       waitAnimationEnd: false,
       includeExif: true,
       forceJpg: true,
-      maxFiles: 9 - this.state.imgs.length, // 动态递减 ios only
+      maxFiles: 9 - this.state.value.length, // 动态递减 ios only
       compressImageQuality: 0.5,
     })
       .then(images => {
@@ -49,45 +53,60 @@ export default class SsImagePicker extends Component<ImagePickerProps, {}> {
           id: index,
           meta: { ...item },
         }))
-        this.setImgs(this.state.imgs.concat(files))
+        this.setImgs(this.state.value.concat(files))
+        const {onChange} = this.props
+        onChange(this.state.value)
       })
       .catch(e => {
         console.info(e)
       })
   }
 
-  private _delImgItem(index: number) {
-    this.state.imgs.splice(index)
-    // this._onChange(nImgs)
+  render(){
+    const {label,required} =  this.props
+    return (
+      <View style={{ paddingVertical: 10 }}>
+      <Label required={required} label={label} />
+      <View style={{ padding: 10, flexDirection: 'row', flexWrap: 'wrap' }}>
+        {this.state.value.map((item, index) => {
+          return (
+            <TouchableHighlight style={styles.imageItem} onPress={this._clickImgItem.bind(this, index)}>
+              <View style={{ width: 85, height: 85 }}>
+                <Image source={{ uri: item.url }} style={{ width: 85, height: 85 }} />
+                <TouchableHighlight style={styles.uprightDel} onPress={this._delImgItem.bind(this, index)}>
+                  <Text>+</Text>
+                </TouchableHighlight>
+              </View>
+            </TouchableHighlight>
+          )
+        })}
+        <TouchableHighlight onPress={this._onAddImageClick.bind(this)} style={styles.addBtn}>
+          <Text>添加图片</Text>
+        </TouchableHighlight>
+      </View>
+    </View>
+    )
+  }
+}
+
+
+export default class SsImagePicker extends Component<ImagePickerProps, {}> {
+  private fieldDecorator: any
+  private static defaultProps = {
+    required: false,
   }
 
-  private _clickImgItem(index: number) {}
+  public componentWillMount() {
+    const { form, id, defaultValue, rules, required } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+  }
 
   public render() {
-    const { label, required, form, id } = this.props
+    const { label, required, form, id ,onChange} = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <View style={{ paddingVertical: 10 }}>
-            <Label required={required} label={label} />
-            <View style={{ padding: 10, flexDirection: 'row', flexWrap: 'wrap' }}>
-              {this.state.imgs.map((item, index) => {
-                return (
-                  <TouchableHighlight style={styles.imageItem} onPress={this._clickImgItem.bind(this, index)}>
-                    <View style={{ width: 85, height: 85 }}>
-                      <Image source={{ uri: item.url }} style={{ width: 85, height: 85 }} />
-                      <TouchableHighlight style={styles.uprightDel} onPress={this._delImgItem.bind(this, index)}>
-                        <Text>+</Text>
-                      </TouchableHighlight>
-                    </View>
-                  </TouchableHighlight>
-                )
-              })}
-              <TouchableHighlight onPress={this._onAddImageClick.bind(this)} style={styles.addBtn}>
-                <Text>添加图片</Text>
-              </TouchableHighlight>
-            </View>
-          </View>
+          <SsImagePickerView  label={label} required onChange={onChange}/>
         )}
       </ErrorTip>
     )

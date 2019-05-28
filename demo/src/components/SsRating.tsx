@@ -6,8 +6,53 @@ import { RatingProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
+import PropTypes from 'prop-types';
 
-export default class SsDate extends Component<RatingProps, {}> {
+export class SsRatingView extends Component{
+
+  static propTypes = {
+    onChange:PropTypes.func,
+    label:PropTypes.string,
+    required:PropTypes.bool,
+    defaultValue:PropTypes.number,
+  }
+
+  constructor(props){
+    super(props)
+    const{defaultValue} = props
+    this.state = {
+      value:defaultValue?defaultValue:5
+    }
+  }
+
+
+  private ratingCompleted = (nValue: number) => {
+    this.setState({
+      value:nValue
+    })
+    const { onChange } = this.props
+    onChange(nValue)
+  }
+
+  render(){
+    const {label,required,defaultValue} = this.props
+    return (
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
+        <Label required={required} label={label} />
+        <AirbnbRating
+          reviews={[]}
+          showRating={false}
+          defaultRating={defaultValue}
+          count={5}
+          onFinishRating={this.ratingCompleted}
+        />
+      </View>
+
+    )
+  }
+}
+
+export default class SsRating extends Component<RatingProps, {}> {
   private fieldDecorator: any
   private static defaultProps = {
     required: false,
@@ -24,20 +69,26 @@ export default class SsDate extends Component<RatingProps, {}> {
   }
 
   public render() {
-    const { label, required, form, id } = this.props
+    const { label, required, form, id ,onChange,defaultValue} = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
-            <Label required={required} label={label} />
-            <AirbnbRating
-              reviews={[]}
-              showRating={false}
-              defaultRating={5}
-              count={5}
-              onFinishRating={this.ratingCompleted}
+          // <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
+          //   <Label required={required} label={label} />
+          //   <AirbnbRating
+          //     reviews={[]}
+          //     showRating={false}
+          //     defaultRating={defaultValue}
+          //     count={5}
+          //     onFinishRating={onChange}
+          //   />
+          // </View>
+          <SsRatingView
+            label={label}
+            required
+            onChange={onChange}
+            defaultValue={defaultValue}
             />
-          </View>
           // <Rating
           // type='star'
           // ratingCount={5}
