@@ -100,11 +100,11 @@ export default class HelloWorldApp extends Component {
 
 > 注意：getValues 方法返回的是未序列化的对象，但是一般网络请求库都会自动序列化参数。
 
-| 方法                    | 说明                          | 类型            | 默认值 |
-| ----------------------- | ----------------------------- | --------------- | ------ |
-| getValues               | 获取一个由 values 组成的对象  | `(): void`      | -      |
-| getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary | - |
-| getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary`    | -      |
+| 方法                    | 说明                          | 类型         | 默认值 |
+| ----------------------- | ----------------------------- | ------------ | ------ |
+| getValues               | 获取一个由 values 组成的对象  | `(): void`   | -      |
+| getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | -      |
+| getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary` | -      |
 
 ## 依赖
 
