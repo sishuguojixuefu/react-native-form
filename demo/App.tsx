@@ -75,7 +75,7 @@ class App extends Component {
             提交
           </Button>
         </View>
-      </AntdProvider>
+    </AntdProvider>
     )
   }
 }
