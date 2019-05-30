@@ -158,3 +158,15 @@ export interface LocationProps extends FormItemOptionPropsType {
   label: string
   onChange?: (value: any) => void
 }
+
+
+
+export  interface  CalculateProps extends FormItemOptionPropsType{
+  label :string
+  formula:any[]
+}
+
+export interface CalculateViewProps {
+  title:string
+  placeholder:string
+}

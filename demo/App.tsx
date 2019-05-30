@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { Button, Provider as AntdProvider } from '@sishuguojixuefu/antd-mobile-rn'
 // import Form, { Input, NumberInput, SsSelect } from '@sishuguojixuefu/react-native-form'
-import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker } from './src'
+import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker,SsCalculate} from './src'
 
 import appSchema from './json/appSchema'
 
@@ -20,6 +20,10 @@ class App extends Component {
     if (ref) {
       this.form = ref
     }
+  }
+
+  private changeValue = ()=>{
+    this.refs.calref.refresh()
   }
 
   public onSubmit = () => {
@@ -47,10 +51,13 @@ class App extends Component {
               ref={this.onRcFormRef}
             >
               <SsDateRange id="ChooseDateRange_1" label={['开始时间', '结束时间']} required />
-              <SsAmount id="SsAmount_1" label="请输入金额" />
+              <SsAmount id="SsAmount_1" label="请输入金额" defaultValue={13}/>
+              <SsAmount id="SsAmount_2" label="请输入金额2"  defaultValue={12}/>
               <SsDescription id="SsDescription" label="真的超级超级长唱唱唱" />
-              <SsRating id="SsRating" label="评分" required />
+              <SsRating id="SsRating" label="评分" required defaultValue={4} />
               <SsImagePicker id="SsImagePicker" label="上传图片" required />
+              <SsCalculate id='SsCalculate' label='总计'
+                formula={[{id:'SsAmount_1'},'+',{id:'SsAmount_2'}]} ref='calref'/>
               {/* <Form items={appSchema.items} wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef}>
               <Picker
                 data={[{ label: '猫', value: '猫' }, { label: '狗', value: '狗' }]}

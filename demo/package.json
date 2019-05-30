@@ -15,19 +15,20 @@
     "@sishuguojixuefu/antd-mobile-rn": "latest",
     "@types/kind-of": "latest",
     "@types/lodash.omit": "latest",
+    "@types/mathjs": "^5.0.1",
     "dayjs": "latest",
     "kind-of": "latest",
     "lodash.omit": "latest",
-    "mathjs": "latest",
+    "mathjs": "^5.10.3",
     "nzh": "latest",
     "rc-form": "latest",
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-amap3d": "latest",
     "react-native-image-crop-picker": "latest",
     "react-native-image-zoom-viewer": "latest",
     "react-native-ratings": "latest",
-    "string-width": "latest",
-    "react-native-amap3d": "latest"
+    "string-width": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
