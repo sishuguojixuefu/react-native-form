@@ -77,7 +77,7 @@ export default class SsCalculate extends Component<CalculateProps, {}> {
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-        <SsCalculateView title={label} placeholder={placeholder} value={value}/>
+        <SsCalculateView title={label} placeholder={placeholder} value={value} ref='subViewRef'/>
         )
         }
       </ErrorTip>
