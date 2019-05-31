@@ -32,11 +32,11 @@ export class SsImagePickerView extends Component {
     })
   }
 
-  setModalVisible(visible: boolean) {
+  setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
   }
 
-  dismissModal() {
+  dismissModal = () => {
     this.setModalVisible(false)
   }
 
@@ -102,18 +102,14 @@ export class SsImagePickerView extends Component {
             <Text>添加图片</Text>
           </TouchableHighlight>
           {
-            <Modal
-              visible={this.state.modalVisible}
-              transparent
-              onRequestClose={() => {
-                this.dismissModal()
-              }}
-            >
+            <Modal visible={this.state.modalVisible} transparent onRequestClose={this.dismissModal}>
               <ImageViewer
                 imageUrls={imgUrls}
-                onCancel={() => {
-                  this.dismissModal()
+                onSwipeDown={() => {
+                  console.log('onSwipeDown')
                 }}
+                enableSwipeDown
+                onCancel={this.dismissModal}
                 saveToLocalByLongPress={false}
               />
             </Modal>
