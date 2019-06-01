@@ -22,10 +22,6 @@ class App extends Component {
     }
   }
 
-  private changeValue = () => {
-    this.refs.calref.refresh()
-  }
-
   public onSubmit = () => {
     this.RcForm.validateFields(error => {
       if (error) return
@@ -39,7 +35,7 @@ class App extends Component {
       <AntdProvider>
         <View style={styles.container}>
           <ScrollView
-            keyboardShouldPersistTaps="handled" // http://t.cn/EowE3r3
+            keyboardShouldPersistTaps="handled"
             automaticallyAdjustContentInsets={false}
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}

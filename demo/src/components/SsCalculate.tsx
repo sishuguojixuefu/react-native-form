@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import PropTypes, { object } from 'prop-types'
+import PropTypes from 'prop-types'
 import { View,Text } from 'react-native'
 import { CalculateProps,CalculateViewProps } from '../utils/PropTypes'
-import getFieldDecorator from '../utils/getFieldDecorator'
-import Label from './helper/Label'
-import ErrorTip from './helper/ErrorTip'
-import * as math from "mathjs"
+import math from "mathjs"
+import  {DeviceEventEmitter} from 'react-native'
+import kindOf from 'kind-of'
 
 export class SsCalculateView extends Component <CalculateViewProps,{}>{
   static propTypes = {
@@ -13,22 +12,23 @@ export class SsCalculateView extends Component <CalculateViewProps,{}>{
     onChange: PropTypes.func,
     title: PropTypes.string,
     placeholder: PropTypes.string,
+    forceRefresh: PropTypes.func,
+    computedValue: PropTypes.number,
   }
 
-  constructor(props){
+  constructor(props:CalculateViewProps){
     super(props)
-  }
-  state={
-    value:0
+    this.state={
+      value:0
+    }
   }
 
   render() {
-    const {title} =  this.props
-    const {value} =  this.state
+    const {title,computedValue} =  this.props
     return (
       <View style={{paddingHorizontal:20,paddingVertical:8,justifyContent:'space-between',flexDirection:'row'}}>
         <Text>{title}</Text>
-        <Text>{value}</Text>
+        <Text>{computedValue}</Text>
       </View>
     )
   }
@@ -42,45 +42,47 @@ export default class SsCalculate extends Component<CalculateProps, {}> {
     upper: true,
   }
 
+  private subscription:any
+
   state={
     value:0
   }
 
-  public componentWillMount() {
-    const { form, id, defaultValue} = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue)
-    this.refresh()
+  componentDidMount(){
+    this.subscription = DeviceEventEmitter.addListener('SsDynamicFormValueChanged',({values}) => {
+      this.refresh(values)
+    })
   }
 
-  public refresh(){
-    const {form,formula} = this.props
-    var expression = ''
-    var calElements = formula.map((item)=>{
-      if (typeof(item) === 'object'){
-        return form.getFieldValue(item.id)
-      }else {
-        return item
-      }
+  componentWillUnmount(){
+      this.subscription.remove()
+  }
+
+  public refresh =(values:any)=>{
+    try {
+      const {formula} = this.props
+      let expression = ''
+      const calElements = formula.map((item)=>{
+        return (kindOf(item) === 'object')?(values[item.id] || '0'):item
+      })
+      calElements.forEach((item)=>{
+        expression += item.toString()
+      })
+      console.log(expression)
+      const value = math.eval(expression).toFixed(2,10)
+      this.setState({
+        value:value === 'Infinity'||isNaN(value)?'':value
     })
-    calElements.forEach((item)=>{
-      expression += item.toString()
-    })
-    var nvalue = math.eval(expression)
-    this.setState({
-      value:nvalue
-    })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   public render() {
-    const {label, form, id, placeholder} = this.props
+    const {label, placeholder} = this.props
     const  {value} =  this.state
     return (
-      <ErrorTip error={form.getFieldError(id)}>
-        {this.fieldDecorator(
-        <SsCalculateView title={label} placeholder={placeholder} value={value} ref='subViewRef'/>
-        )
-        }
-      </ErrorTip>
+      <SsCalculateView title={label} placeholder={placeholder} forceRefresh={this.refresh} computedValue={value}/>
     )
   }
 }
