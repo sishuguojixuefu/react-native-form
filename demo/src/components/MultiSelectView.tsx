@@ -17,7 +17,6 @@ export default class MultiSelectView extends Component {
     super(props)
     this.state = {
       modalVisible: true,
-      preDataArr: [], // 总数据 记录点击取消前的数据
       selectedArr: [], // 选中的数据
       firstItemString: '',
       dataArr: [], // 总数据 点击展示时
@@ -38,18 +37,12 @@ export default class MultiSelectView extends Component {
     this.setState({ dataArr: arr })
   }
 
-  setPreDataArr = (arr: []) => {
-    console.info('set predata:', arr)
-    this.setState({ preDataArr: arr })
-  }
-
   setFirstItemString = (text: string) => {
     this.setState({ firstItemString: text })
   }
 
   public componentWillMount() {
     this.setDataArr(this.getData())
-    this.setPreDataArr(this.getData())
   }
 
   private getData = () => {
@@ -80,9 +73,7 @@ export default class MultiSelectView extends Component {
           item.checked = true
         }
       })
-      this.setState({ dataArr: tempDataArr }, () => {
-        console.info('predataarr arr:', this.state.preDataArr)
-      })
+      this.setState({ dataArr: tempDataArr }, () => {})
     } else {
       item.checked = false
       const tempDataArr = this.state.dataArr.slice(0)
@@ -91,13 +82,7 @@ export default class MultiSelectView extends Component {
           item.checked = false
         }
       })
-      // this.setDataArr(tempDataArr)
-      this.setState({ dataArr: tempDataArr }, () => {
-        console.info('predataarr arr:', this.state.preDataArr)
-      })
-    }
-    if (this.state.preDataArr === this.state.dataArr) {
-      console.info('women wan quan yiyang ')
+      this.setState({ dataArr: tempDataArr }, () => {})
     }
   }
 
@@ -117,13 +102,10 @@ export default class MultiSelectView extends Component {
   }
 
   private firstSelected = () => {
-    console.info('firstselected method')
     if (this.state.selectedArr.length) {
       const item = this.state.selectedArr[0]
-      console.info('item', item)
       this.setFirstItemString(item.label)
     } else {
-      console.info('wu')
       this.setFirstItemString('无')
     }
   }
@@ -131,25 +113,28 @@ export default class MultiSelectView extends Component {
   private sureButtonAction = () => {
     const { onChange } = this.props
     const selectArr = this.state.dataArr.filter(temp => temp.checked === true)
-    console.info('surebuttonaction', selectArr)
     this.setState({ selectedArr: selectArr }, () => {
       onChange(this.state.selectedArr)
       this.firstSelected()
       this.modalClose()
     })
-    const tempPre = [...this.state.dataArr]
-    this.setState({ preDataArr: tempPre })
   }
 
   private cancelButtonAction = () => {
-    console.info('cancel button dataarr:', this.state.dataArr)
-    console.info('cancel button predata:', this.state.preDataArr)
-    const tempPre = [...this.state.preDataArr]
-    this.setState({ dataArr: tempPre }, () => {
-      console.info('cancel button after setsate predata:', this.state.preDataArr)
-      console.info('cancel button after setsate data:', this.state.dataArr)
-      this.modalClose()
-    })
+    const tempDataArr = this.state.dataArr
+    const tempSelectedArr = this.state.selectedArr
+    for (const item of tempDataArr) {
+      item.checked = false
+    }
+    for (const sItem of tempSelectedArr) {
+      for (const item of tempDataArr) {
+        if (sItem.value === item.value) {
+          item.checked = true
+        }
+      }
+    }
+    this.setState({ dataArr: tempDataArr })
+    this.modalClose()
   }
 
   render() {
