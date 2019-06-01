@@ -24,7 +24,9 @@ export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
     const { label, required, form, id, onChange, options } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
-        {this.fieldDecorator(<MultiSelectView label={label} required onChange={onChange} options={options} />)}
+        {this.fieldDecorator(
+          <MultiSelectView label={label} required={required} onChange={onChange} options={options} />
+        )}
       </ErrorTip>
     )
   }

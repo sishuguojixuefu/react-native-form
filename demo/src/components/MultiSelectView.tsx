@@ -15,40 +15,35 @@ export default class MultiSelectView extends Component {
 
   constructor(props: any) {
     super(props)
+    this.state = {
+      modalVisible: true,
+      preDataArr: [], // 总数据 记录点击取消前的数据
+      selectedArr: [], // 选中的数据
+      firstItemString: '',
+      dataArr: [], // 总数据 点击展示时
+      value: [],
+    }
   }
 
-  state = {
-    modalVisible: true,
-    selectedArr: [], // 选中的数据
-    firstItemString: '',
-    dataArr: [], // 总数据 点击展示时
-    value: [],
-    preDataArr: [], // 总数据 记录点击取消前的数据
-  }
-
-  setValue(value: []) {
+  setValue = (value: []) => {
     this.setState({ value })
   }
 
-  setModalVisible(visible: boolean) {
+  setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
   }
 
-  setDataArr(arr: []) {
+  setDataArr = (arr: []) => {
     console.info('set data:', arr)
     this.setState({ dataArr: arr })
   }
 
-  setPreDataArr(arr: []) {
+  setPreDataArr = (arr: []) => {
     console.info('set predata:', arr)
     this.setState({ preDataArr: arr })
   }
 
-  setSelectedArr(arr: []) {
-    this.setState({ selectedArr: arr })
-  }
-
-  setFirstItemString(text: string) {
+  setFirstItemString = (text: string) => {
     this.setState({ firstItemString: text })
   }
 
@@ -79,22 +74,30 @@ export default class MultiSelectView extends Component {
   private checkBoxChange = (event, item) => {
     if (event.target.checked) {
       item.checked = true
-      const tempDataArr = this.state.dataArr.concat()
+      const tempDataArr = this.state.dataArr.slice(0)
       tempDataArr.map(temp => {
         if (temp.label === item.label) {
           item.checked = true
         }
       })
-      this.setDataArr(tempDataArr)
+      this.setState({ dataArr: tempDataArr }, () => {
+        console.info('predataarr arr:', this.state.preDataArr)
+      })
     } else {
       item.checked = false
-      const tempDataArr = this.state.dataArr.concat()
+      const tempDataArr = this.state.dataArr.slice(0)
       tempDataArr.map(temp => {
         if (temp.label === item.label) {
           item.checked = false
         }
       })
-      this.setDataArr(tempDataArr)
+      // this.setDataArr(tempDataArr)
+      this.setState({ dataArr: tempDataArr }, () => {
+        console.info('predataarr arr:', this.state.preDataArr)
+      })
+    }
+    if (this.state.preDataArr === this.state.dataArr) {
+      console.info('women wan quan yiyang ')
     }
   }
 
@@ -113,32 +116,40 @@ export default class MultiSelectView extends Component {
     return <List.Item key={index} style={{ paddingRight: 30 }} last extra={item.label} onClick={this.modalShow} />
   }
 
-  // private firstSelected() {
-  //   console.info('firstselected method')
-  //   if (this.state.selectedArr.length) {
-  //     const item = this.state.selectedArr[0]
-  //     console.info('item', item)
-  //     this.setFirstItemString(item.label)
-  //   } else {
-  //     console.info('wu')
-  //     this.setFirstItemString('无')
-  //   }
-  // }
+  private firstSelected = () => {
+    console.info('firstselected method')
+    if (this.state.selectedArr.length) {
+      const item = this.state.selectedArr[0]
+      console.info('item', item)
+      this.setFirstItemString(item.label)
+    } else {
+      console.info('wu')
+      this.setFirstItemString('无')
+    }
+  }
 
   private sureButtonAction = () => {
+    const { onChange } = this.props
     const selectArr = this.state.dataArr.filter(temp => temp.checked === true)
     console.info('surebuttonaction', selectArr)
-    this.setSelectedArr(selectArr)
-    const { onChange } = this.props
-    onChange(this.state.selectedArr)
-    this.setPreDataArr(this.state.dataArr.slice(0))
-    this.modalClose()
+    this.setState({ selectedArr: selectArr }, () => {
+      onChange(this.state.selectedArr)
+      this.firstSelected()
+      this.modalClose()
+    })
+    const tempPre = [...this.state.dataArr]
+    this.setState({ preDataArr: tempPre })
   }
 
   private cancelButtonAction = () => {
-    console.info('cancel predata:', this.state.preDataArr.concat())
-    this.setDataArr(this.state.preDataArr.slice(0))
-    this.modalClose()
+    console.info('cancel button dataarr:', this.state.dataArr)
+    console.info('cancel button predata:', this.state.preDataArr)
+    const tempPre = [...this.state.preDataArr]
+    this.setState({ dataArr: tempPre }, () => {
+      console.info('cancel button after setsate predata:', this.state.preDataArr)
+      console.info('cancel button after setsate data:', this.state.dataArr)
+      this.modalClose()
+    })
   }
 
   render() {
@@ -192,5 +203,13 @@ const styles = StyleSheet.create({
   ModalView: {
     color: '#dddddd',
     flexDirection: 'column',
+  },
+  leftView: {
+    color: 'red',
+    flex: 1,
+  },
+  rightView: {
+    color: 'blue',
+    flex: 1,
   },
 })
