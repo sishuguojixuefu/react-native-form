@@ -1,5 +1,5 @@
 import React from 'react'
-import { InputPropsType } from '../utils/PropTypes'
+import { InputPropsType, SsDropDownPropsType } from '../utils/PropTypes'
 import Input from './Input'
 import Textarea from './Textarea'
 import SsSelect from './SsSelect'
@@ -18,6 +18,14 @@ const NumberInput = (props: InputPropsType) => {
   return <Input {...props} type="number" rules={props.rules ? [...props.rules, 'number'] : ['number']} />
 }
 
+const SsDropDown = (props: SsDropDownPropsType) => {
+  const { multiple } = props
+  if (multiple) {
+    return <SsMultiSelect {...props} />
+  }
+  return <SsSelect {...props} />
+}
+
 export {
   Input,
   NumberInput,
@@ -33,6 +41,7 @@ export {
   SsMultiSelect,
   SsCalculate,
   MultiSelectView,
+  SsDropDown,
 }
 export default {
   Input,
@@ -49,4 +58,5 @@ export default {
   SsLocation,
   SsCalculate,
   MultiSelectView,
+  SsDropDown,
 }

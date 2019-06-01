@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { Button, Provider as AntdProvider } from '@sishuguojixuefu/antd-mobile-rn'
 // import Form, { Input, NumberInput, SsSelect } from '@sishuguojixuefu/react-native-form'
-import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker, SsMultiSelect, SsCalculate } from './src'
+import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker, SsMultiSelect, SsDropDown } from './src'
 
 import appSchema from './json/appSchema'
 
@@ -46,16 +46,21 @@ class App extends Component {
               wrappedComponentRef={this.onFormRef}
               ref={this.onRcFormRef}
             >
-              <SsMultiSelect
+              <SsDropDown
                 id="SsMultiSelect"
                 options={['a', 'b', 'c', 'd', 'f', 'g', 'v', 'x']}
                 label="最喜欢的明星"
                 required
+                multiple
               />
-              <SsAmount id='SsAmount_1' label="请输入金额" />
-              <SsAmount id='SsAmount_2' label="请输入金额2" />
-              <SsCalculate id='SsCalculate_max' label='总计' formula={[{id:'SsAmount_2'},'/',{id:'SsAmount_1'}]}   />
-              <SsImagePicker id="SsImagePicker" label="上传图片" required />
+              <SsDropDown
+                id="SsMultiSelectsdsd"
+                options={['a', 'b', 'c', 'd', 'f', 'g', 'v', 'x']}
+                label="最喜欢的明星"
+                required
+                multiple={false}
+              />
+
               {/* <SsDateRange id="ChooseDateRange_1" label={['开始时间', '结束时间']} required />
               <SsAmount id="SsAmount_1" label="请输入金额" />
               <SsDescription id="SsDescription" label="真的超级超级长唱唱唱" />
@@ -79,7 +84,7 @@ class App extends Component {
             提交
           </Button>
         </View>
-    </AntdProvider>
+      </AntdProvider>
     )
   }
 }
