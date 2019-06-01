@@ -1,43 +1,29 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
-import { Checkbox, List, Modal, Button } from '@sishuguojixuefu/antd-mobile-rn'
-import PropTypes from 'prop-types'
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Checkbox, List, Modal } from '@sishuguojixuefu/antd-mobile-rn'
 import Label from './helper/Label'
 
 const { CheckboxItem } = Checkbox
-
 export default class MultiSelectView extends Component {
-  static propTypes = {
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    label: PropTypes.string,
-  }
-
-  constructor(props: any) {
+  public constructor(props: any) {
     super(props)
     this.state = {
       modalVisible: true,
       selectedArr: [], // 选中的数据
       firstItemString: '',
       dataArr: [], // 总数据 点击展示时
-      value: [],
     }
   }
 
-  setValue = (value: []) => {
-    this.setState({ value })
-  }
-
-  setModalVisible = (visible: boolean) => {
+  private setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
   }
 
-  setDataArr = (arr: []) => {
-    console.info('set data:', arr)
+  private setDataArr = (arr: []) => {
     this.setState({ dataArr: arr })
   }
 
-  setFirstItemString = (text: string) => {
+  private setFirstItemString = (text: string) => {
     this.setState({ firstItemString: text })
   }
 
@@ -65,9 +51,10 @@ export default class MultiSelectView extends Component {
   }
 
   private checkBoxChange = (event, item) => {
+    const { dataArr } = this.state
     if (event.target.checked) {
       item.checked = true
-      const tempDataArr = this.state.dataArr.slice(0)
+      const tempDataArr = dataArr.slice(0)
       tempDataArr.map(temp => {
         if (temp.label === item.label) {
           item.checked = true
@@ -76,7 +63,7 @@ export default class MultiSelectView extends Component {
       this.setState({ dataArr: tempDataArr }, () => {})
     } else {
       item.checked = false
-      const tempDataArr = this.state.dataArr.slice(0)
+      const tempDataArr = dataArr.slice(0)
       tempDataArr.map(temp => {
         if (temp.label === item.label) {
           item.checked = false
@@ -102,8 +89,9 @@ export default class MultiSelectView extends Component {
   }
 
   private firstSelected = () => {
-    if (this.state.selectedArr.length) {
-      const item = this.state.selectedArr[0]
+    const { selectedArr } = this.state
+    if (selectedArr.length) {
+      const item = selectedArr[0]
       this.setFirstItemString(item.label)
     } else {
       this.setFirstItemString('无')
@@ -137,34 +125,29 @@ export default class MultiSelectView extends Component {
     this.modalClose()
   }
 
-  render() {
+  public render() {
     const { label, required } = this.props
+    const { dataArr, firstItemString, selectedArr, modalVisible } = this.state
     return (
       <View>
-        <List.Item
-          arrow="horizontal"
-          style={{ paddingLeft: 0 }}
-          last
-          extra={this.state.firstItemString}
-          onClick={this.modalShow}
-        >
+        <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last extra={firstItemString} onClick={this.modalShow}>
           <Label required={required} label={label} />
         </List.Item>
-        {this.state.selectedArr && this.state.selectedArr.length ? (
-          <List>{this.state.selectedArr.map((item, index) => this.renderSelectedItem({ item, index }))}</List>
+        {selectedArr && selectedArr.length ? (
+          <List>{selectedArr.map((item, index) => this.renderSelectedItem({ item, index }))}</List>
         ) : null}
-        <Modal popup visible={this.state.modalVisible} maskClosable animationType="slide-up" onClose={this.modalClose}>
+        <Modal popup visible={modalVisible} maskClosable animationType="slide-up" onClose={this.modalClose}>
           <View style={styles.ModalView}>
             <View style={styles.ModalTopButtonView}>
-              <Button type="ghost" style={styles.ButtonStyle} onPress={this.cancelButtonAction}>
-                取消
-              </Button>
-              <Button type="ghost" style={styles.ButtonRightStyle} onPress={this.sureButtonAction}>
-                确认
-              </Button>
+              <TouchableOpacity activeOpacity={0.5} style={styles.ButtonStyle} onPress={this.cancelButtonAction}>
+                <Text style={styles.leftText}>取消</Text>
+              </TouchableOpacity>
+              <TouchableOpacity activeOpacity={0.5} style={styles.ButtonRightStyle} onPress={this.sureButtonAction}>
+                <Text style={styles.rightText}>确认</Text>
+              </TouchableOpacity>
             </View>
-            {this.state.dataArr && this.state.dataArr.length ? (
-              <List>{this.state.dataArr.map((item, index) => this.renderItem({ item, index }))}</List>
+            {dataArr && dataArr.length ? (
+              <List>{dataArr.map((item, index) => this.renderItem({ item, index }))}</List>
             ) : null}
           </View>
         </Modal>
@@ -176,25 +159,31 @@ export default class MultiSelectView extends Component {
 const styles = StyleSheet.create({
   ButtonRightStyle: {
     borderColor: '#fff',
+    flex: 1,
   },
   ButtonStyle: {
     borderColor: '#fff',
+    flex: 1,
   },
   ModalTopButtonView: {
     color: 'gray',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    height: 50,
+    paddingHorizontal: 40,
+    paddingVertical: 12,
   },
   ModalView: {
     color: '#dddddd',
     flexDirection: 'column',
   },
-  leftView: {
-    color: 'red',
-    flex: 1,
+  leftText: {
+    color: '#1DA1EB',
+    fontSize: 18,
+    textAlign: 'left',
   },
-  rightView: {
-    color: 'blue',
-    flex: 1,
+  rightText: {
+    color: '#1DA1EB',
+    fontSize: 18,
+    textAlign: 'right',
   },
 })
