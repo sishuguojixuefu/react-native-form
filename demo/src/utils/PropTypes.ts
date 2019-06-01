@@ -121,6 +121,16 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
 }
 
 /**
+ * SsDropDown组件PropsType
+ */
+export interface SsDropDownPropsType extends FormItemOptionPropsType {
+  label: string // 标签
+  onChange?: (value?: React.ReactText[]) => void // onChange事件
+  options: string[] // 选项
+  multiple: boolean
+}
+
+/**
  * SsDate组件PropsType
  */
 export interface DatePickerProps extends FormItemOptionPropsType {
@@ -159,14 +169,12 @@ export interface LocationProps extends FormItemOptionPropsType {
   onChange?: (value: any) => void
 }
 
-
-
-export  interface  CalculateProps extends FormItemOptionPropsType{
-  label :string
-  formula:any[]
+export interface CalculateProps extends FormItemOptionPropsType {
+  label: string
+  formula: any[]
 }
 
 export interface CalculateViewProps {
-  title:string
-  placeholder:string
+  title: string
+  placeholder: string
 }
