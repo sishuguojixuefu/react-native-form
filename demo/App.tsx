@@ -60,6 +60,7 @@ class App extends Component {
                 required
                 multiple={false}
               />
+              <SsImagePicker id='SsImagePicker_2' label='选择图片' required/>
 
               {/* <SsDateRange id="ChooseDateRange_1" label={['开始时间', '结束时间']} required />
               <SsAmount id="SsAmount_1" label="请输入金额" />

@@ -9,10 +9,10 @@ import SsAmount from './SsAmount'
 import SsDescription from './SsDescription'
 import SsRating from './SsRating'
 import SsMultiSelect from './SsMultiSelect'
-import SsImagePicker from './SsImagePicker'
 import SsLocation from './SsLocation'
 import SsCalculate from './SsCalculate'
 import MultiSelectView from './MultiSelectView'
+import SsImagePicker from './SsImagePicker'
 
 const NumberInput = (props: InputPropsType) => {
   return <Input {...props} type="number" rules={props.rules ? [...props.rules, 'number'] : ['number']} />
@@ -36,12 +36,12 @@ export {
   SsAmount,
   SsDescription,
   SsRating,
-  SsImagePicker,
   SsLocation,
   SsMultiSelect,
   SsCalculate,
   MultiSelectView,
   SsDropDown,
+  SsImagePicker,
 }
 export default {
   Input,
@@ -54,9 +54,9 @@ export default {
   SsDescription,
   SsRating,
   SsMultiSelect,
-  SsImagePicker,
   SsLocation,
   SsCalculate,
   MultiSelectView,
   SsDropDown,
+  SsImagePicker,
 }
