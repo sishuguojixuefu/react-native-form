@@ -14,7 +14,7 @@ const nzhCn = nzh.cn
 export default class SsAmount extends Component<SsAmountProps, {}> {
   private fieldDecorator: any
   private chineseAmount = ''
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
     placeholder: '请输入',
     textAlign: 'right',

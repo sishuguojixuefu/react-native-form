@@ -8,7 +8,7 @@ import Label from './helper/Label'
 
 export default class SsDate extends Component<DatePickerProps, {}> {
   private fieldDecorator: any
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
   }
 

@@ -10,7 +10,7 @@ import ErrorTip from './helper/ErrorTip'
 
 export default class SsLocation extends Component<LocationProps, {}> {
   private fieldDecorator: any
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
     placeholder: '请输入',
     textAlign: 'right',

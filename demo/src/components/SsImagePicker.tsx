@@ -110,7 +110,7 @@ export class SsImagePickerView extends Component<ImagePickerProps,{}>{
 
 export default class SsImagePicker extends Component<ImagePickerProps, {}> {
   private fieldDecorator: any
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
   }
 

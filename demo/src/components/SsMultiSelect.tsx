@@ -6,7 +6,7 @@ import getFieldDecorator from '../utils/getFieldDecorator'
 
 export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
   private fieldDecorator: any
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
     placeholder: '请输入',
   }

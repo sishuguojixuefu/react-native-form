@@ -7,7 +7,7 @@ interface Props {
 }
 
 class Label extends Component<Props> {
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
     label: '',
   }

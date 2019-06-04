@@ -8,7 +8,7 @@ import TextareaWrap from './helper/TextareaWrap'
 export default class Textarea extends Component<TextareaPropsType, {}> {
   private fieldDecorator: any
   private inputed = 0
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
     placeholder: '请输入',
     count: 0,

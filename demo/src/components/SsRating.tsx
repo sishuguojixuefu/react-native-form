@@ -51,7 +51,7 @@ export class SsRatingView extends Component {
 
 export default class SsRating extends Component<RatingProps, {}> {
   private fieldDecorator: any
-  private static defaultProps = {
+  public static defaultProps = {
     required: false,
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, DeviceEventEmitter } from 'react-native'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
@@ -7,7 +7,6 @@ import Rules from './utils/Rules'
 import FormItem from './components'
 import { FormItemPropsType } from './utils/PropTypes'
 import getFieldDecorator from './utils/getFieldDecorator'
-import  {DeviceEventEmitter} from 'react-native';
 
 export interface Props {
   /**
@@ -82,7 +81,7 @@ class Form extends Component<Props, {}> {
     } else {
       this.values[id] = value
     }
-    DeviceEventEmitter.emit('SsDynamicFormValueChanged',{values:this.values})
+    DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.values })
   }
 
   /**
