@@ -4,6 +4,22 @@
   "description": "私塾动态表单组件",
   "main": "dist/index.js",
   "author": "sishu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sishuguojixuefu/react-native-form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sishuguojixuefu/react-native-form/issues"
+  },
+  "homepage": "https://github.com/sishuguojixuefu/react-native-form#readme",
+  "keywords": [
+    "react-native",
+    "form",
+    "ios",
+    "android",
+    "sishuguojixuefu"
+  ],
   "scripts": {
     "build": "tsc -p ./tsconfig.json",
     "postversion": "git push --tags && git push && npm publish",
