@@ -11,12 +11,12 @@
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
+    "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "types": ["react", "react-native"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "suppressImplicitAnyIndexErrors": true
+    "emitDecoratorMetadata": true
   },
   "include": ["demo/src"]
 }
