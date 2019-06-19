@@ -16,7 +16,8 @@
     "esModuleInterop": true,
     "types": ["react", "react-native"],
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true
   },
   "include": ["demo/src"]
 }
