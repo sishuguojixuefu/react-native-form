@@ -2,12 +2,11 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { Checkbox, List, Modal } from '@sishuguojixuefu/antd-mobile-rn'
-import { SsMultiSelectPropsType } from '../utils/PropTypes'
 import Label from './helper/Label'
 
 const { CheckboxItem } = Checkbox
 
-export default class SSMultiSelectView extends Component<SsMultiSelectPropsType, any> {
+export default class SSMultiSelectView extends Component<any, any> {
   public constructor(props: any) {
     super(props)
     this.state = {

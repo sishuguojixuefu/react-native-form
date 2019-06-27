@@ -10,7 +10,6 @@ import SsDescription from './SsDescription'
 import SsRating from './SsRating'
 import SsMultiSelect from './SsMultiSelect'
 import SSMultiSelectView from './SSMultiSelectView'
-import SsLocation from './SsLocation'
 import SsCalculate from './SsCalculate'
 import SsImagePicker from './SsImagePicker'
 
@@ -36,7 +35,6 @@ export {
   SsAmount,
   SsDescription,
   SsRating,
-  SsLocation,
   SsMultiSelect,
   SSMultiSelectView,
   SsCalculate,
@@ -55,7 +53,6 @@ export default {
   SsRating,
   SsMultiSelect,
   SSMultiSelectView,
-  SsLocation,
   SsCalculate,
   SsDropDown,
   SsImagePicker,
