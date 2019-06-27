@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 import { View, Text, DeviceEventEmitter } from 'react-native'
 import math from 'mathjs'
 import kindOf from 'kind-of'
-import { CalculateProps, CalculateViewProps } from '../utils/PropTypes'
+import { CalculateProps } from '../utils/PropTypes'
 
-class SsCalculateView extends Component<CalculateViewProps, any> {
+class SsCalculateView extends Component<any, any> {
   public render() {
     const { title, computedValue } = this.props
     return (

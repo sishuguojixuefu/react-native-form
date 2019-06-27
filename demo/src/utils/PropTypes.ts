@@ -173,9 +173,3 @@ export interface CalculateProps extends FormItemOptionPropsType {
   label: string
   formula: any[]
 }
-
-export interface CalculateViewProps extends FormItemOptionPropsType {
-  title: string
-  computedValue: number
-  forceRefresh?: boolean
-}
