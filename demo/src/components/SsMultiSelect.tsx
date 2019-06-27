@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { SsSelectPropsType } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
-import MultiSelectView from './MultiSelectView'
+import MultiSelectView from './SSMultiSelectView'
 import getFieldDecorator from '../utils/getFieldDecorator'
 
 export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {

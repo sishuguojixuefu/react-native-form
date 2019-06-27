@@ -9,9 +9,9 @@ import SsAmount from './SsAmount'
 import SsDescription from './SsDescription'
 import SsRating from './SsRating'
 import SsMultiSelect from './SsMultiSelect'
+import SSMultiSelectView from './SSMultiSelectView'
 import SsLocation from './SsLocation'
 import SsCalculate from './SsCalculate'
-import MultiSelectView from './MultiSelectView'
 import SsImagePicker from './SsImagePicker'
 
 const NumberInput = (props: InputPropsType) => {
@@ -38,8 +38,8 @@ export {
   SsRating,
   SsLocation,
   SsMultiSelect,
+  SSMultiSelectView,
   SsCalculate,
-  MultiSelectView,
   SsDropDown,
   SsImagePicker,
 }
@@ -54,9 +54,9 @@ export default {
   SsDescription,
   SsRating,
   SsMultiSelect,
+  SSMultiSelectView,
   SsLocation,
   SsCalculate,
-  MultiSelectView,
   SsDropDown,
   SsImagePicker,
 }

@@ -1,10 +1,13 @@
+/* eslint-disable no-restricted-syntax */
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { Checkbox, List, Modal } from '@sishuguojixuefu/antd-mobile-rn'
+import { SsMultiSelectPropsType } from '../utils/PropTypes'
 import Label from './helper/Label'
 
 const { CheckboxItem } = Checkbox
-export default class MultiSelectView extends Component {
+
+export default class SSMultiSelectView extends Component<SsMultiSelectPropsType, any> {
   public constructor(props: any) {
     super(props)
     this.state = {
@@ -13,22 +16,19 @@ export default class MultiSelectView extends Component {
       firstItemString: '',
       dataArr: [], // 总数据 点击展示时
     }
+    this.setDataArr(this.getData())
   }
 
   private setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
   }
 
-  private setDataArr = (arr: []) => {
+  private setDataArr = (arr: any[]) => {
     this.setState({ dataArr: arr })
   }
 
   private setFirstItemString = (text: string) => {
     this.setState({ firstItemString: text })
-  }
-
-  public componentWillMount() {
-    this.setDataArr(this.getData())
   }
 
   private getData = () => {
@@ -55,7 +55,7 @@ export default class MultiSelectView extends Component {
     if (event.target.checked) {
       item.checked = true
       const tempDataArr = dataArr.slice(0)
-      tempDataArr.map(temp => {
+      tempDataArr.forEach(temp => {
         if (temp.label === item.label) {
           item.checked = true
         }
@@ -64,7 +64,7 @@ export default class MultiSelectView extends Component {
     } else {
       item.checked = false
       const tempDataArr = dataArr.slice(0)
-      tempDataArr.map(temp => {
+      tempDataArr.forEach(temp => {
         if (temp.label === item.label) {
           item.checked = false
         }
@@ -85,7 +85,7 @@ export default class MultiSelectView extends Component {
     if (index === 0) {
       return null
     }
-    return <List.Item key={index} style={{ paddingRight: 30 }} last extra={item.label} onClick={this.modalShow} />
+    return <List.Item key={index} style={{ paddingRight: 30 }} last extra={item.label} onPress={this.modalShow} />
   }
 
   private firstSelected = () => {
@@ -100,7 +100,8 @@ export default class MultiSelectView extends Component {
 
   private sureButtonAction = () => {
     const { onChange } = this.props
-    const selectArr = this.state.dataArr.filter(temp => temp.checked === true)
+    const { dataArr } = this.state
+    const selectArr = dataArr.filter(temp => temp.checked === true)
     this.setState({ selectedArr: selectArr }, () => {
       onChange(this.state.selectedArr)
       this.firstSelected()
@@ -109,7 +110,8 @@ export default class MultiSelectView extends Component {
   }
 
   private cancelButtonAction = () => {
-    const tempDataArr = this.state.dataArr
+    const { dataArr } = this.state
+    const tempDataArr = dataArr
     const tempSelectedArr = this.state.selectedArr
     for (const item of tempDataArr) {
       item.checked = false
@@ -130,7 +132,7 @@ export default class MultiSelectView extends Component {
     const { dataArr, firstItemString, selectedArr, modalVisible } = this.state
     return (
       <View>
-        <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last extra={firstItemString} onClick={this.modalShow}>
+        <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last extra={firstItemString} onPress={this.modalShow}>
           <Label required={required} label={label} />
         </List.Item>
         {selectedArr && selectedArr.length ? (
