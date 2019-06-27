@@ -1,17 +1,11 @@
+/* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import { View, Text, DeviceEventEmitter } from 'react-native'
 import math from 'mathjs'
 import kindOf from 'kind-of'
 import { CalculateProps, CalculateViewProps } from '../utils/PropTypes'
 
-export class SsCalculateView extends Component<CalculateViewProps, {}> {
-  public constructor(props: CalculateViewProps) {
-    super(props)
-    this.state = {
-      value: 0,
-    }
-  }
-
+class SsCalculateView extends Component<CalculateViewProps, any> {
   public render() {
     const { title, computedValue } = this.props
     return (
@@ -24,18 +18,20 @@ export class SsCalculateView extends Component<CalculateViewProps, {}> {
     )
   }
 }
-export default class SsCalculate extends Component<CalculateProps, {}> {
-  private fieldDecorator: any
-  private subscription: any
 
+export default class SsCalculate extends Component<CalculateProps, any> {
+  private subscription: any
   public static defaultProps = {
     required: false,
     textAlign: 'right',
     upper: true,
   }
 
-  state = {
-    value: 0,
+  public constructor(props) {
+    super(props)
+    this.state = {
+      value: 0,
+    }
   }
 
   public componentDidMount() {
@@ -44,7 +40,7 @@ export default class SsCalculate extends Component<CalculateProps, {}> {
     })
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     this.subscription.remove()
   }
 
@@ -71,6 +67,6 @@ export default class SsCalculate extends Component<CalculateProps, {}> {
   public render() {
     const { label, placeholder } = this.props
     const { value } = this.state
-    return <SsCalculateView title={label} placeholder={placeholder} forceRefresh={this.refresh} computedValue={value} />
+    return <SsCalculateView title={label} placeholder={placeholder} computedValue={value} />
   }
 }

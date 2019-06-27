@@ -174,7 +174,8 @@ export interface CalculateProps extends FormItemOptionPropsType {
   formula: any[]
 }
 
-export interface CalculateViewProps {
+export interface CalculateViewProps extends FormItemOptionPropsType {
   title: string
-  placeholder: string
+  computedValue: number
+  forceRefresh?: boolean
 }
