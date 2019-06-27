@@ -151,7 +151,7 @@ const rules = {
 }
 
 const getRules = (required?: boolean, originRules?: RulePropsType) => {
-  const rulesObj = []
+  const rulesObj: any = []
   if (required) {
     rulesObj.push(rules.required)
   }
