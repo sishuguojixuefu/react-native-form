@@ -73,7 +73,7 @@ export interface FormItemPropsType {
  */
 export interface FormItemOptionPropsType {
   name?: string // 组件名
-  id: string // id
+  id?: string // id
   placeholder?: string // 备注
   defaultValue?: string // 初始值
   required?: boolean // 是否必要
@@ -116,7 +116,7 @@ export interface SsSelectPropsType extends FormItemOptionPropsType {
  */
 export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange?: (value?: React.ReactText[]) => void // onChange事件
+  onChange: (value?: React.ReactText[]) => void // onChange事件
   options: string[] // 选项
 }
 
@@ -125,7 +125,7 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
  */
 export interface SsDropDownPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange?: (value?: React.ReactText[]) => void // onChange事件
+  onChange: (value?: React.ReactText[]) => void // onChange事件
   options: string[] // 选项
   multiple: boolean
 }
@@ -156,17 +156,17 @@ export interface SsAmountProps extends InputPropsType {
 
 export interface RatingProps extends FormItemOptionPropsType {
   label: string
-  onChange?: (value: number) => void
+  onChange: (value: number) => void
 }
 
 export interface ImagePickerProps extends FormItemOptionPropsType {
   label: string
-  onChange?: (value: any[]) => void
+  onChange: (value: any[]) => void
 }
 
 export interface LocationProps extends FormItemOptionPropsType {
   label: string
-  onChange?: (value: any) => void
+  onChange: (value: any) => void
 }
 
 export interface CalculateProps extends FormItemOptionPropsType {

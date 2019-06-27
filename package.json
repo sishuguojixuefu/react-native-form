@@ -31,6 +31,9 @@
   ],
   "types": "dist/index.d.ts",
   "devDependencies": {
+    "@types/lodash.omit": "latest",
+    "@types/kind-of": "latest",
+    "@types/mathjs": "^5.0.1",
     "@types/react": "^16.8.17",
     "@types/react-native": "^0.57.55",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
@@ -51,9 +54,6 @@
   },
   "dependencies": {
     "@sishuguojixuefu/antd-mobile-rn": "latest",
-    "@types/kind-of": "latest",
-    "@types/lodash.omit": "latest",
-    "@types/mathjs": "^5.0.1",
     "dayjs": "latest",
     "kind-of": "latest",
     "lodash.omit": "latest",
