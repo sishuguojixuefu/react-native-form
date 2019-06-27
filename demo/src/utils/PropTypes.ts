@@ -73,7 +73,7 @@ export interface FormItemPropsType {
  */
 export interface FormItemOptionPropsType {
   name?: string // 组件名
-  id?: string // id
+  id: string // id
   placeholder?: string // 备注
   defaultValue?: string // 初始值
   required?: boolean // 是否必要
