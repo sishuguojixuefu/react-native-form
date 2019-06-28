@@ -87,7 +87,7 @@ export interface FormItemOptionPropsType {
  */
 export interface InputPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: (value: string) => void
+  onChange?: (value: string) => void
   type?: 'text' | 'bankCard' | 'phone' | 'password' | 'number' | 'digit' | KeyboardTypeOptions // 类型
   textAlign?: 'left' | 'center' | 'right'
   extra?: React.ReactNode
@@ -98,7 +98,7 @@ export interface InputPropsType extends FormItemOptionPropsType {
  */
 export interface TextareaPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: TextAreaEventHandle
+  onChange?: TextAreaEventHandle
   count?: number // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
 }
 
@@ -107,7 +107,7 @@ export interface TextareaPropsType extends FormItemOptionPropsType {
  */
 export interface SsSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: (value?: React.ReactText[]) => void
+  onChange?: (value?: React.ReactText[]) => void
   options: string[] // 选项
 }
 
@@ -116,7 +116,7 @@ export interface SsSelectPropsType extends FormItemOptionPropsType {
  */
 export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: (value?: React.ReactText[]) => void // onChange事件
+  onChange?: (value?: React.ReactText[]) => void // onChange事件
   options: string[] // 选项
 }
 
@@ -125,7 +125,7 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
  */
 export interface SsDropDownPropsType extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: (value?: React.ReactText[]) => void // onChange事件
+  onChange?: (value?: React.ReactText[]) => void // onChange事件
   options: string[] // 选项
   multiple: boolean
 }
@@ -135,7 +135,7 @@ export interface SsDropDownPropsType extends FormItemOptionPropsType {
  */
 export interface DatePickerProps extends FormItemOptionPropsType {
   label: string // 标签
-  onChange: (value: Date) => void
+  onChange?: (value: Date) => void
   type: 'year' | 'month' | 'date' | 'datetime' | 'time'
 }
 
@@ -144,7 +144,7 @@ export interface DatePickerProps extends FormItemOptionPropsType {
  */
 export interface SsDateRangeProps extends FormItemOptionPropsType {
   label: string[] // 标签
-  onChange: (value: Date | Date[]) => void
+  onChange?: (value: Date | Date[]) => void
 }
 
 /**
@@ -156,17 +156,17 @@ export interface SsAmountProps extends InputPropsType {
 
 export interface RatingProps extends FormItemOptionPropsType {
   label: string
-  onChange: (value: number) => void
+  onChange?: (value: number) => void
 }
 
 export interface ImagePickerProps extends FormItemOptionPropsType {
   label: string
-  onChange: (value: any[]) => void
+  onChange?: (value: any[]) => void
 }
 
 export interface LocationProps extends FormItemOptionPropsType {
   label: string
-  onChange: (value: any) => void
+  onChange?: (value: any) => void
 }
 
 export interface CalculateProps extends FormItemOptionPropsType {

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@sishuguojixuefu/antd-mobile-rn": "latest",
+    "@sishuguojixuefu/react-native-form": "^0.0.2",
     "@types/kind-of": "latest",
     "@types/lodash.omit": "latest",
     "@types/mathjs": "^5.0.1",

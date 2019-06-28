@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { Button, Provider as AntdProvider } from '@sishuguojixuefu/antd-mobile-rn'
-// import Form, { Input, NumberInput, SsSelect } from '@sishuguojixuefu/react-native-form'
-import Form, { SsDateRange, SsAmount, SsDescription, SsRating, SsImagePicker, SsMultiSelect, SsDropDown } from './src'
+import Form, { SsImagePicker, SsDropDown } from '@sishuguojixuefu/react-native-form'
+// import Form, { SsImagePicker, SsDropDown } from './src'
 
 import appSchema from './json/appSchema'
 
@@ -60,23 +60,13 @@ class App extends Component {
                 required
                 multiple={false}
               />
-              <SsImagePicker id='SsImagePicker_2' label='选择图片' required/>
+              <SsImagePicker id="SsImagePicker_2" label="选择图片" required />
 
               {/* <SsDateRange id="ChooseDateRange_1" label={['开始时间', '结束时间']} required />
               <SsAmount id="SsAmount_1" label="请输入金额" />
               <SsDescription id="SsDescription" label="真的超级超级长唱唱唱" />
               <SsRating id="SsRating" label="评分" required />
               <SsImagePicker id="SsImagePicker" label="上传图片" required /> */}
-              {/* <Form items={appSchema.items} wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef}>
-              <Picker
-                data={[{ label: '猫', value: '猫' }, { label: '狗', value: '狗' }]}
-                cols={1}
-                id="pet"
-                initialValue="猫"
-              >
-                <List.Item arrow="horizontal">宠物</List.Item>
-              </Picker>
-            </Form> */}
             </Form>
           </ScrollView>
         </View>
