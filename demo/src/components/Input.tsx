@@ -23,7 +23,7 @@ export default class Input extends Component<InputPropsType, {}> {
 
   private _onChange = (value: string) => {
     const { onChange } = this.props
-    onChange(value)
+    onChange && onChange(value)
   }
 
   public render() {

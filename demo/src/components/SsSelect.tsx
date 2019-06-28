@@ -24,7 +24,7 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
 
   private _onChange = (value?: React.ReactText[]): void => {
     const { onChange } = this.props
-    onChange(value)
+    onChange && onChange(value)
   }
 
   private _getData = () => {

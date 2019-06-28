@@ -23,7 +23,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
   private _onChange = (value?: string) => {
     const { onChange } = this.props
     this.inputed = value ? value.length : 0
-    onChange(value)
+    onChange && onChange(value)
   }
 
   public render() {

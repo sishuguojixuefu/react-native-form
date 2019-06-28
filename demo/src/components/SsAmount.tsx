@@ -39,7 +39,7 @@ export default class SsAmount extends Component<SsAmountProps, {}> {
     if (upper) {
       this._getChineseAmount(value)
     }
-    onChange(value)
+    onChange && onChange(value)
   }
 
   private _getChineseAmount = (value: string = '') => {

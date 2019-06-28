@@ -19,7 +19,7 @@ export default class SsDate extends Component<DatePickerProps, {}> {
 
   private _onChange = (value: Date) => {
     const { onChange } = this.props
-    onChange(value)
+    onChange && onChange(value)
   }
 
   public render() {

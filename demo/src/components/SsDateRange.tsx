@@ -21,13 +21,13 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   private _onChangeStartDate = (value: Date) => {
     const { onChange } = this.props
     this.startDate = value
-    onChange([value, this.endDate])
+    onChange && onChange([value, this.endDate])
   }
 
   private _onChangeEndDate = (value: Date) => {
     const { onChange } = this.props
     this.endDate = value
-    onChange([this.startDate, value])
+    onChange && onChange([this.startDate, value])
   }
 
   public render() {
