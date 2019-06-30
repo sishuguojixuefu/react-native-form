@@ -36,7 +36,7 @@ export interface Props {
   /**
    * 表单Change事件，可以用于和状态管理工具交互
    */
-  onFormChange: (id: string, value) => void
+  onFormChange?: (id: string, value) => void
 }
 
 class Form extends Component<Props, {}> {
@@ -92,7 +92,7 @@ class Form extends Component<Props, {}> {
     } else {
       this.values[id] = value
     }
-    onFormChange(id, value)
+    onFormChange && onFormChange(id, value)
     DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.values })
   }
 
