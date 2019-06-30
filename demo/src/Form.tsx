@@ -29,6 +29,10 @@ export interface Props {
    * rc-form传入，rc-form没有类型声明文件
    */
   form: any
+  /**
+   * 列表是否有上下边框
+   */
+  noBorder: boolean
 }
 
 class Form extends Component<Props, {}> {
@@ -106,11 +110,11 @@ class Form extends Component<Props, {}> {
   }
 
   public render() {
-    const { items, renderHeader, renderFooter, form } = this.props
+    const { items, renderHeader, renderFooter, form, noBorder } = this.props
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <List renderHeader={renderHeader} renderFooter={renderFooter} style={styles.container}>
+      <List renderHeader={renderHeader} renderFooter={renderFooter} style={styles.container} noBorder={noBorder}>
         <View>
           {items && items.length
             ? items.map(item => {
