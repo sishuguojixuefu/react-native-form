@@ -16,6 +16,24 @@
 $ yarn add @sishuguojixuefu/react-native-form
 ```
 
+## API
+
+### 属性
+
+| 属性  | 说明                                                  | 类型                    | 默认值 |
+| ----- | ----------------------------------------------------- | ----------------------- | ------ |
+| items | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
+
+### 方法
+
+> 注意：getValues 方法返回的是未序列化的对象，但是一般网络请求库都会自动序列化参数。
+
+| 方法                    | 说明                          | 类型         | 默认值 |
+| ----------------------- | ----------------------------- | ------------ | ------ |
+| getValues               | 获取一个由 values 组成的对象  | `(): void`   | -      |
+| getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | -      |
+| getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary` | -      |
+
 ## 使用
 
 ```tsx
@@ -40,31 +58,6 @@ export default class HelloWorldApp extends Component {
   }
 }
 ```
-
-## API
-
-### 属性
-
-| 属性  | 说明                                                  | 类型                    | 默认值 |
-| ----- | ----------------------------------------------------- | ----------------------- | ------ |
-| items | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
-
-### 方法
-
-> 注意：getValues 方法返回的是未序列化的对象，但是一般网络请求库都会自动序列化参数。
-
-| 方法                    | 说明                          | 类型         | 默认值 |
-| ----------------------- | ----------------------------- | ------------ | ------ |
-| getValues               | 获取一个由 values 组成的对象  | `(): void`   | -      |
-| getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | -      |
-| getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary` | -      |
-
-## 内置的组件
-
-- Input: 文本输入框
-- NumberInput: 数字输入框，基于文本输入框。只是 `type="string"`并增加默 "number"
-  属性
-- SsSelect: 单选框
 
 ## 依赖
 
