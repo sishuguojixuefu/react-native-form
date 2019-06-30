@@ -143,6 +143,7 @@ class Form extends Component<Props, {}> {
                 return item.props.custom ? this[item.props.id](child) : child
               })
             : null}
+          <View style={{ height: noBorder ? 1 : 0 }} />
         </View>
       </List>
     )
