@@ -36,11 +36,38 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 ## 使用
 
+### 使用完全自定义的组件
+
 ```tsx
 import React, { Component } from 'react'
 ...
 export default class HelloWorldApp extends Component {
-  onRef = (r) => this.ref = r
+  store: Store
+  form: any
+  RcForm: any
+  onRcFormRef = ref => {
+    if (ref) {
+      this.RcForm = ref
+    }
+  }
+
+  onFormRef = ref => {
+    if (ref) {
+      this.form = ref
+    }
+  }
+
+  onLogin = () => {
+    this.RcForm.validateFields(error => {
+      if (error) {
+        console.warn(error)
+        return
+      }
+      const values = this.form.getValues()
+      console.log('values:', values)
+    })
+  }
+
   render() {
     return (
       <ScrollView
@@ -49,9 +76,9 @@ export default class HelloWorldApp extends Component {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <Form items={appSchema.items} ref={this.onRef}>
-          <Input label="自定义输入框" id="custom-1" required />
-          <Input label="自定义输入框" id="custom-2" required />
+        <Form wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef} noBorder>
+          <Input id="phoneNumber" placeholder="手机号" rules={[Rules.rules.mobilePhone]} custom />
+          <SmsCodeVerifyView id="codeNumber" placeholder="验证码" custom />
         </Form>
       </ScrollView>
     )
