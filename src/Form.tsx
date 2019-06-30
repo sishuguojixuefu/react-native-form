@@ -82,6 +82,7 @@ class Form extends Component<Props, {}> {
    * _onChange事件
    */
   private _onChange = (id: string, value: any) => {
+    console.log('Form:', id, value)
     if (kindOf(value) === 'array' && value.length === 1) {
       this.values[id] = value[0]
     } else {
