@@ -8,59 +8,12 @@
 - 基于 `rc-form` 实现自动表单校验
 - 支持以 `children` 的形式扩展组件
 
-## 内置的组件
-
-- Input: 文本输入框
-- NumberInput: 数字输入框，基于文本输入框。只是 `type="string"`并增加默 "number"
-  属性
-- SsSelect: 单选框
-
 ## 安装
+
+> 如果要使用内置的组件，请确保安装并配置了 @sishuguojixuefu/antd-mobile-rn
 
 ```sh
 $ yarn add @sishuguojixuefu/react-native-form
-```
-
-## @sishuguojixuefu/antd-mobile-rn 配置
-
-### 链接字体图标
-
-```sh
-$ react-native link @ant-design/icons-react-native
-```
-
-### 按需加载
-
-```sh
-$ yarn add babel-plugin-import -D
-```
-
-**babel.config.js:**
-
-```js
-plugins: [
-  ['import', { libraryName: '@sishuguojixuefu/antd-mobile-rn' }],
-],
-```
-
-### 使用 Modal、Toast
-
-如果需要使用 `Modal` 以及 `Toast` 还需要在 App 的入口处加上 `Provider`:
-
-```jsx
-import React, { Component } from 'react'
-import { AppRegistry } from 'react-native'
-import { Button, Provider, Toast } from '@sishuguojixuefu/antd-mobile-rn'
-
-class HelloWorldApp extends Component {
-  render() {
-    return (
-      <Provider>
-        <Button onPress={() => Toast.info('This is a toast tips')}>Start</Button>
-      </Provider>
-    )
-  }
-}
 ```
 
 ## 使用
@@ -105,6 +58,13 @@ export default class HelloWorldApp extends Component {
 | getValues               | 获取一个由 values 组成的对象  | `(): void`   | -      |
 | getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | -      |
 | getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary` | -      |
+
+## 内置的组件
+
+- Input: 文本输入框
+- NumberInput: 数字输入框，基于文本输入框。只是 `type="string"`并增加默 "number"
+  属性
+- SsSelect: 单选框
 
 ## 依赖
 
