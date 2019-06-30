@@ -44,6 +44,7 @@ class Form extends Component<Props, {}> {
 
     const { items, form } = props
     const childs = this._getChilds()
+    // 数据驱动
     if (items) {
       items.forEach(item => {
         if (item.props.defaultValue) {
@@ -51,6 +52,7 @@ class Form extends Component<Props, {}> {
         }
       })
     }
+    // 业务驱动
     if (childs && childs.length) {
       childs.forEach((item: any) => {
         if (item.props.defaultValue) {
