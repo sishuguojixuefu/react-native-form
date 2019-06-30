@@ -33,6 +33,10 @@ export interface Props {
    * 列表是否有上下边框
    */
   noBorder: boolean
+  /**
+   * 表单Change事件，可以用于和状态管理工具交互
+   */
+  onFormChange: (id: string, value) => void
 }
 
 class Form extends Component<Props, {}> {
@@ -82,11 +86,13 @@ class Form extends Component<Props, {}> {
    * _onChange事件
    */
   private _onChange = (id: string, value: any) => {
+    const { onFormChange } = this.props
     if (kindOf(value) === 'array' && value.length === 1) {
       this.values[id] = value[0]
     } else {
       this.values[id] = value
     }
+    onFormChange(id, value)
     DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.values })
   }
 

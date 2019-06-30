@@ -28,11 +28,12 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 > 注意：getValues 方法返回的是未序列化的对象，但是一般网络请求库都会自动序列化参数。
 
-| 方法                    | 说明                          | 类型         | 默认值 |
-| ----------------------- | ----------------------------- | ------------ | ------ |
-| getValues               | 获取一个由 values 组成的对象  | `(): void`   | -      |
-| getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | -      |
-| getAllowedFormRules     | _获取 items 允许传入的 rules_ | `(): arrary` | -      |
+| 方法                    | 说明                                         | 类型                        | 默认值 |
+| ----------------------- | -------------------------------------------- | --------------------------- | ------ |
+| getValues               | 获取一个由 values 组成的对象                 | `(): void`                  | -      |
+| getAllowedFormItemTypes | 获取 items 允许传入的组件类型                | `(): arrary`                | -      |
+| getAllowedFormRules     | 获取 items 允许传入的 rules                  | `(): arrary`                | -      |
+| onFormChange            | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
 
 ## 使用
 
