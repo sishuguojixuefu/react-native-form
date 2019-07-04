@@ -122,7 +122,7 @@ const rules = {
    * 4的倍数
    */
   fourTimes: {
-    validator: (rule: any, value: any, callback: any) => {
+    validator: (rule, value, callback) => {
       if (isNaN(value) || value % 4 !== 0) {
         callback(rule.message)
       }
@@ -131,7 +131,7 @@ const rules = {
     message: '该字段必须是4的倍数',
   },
   fiveTimes: {
-    validator: (rule: any, value: any, callback: any) => {
+    validator: (rule, value, callback) => {
       if (isNaN(value) || value % 5 !== 0) {
         callback(rule.message)
       }
@@ -140,7 +140,7 @@ const rules = {
     message: '该字段必须是5的倍数',
   },
   sixTimes: {
-    validator: (rule: any, value: any, callback: any) => {
+    validator: (rule, value, callback) => {
       if (isNaN(value) || value % 6 !== 0) {
         callback(rule.message)
       }
@@ -155,7 +155,7 @@ const getRules = (required?: boolean, originRules?: RulePropsType) => {
   if (required) {
     rulesObj.push(rules.required)
   }
-  if (originRules) {
+  originRules &&
     originRules.forEach((item: any) => {
       if (kindOf(item) === 'string') {
         const rule = rules[item]
@@ -171,7 +171,6 @@ const getRules = (required?: boolean, originRules?: RulePropsType) => {
         rulesObj.push(item)
       }
     })
-  }
   return rulesObj
 }
 
