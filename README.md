@@ -30,10 +30,10 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 | 方法                    | 说明                                         | 类型                        | 默认值 |
 | ----------------------- | -------------------------------------------- | --------------------------- | ------ |
+| onFormChange            | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
 | getValues               | 获取一个由 values 组成的对象                 | `(): void`                  | -      |
 | getAllowedFormItemTypes | 获取 items 允许传入的组件类型                | `(): arrary`                | -      |
 | getAllowedFormRules     | 获取 items 允许传入的 rules                  | `(): arrary`                | -      |
-| onFormChange            | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
 
 ## 使用
 
