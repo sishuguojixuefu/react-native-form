@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
-import { Picker, List, Provider } from '@sishuguojixuefu/antd-mobile-rn'
+import { Picker, List } from '@sishuguojixuefu/antd-mobile-rn'
 import omit from 'lodash.omit'
 import { SsSelectPropsType } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
@@ -42,25 +41,21 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
     const { placeholder, label, required, form, id } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue'])
     return (
-      <Provider>
-        <View style={{ flex: 1 }}>
-          <ErrorTip error={form.getFieldError(id)}>
-            {this.fieldDecorator(
-              <Picker
-                {...omitDefaultValueProps}
-                cols={1}
-                onChange={this._onChange}
-                extra={placeholder}
-                data={this._getData()}
-              >
-                <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
-                  <Label required={required} label={label} />
-                </List.Item>
-              </Picker>
-            )}
-          </ErrorTip>
-        </View>
-      </Provider>
+      <ErrorTip error={form.getFieldError(id)}>
+        {this.fieldDecorator(
+          <Picker
+            {...omitDefaultValueProps}
+            cols={1}
+            onChange={this._onChange}
+            extra={placeholder}
+            data={this._getData()}
+          >
+            <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
+              <Label required={required} label={label} />
+            </List.Item>
+          </Picker>
+        )}
+      </ErrorTip>
     )
   }
 }
