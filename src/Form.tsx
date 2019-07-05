@@ -145,7 +145,7 @@ class Form extends Component<Props, {}> {
             : null}
           {childs && childs.length
             ? childs.map((item: any) => {
-                if (item.id) {
+                if (item.props.id) {
                   const child = React.cloneElement(item, {
                     key: item.props.id,
                     form,
