@@ -63,8 +63,8 @@ class Form extends Component<Props, {}> {
           this.values[item.props.id] = item.props.defaultValue
         }
         if (item.props.custom) {
-          const { id, initialValue, required, rules } = item.props
-          this[id] = getFieldDecorator(form, id, initialValue, required, rules)
+          const { id, initialValue, required, rules, extraOption } = item.props
+          this[id] = getFieldDecorator(form, id, initialValue, required, rules, extraOption)
         }
       })
     }
