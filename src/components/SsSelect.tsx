@@ -49,11 +49,11 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
         extra={placeholder}
         data={this._getData()}
       >
-        <ErrorTip error={form.getFieldError(id)}>
-          <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
-            <Label required={required} label={label} />
-          </List.Item>
-        </ErrorTip>
+        {/* <ErrorTip error={form.getFieldError(id)}> */}
+        <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
+          <Label required={required} label={label} />
+        </List.Item>
+        {/* </ErrorTip> */}
       </Picker>
     )
   }
