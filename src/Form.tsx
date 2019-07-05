@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, DeviceEventEmitter, ViewStyle } from 'react-native'
+import { View, StyleSheet, DeviceEventEmitter, ViewStyle, ScrollView } from 'react-native'
 import { List, Portal } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
@@ -130,7 +130,12 @@ class Form extends Component<Props, {}> {
           style={[styles.container, style]}
           noBorder={noBorder}
         >
-          <View>
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            automaticallyAdjustContentInsets={false}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+          >
             {items && items.length
               ? items.map(item => {
                   if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
@@ -157,7 +162,7 @@ class Form extends Component<Props, {}> {
                 })
               : null}
             <View style={{ height: noBorder ? 1 : 0 }} />
-          </View>
+          </ScrollView>
         </List>
       </Portal.Host>
     )
