@@ -144,18 +144,15 @@ class Form extends Component<Props, {}> {
               })
             : null}
           {childs && childs.length
-            ? childs.map((item: any) => {
-                if (item.props.id) {
-                  const child = React.cloneElement(item, {
-                    key: item.props.id,
-                    form,
-                    id: item.props.id,
-                    onChange: (value: any) => this._onChange(item.props.id, value),
-                    ...item.props,
-                  })
-                  return item.props.custom ? this[item.props.id](child) : child
-                }
-                return null
+            ? childs.map((item: any, index: number) => {
+                const child = React.cloneElement(item, {
+                  key: item.props.id || index.toString(),
+                  form,
+                  id: item.props.id,
+                  onChange: (value: any) => this._onChange(item.props.id, value),
+                  ...item.props,
+                })
+                return item.props.custom ? this[item.props.id](child) : child
               })
             : null}
           <View style={{ height: noBorder ? 1 : 0 }} />
