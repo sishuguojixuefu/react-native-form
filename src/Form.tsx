@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, DeviceEventEmitter, ViewStyle } from 'react-native'
-import { List, Provider } from '@sishuguojixuefu/antd-mobile-rn'
+import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
 import Rules from './utils/Rules'
@@ -123,43 +123,41 @@ class Form extends Component<Props, {}> {
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <Provider>
-        <List
-          renderHeader={renderHeader}
-          renderFooter={renderFooter}
-          style={[styles.container, style]}
-          noBorder={noBorder}
-        >
-          <View style={{ flex: 1 }}>
-            {items && items.length
-              ? items.map(item => {
-                  if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
-                    return React.createElement(FormItem[item.componentName], {
-                      key: item.props.id,
-                      form,
-                      onChange: (value: any) => this._onChange(item.props.id, value),
-                      ...item.props,
-                    })
-                  }
-                  return null
-                })
-              : null}
-            {childs && childs.length
-              ? childs.map((item: any, index: number) => {
-                  const child = React.cloneElement(item, {
-                    key: item.props.id || index.toString(),
+      <List
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+        style={[styles.container, style]}
+        noBorder={noBorder}
+      >
+        <View>
+          {items && items.length
+            ? items.map(item => {
+                if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
+                  return React.createElement(FormItem[item.componentName], {
+                    key: item.props.id,
                     form,
-                    id: item.props.id,
                     onChange: (value: any) => this._onChange(item.props.id, value),
                     ...item.props,
                   })
-                  return item.props.custom ? this[item.props.id](child) : child
+                }
+                return null
+              })
+            : null}
+          {childs && childs.length
+            ? childs.map((item: any, index: number) => {
+                const child = React.cloneElement(item, {
+                  key: item.props.id || index.toString(),
+                  form,
+                  id: item.props.id,
+                  onChange: (value: any) => this._onChange(item.props.id, value),
+                  ...item.props,
                 })
-              : null}
-            <View style={{ height: noBorder ? 1 : 0 }} />
-          </View>
-        </List>
-      </Provider>
+                return item.props.custom ? this[item.props.id](child) : child
+              })
+            : null}
+          <View style={{ height: noBorder ? 1 : 0 }} />
+        </View>
+      </List>
     )
   }
 }
