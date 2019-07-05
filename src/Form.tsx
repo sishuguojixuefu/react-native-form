@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, DeviceEventEmitter, ViewStyle, ScrollView } from 'react-native'
-import { List, Portal } from '@sishuguojixuefu/antd-mobile-rn'
+import { View, StyleSheet, DeviceEventEmitter, ViewStyle } from 'react-native'
+import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
 import Rules from './utils/Rules'
@@ -123,48 +123,39 @@ class Form extends Component<Props, {}> {
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <Portal.Host>
-        <List
-          renderHeader={renderHeader}
-          renderFooter={renderFooter}
-          style={[styles.container, style]}
-          noBorder={noBorder}
-        >
-          <ScrollView
-            keyboardShouldPersistTaps="handled"
-            automaticallyAdjustContentInsets={false}
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-          >
-            {items && items.length
-              ? items.map(item => {
-                  if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
-                    return React.createElement(FormItem[item.componentName], {
-                      key: item.props.id,
-                      form,
-                      onChange: (value: any) => this._onChange(item.props.id, value),
-                      ...item.props,
-                    })
-                  }
-                  return null
+      <List
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+        style={[styles.container, style]}
+        noBorder={noBorder}
+      >
+        {items && items.length
+          ? items.map(item => {
+              if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
+                return React.createElement(FormItem[item.componentName], {
+                  key: item.props.id,
+                  form,
+                  onChange: (value: any) => this._onChange(item.props.id, value),
+                  ...item.props,
                 })
-              : null}
-            {childs && childs.length
-              ? childs.map((item: any, index: number) => {
-                  const child = React.cloneElement(item, {
-                    key: item.props.id || index.toString(),
-                    form,
-                    id: item.props.id,
-                    onChange: (value: any) => this._onChange(item.props.id, value),
-                    ...item.props,
-                  })
-                  return item.props.custom ? this[item.props.id](child) : child
-                })
-              : null}
-            <View style={{ height: noBorder ? 1 : 0 }} />
-          </ScrollView>
-        </List>
-      </Portal.Host>
+              }
+              return null
+            })
+          : null}
+        {childs && childs.length
+          ? childs.map((item: any, index: number) => {
+              const child = React.cloneElement(item, {
+                key: item.props.id || index.toString(),
+                form,
+                id: item.props.id,
+                onChange: (value: any) => this._onChange(item.props.id, value),
+                ...item.props,
+              })
+              return item.props.custom ? this[item.props.id](child) : child
+            })
+          : null}
+        <View style={{ height: noBorder ? 1 : 0 }} />
+      </List>
     )
   }
 }
