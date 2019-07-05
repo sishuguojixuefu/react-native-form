@@ -11,6 +11,7 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
   public static defaultProps = {
     required: false,
     placeholder: '请输入',
+    cols: 1,
   }
 
   public componentWillMount() {
@@ -29,23 +30,23 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
 
   private _getData = () => {
     const { options } = this.props
-    return options.map(item => {
+    return options.map((item: any) => {
       return {
-        label: item,
-        value: item,
+        label: item.label || item,
+        value: item.value || item,
       }
     })
   }
 
   public render() {
-    const { placeholder, label, required, form, id } = this.props
+    const { placeholder, label, required, form, id, cols } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue'])
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
           <Picker
             {...omitDefaultValueProps}
-            cols={1}
+            cols={cols}
             onChange={this._onChange}
             extra={placeholder}
             data={this._getData()}

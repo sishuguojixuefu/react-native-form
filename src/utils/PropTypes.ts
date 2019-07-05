@@ -109,6 +109,7 @@ export interface SsSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void
   options: string[] // 选项
+  cols?: number // 列数
 }
 
 /**
