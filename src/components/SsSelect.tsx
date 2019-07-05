@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Picker, List, Portal } from '@sishuguojixuefu/antd-mobile-rn'
+import { Picker, List } from '@sishuguojixuefu/antd-mobile-rn'
 import omit from 'lodash.omit'
 import { SsSelectPropsType } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
@@ -41,24 +41,20 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
   public render() {
     const { placeholder, label, required, form, id, cols } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue'])
-    return (
-      <ErrorTip error={form.getFieldError(id)}>
-        <Portal.Host>
-          {this.fieldDecorator(
-            <Picker
-              {...omitDefaultValueProps}
-              cols={cols}
-              onChange={this._onChange}
-              extra={placeholder}
-              data={this._getData()}
-            >
-              <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
-                <Label required={required} label={label} />
-              </List.Item>
-            </Picker>
-          )}
-        </Portal.Host>
-      </ErrorTip>
+    return this.fieldDecorator(
+      <Picker
+        {...omitDefaultValueProps}
+        cols={cols}
+        onChange={this._onChange}
+        extra={placeholder}
+        data={this._getData()}
+      >
+        <ErrorTip error={form.getFieldError(id)}>
+          <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
+            <Label required={required} label={label} />
+          </List.Item>
+        </ErrorTip>
+      </Picker>
     )
   }
 }
