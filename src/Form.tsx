@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, DeviceEventEmitter } from 'react-native'
+import { View, StyleSheet, DeviceEventEmitter, ViewStyle } from 'react-native'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
@@ -37,6 +37,7 @@ export interface Props {
    * 表单Change事件，可以用于和状态管理工具交互
    */
   onFormChange?: (id: string, value) => void
+  style?: ViewStyle
 }
 
 class Form extends Component<Props, {}> {
@@ -118,11 +119,16 @@ class Form extends Component<Props, {}> {
   }
 
   public render() {
-    const { items, renderHeader, renderFooter, form, noBorder } = this.props
+    const { items, renderHeader, renderFooter, form, noBorder, style } = this.props
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <List renderHeader={renderHeader} renderFooter={renderFooter} style={styles.container} noBorder={noBorder}>
+      <List
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+        style={[styles.container, style]}
+        noBorder={noBorder}
+      >
         <View>
           {items && items.length
             ? items.map(item => {
@@ -159,7 +165,6 @@ class Form extends Component<Props, {}> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
-    flex: 1,
   },
 })
 
