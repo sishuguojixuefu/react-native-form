@@ -130,7 +130,7 @@ class Form extends Component<Props, {}> {
           style={[styles.container, style]}
           noBorder={noBorder}
         >
-          <View>
+          <View style={{ flex: 1 }}>
             {items && items.length
               ? items.map(item => {
                   if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
@@ -167,6 +167,7 @@ class Form extends Component<Props, {}> {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
+    flex: 1,
   },
 })
 
