@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Picker, List } from '@sishuguojixuefu/antd-mobile-rn'
+import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import omit from 'lodash.omit'
+// @ts-ignore
+import Picker from 'antd-mobile-rn/lib/Picker'
 import { SsSelectPropsType } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import Label from './helper/Label'

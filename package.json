@@ -32,8 +32,8 @@
   ],
   "types": "dist/index.d.ts",
   "devDependencies": {
-    "@types/lodash.omit": "latest",
     "@types/kind-of": "latest",
+    "@types/lodash.omit": "latest",
     "@types/mathjs": "^5.0.1",
     "@types/react": "^16.8.17",
     "@types/react-native": "^0.57.55",
@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@sishuguojixuefu/antd-mobile-rn": "3.1.8-beta.2",
+    "antd-mobile-rn": "^2.3.3",
     "dayjs": "latest",
     "kind-of": "latest",
     "lodash.omit": "latest",
