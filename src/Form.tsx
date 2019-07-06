@@ -1,49 +1,17 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, DeviceEventEmitter, ViewStyle } from 'react-native'
+import { View, StyleSheet, DeviceEventEmitter } from 'react-native'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
 import kindOf from 'kind-of'
 import Rules from './utils/Rules'
 import FormItem from './components'
-import { FormItemPropsType } from './utils/PropTypes'
+import FormPropsType from './utils/FormPropsType'
 import getFieldDecorator from './utils/getFieldDecorator'
 
-export interface Props {
-  /**
-   * 允许你设置 FormItms
-   */
-  items: FormItemPropsType[]
-  /**
-   * 允许你设置任意 children
-   */
-  children?: React.ReactElement[]
-  /**
-   * list header
-   */
-  renderHeader?: (() => React.ReactType) | string | JSX.Element
-  /**
-   * list footer
-   */
-  renderFooter?: (() => React.ReactType) | string | JSX.Element
-  /**
-   * rc-form传入，rc-form没有类型声明文件
-   */
-  form: any
-  /**
-   * 列表是否有上下边框
-   */
-  noBorder: boolean
-  /**
-   * 表单Change事件，可以用于和状态管理工具交互
-   */
-  onFormChange?: (id: string, value) => void
-  style?: ViewStyle
-}
-
-class Form extends Component<Props, {}> {
+class Form extends Component<FormPropsType, {}> {
   private values: object
 
-  public constructor(props: Props) {
+  public constructor(props: FormPropsType) {
     super(props)
     this.values = {}
 
