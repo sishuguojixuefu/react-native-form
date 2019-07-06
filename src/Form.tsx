@@ -14,18 +14,16 @@ class Form extends Component<FormPropsType, {}> {
   public constructor(props: FormPropsType) {
     super(props)
     this.values = {}
-
-    const { items, form } = props
-    const childs = this._getChilds()
     // 数据驱动
-    if (items) {
-      items.forEach(item => {
+    if (props.items) {
+      props.items.forEach(item => {
         if (item.props.defaultValue) {
           this.values[item.props.id] = item.props.defaultValue
         }
       })
     }
     // 业务驱动
+    const childs = this._getChilds()
     if (childs && childs.length) {
       childs.forEach((item: any) => {
         if (item.props.defaultValue) {
@@ -33,7 +31,7 @@ class Form extends Component<FormPropsType, {}> {
         }
         if (item.props.custom) {
           const { id, initialValue, required, rules } = item.props
-          this[id] = getFieldDecorator(form, id, initialValue, required, rules)
+          this[id] = getFieldDecorator(props.form, id, initialValue, required, rules)
         }
       })
     }
