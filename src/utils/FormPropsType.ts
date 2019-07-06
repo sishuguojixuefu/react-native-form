@@ -7,6 +7,10 @@ export default interface FormPropsType {
    */
   items: FormItemPropsType[]
   /**
+   * 列表是否有上下边框
+   */
+  noBorder: boolean
+  /**
    * 允许你设置任意 children
    */
   children?: React.ReactElement[]
@@ -21,11 +25,7 @@ export default interface FormPropsType {
   /**
    * rc-form传入，rc-form没有类型声明文件
    */
-  form: any
-  /**
-   * 列表是否有上下边框
-   */
-  noBorder: boolean
+  form?: any
   /**
    * 表单Change事件，可以用于和状态管理工具交互
    */

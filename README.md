@@ -20,26 +20,14 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 ### 属性
 
-| 属性  | 说明                                                  | 类型                    | 默认值 |
-| ----- | ----------------------------------------------------- | ----------------------- | ------ |
-| items | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
-|       |                                                       |                         |
+| 属性                | 说明                                                  | 类型                    | 默认值 |
+| ------------------- | ----------------------------------------------------- | ----------------------- | ------ |
+| items               | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
+| wrappedComponentRef | `wrappedComponentRef={ref => {this.formRef = ref}}`   | Function                | -      |
+| ref                 | ref={ref => {this.rcFormRef = ref}}                   | Function                | -      |
+| noBorder            | 是否显示 border                                       | boolean                 | false  |
 
 ### 方法
-
-```js
-<Form
-  wrappedComponentRef={ref => {
-    this.formRef = ref
-  }}
-  ref={ref => {
-    this.rcFormRef = ref
-  }}
-  noBorder
->
-  ...
-</Form>
-```
 
 #### 高级方法
 
