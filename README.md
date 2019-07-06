@@ -23,17 +23,38 @@ $ yarn add @sishuguojixuefu/react-native-form
 | 属性  | 说明                                                  | 类型                    | 默认值 |
 | ----- | ----------------------------------------------------- | ----------------------- | ------ |
 | items | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
+|       |                                                       |                         |
 
 ### 方法
 
+```js
+<Form
+  wrappedComponentRef={ref => {
+    this.formRef = ref
+  }}
+  ref={ref => {
+    this.rcFormRef = ref
+  }}
+  noBorder
+>
+  ...
+</Form>
+```
+
+#### 高级方法
+
+| 方法                  | 说明                                         | 类型                        | 默认值 |
+| --------------------- | -------------------------------------------- | --------------------------- | ------ |
+| this.formRef.onChange | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
+|                       |                                              |                             |
+
+#### 低级方法
+
 > 注意：getValues 方法返回的是未序列化的对象，但是一般网络请求库都会自动序列化参数。
 
-| 方法                    | 说明                                         | 类型                        | 默认值 |
-| ----------------------- | -------------------------------------------- | --------------------------- | ------ |
-| onFormChange            | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
-| getValues               | 获取一个由 values 组成的对象                 | `(): void`                  | -      |
-| getAllowedFormItemTypes | 获取 items 允许传入的组件类型                | `(): arrary`                | -      |
-| getAllowedFormRules     | 获取 items 允许传入的 rules                  | `(): arrary`                | -      |
+| this.formRef.getValues | 获取一个由 values 组成的对象 | `(): void` | - |
+| this.formRef.getAllowedFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` | - |
+| this.formRef.getAllowedFormRules | 获取 items 允许传入的 rules | `(): arrary` | - |
 
 ## 使用
 

@@ -37,9 +37,7 @@ class Form extends Component<FormPropsType, {}> {
     }
   }
 
-  /**
-   * 兼容单个child
-   */
+  // 兼容单个child
   private _getChilds = () => {
     const { children } = this.props
     let childs: any = children
@@ -49,17 +47,14 @@ class Form extends Component<FormPropsType, {}> {
     return childs
   }
 
-  /**
-   * _onChange事件
-   */
   private _onChange = (id: string, value: any) => {
-    const { onFormChange } = this.props
+    const { onChange } = this.props
     if (kindOf(value) === 'array' && value.length === 1) {
       this.values[id] = value[0]
     } else {
       this.values[id] = value
     }
-    onFormChange && onFormChange(id, value)
+    onChange && onChange(id, value)
     DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.values })
   }
 

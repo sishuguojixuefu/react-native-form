@@ -29,6 +29,6 @@ export default interface FormPropsType {
   /**
    * 表单Change事件，可以用于和状态管理工具交互
    */
-  onFormChange?: (id: string, value) => void
+  onChange?: (id: string, value) => void
   style?: ViewStyle
 }
