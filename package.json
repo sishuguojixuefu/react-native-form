@@ -26,7 +26,6 @@
     "prepublishOnly": "tsc -p ./tsconfig.json"
   },
   "files": [
-    "dist",
     "src",
     "images"
   ],
