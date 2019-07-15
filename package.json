@@ -1,6 +1,6 @@
 {
   "name": "@sishuguojixuefu/react-native-form",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "description": "私塾动态表单组件",
   "main": "src/index.ts",
   "author": "sishu",
