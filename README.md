@@ -86,7 +86,7 @@ export default class HelloWorldApp extends Component {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <Form wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef}>
+        <Form wrappedComponentRef={this.onFormRef} ref={this.onRcFormRef} noBorder>
           <Input id="phoneNumber" placeholder="手机号" rules={[Rules.rules.mobilePhone]} custom />
           <SmsCodeVerifyView id="codeNumber" placeholder="验证码" custom />
         </Form>
