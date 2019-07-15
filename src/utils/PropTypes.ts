@@ -91,7 +91,7 @@ export interface InputPropsType extends FormItemOptionPropsType {
   type?: 'text' | 'bankCard' | 'phone' | 'password' | 'number' | 'digit' | KeyboardTypeOptions // 类型
   textAlign?: 'left' | 'center' | 'right'
   extra?: React.ReactNode
-  maxLength: number
+  maxLength?: number
 }
 
 /**
