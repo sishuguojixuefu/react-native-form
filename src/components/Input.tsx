@@ -43,7 +43,7 @@ export default class Input extends Component<InputPropsType, {}> {
             onChange={this._onChange}
             labelNumber={label ? stringWidth(label) / 2 + 1 : 0}
             placeholder={placeholder}
-            maxLength={maxLength > 0 ? maxLength : undefined}
+            maxLength={maxLength && maxLength > 0 ? maxLength : undefined}
           >
             <Label label={label} required={required} />
           </InputItem>
