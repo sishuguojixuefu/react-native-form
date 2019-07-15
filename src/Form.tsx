@@ -84,7 +84,12 @@ class Form extends Component<FormPropsType, {}> {
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <List renderHeader={renderHeader} renderFooter={renderFooter} style={[styles.container, style]}>
+      <List
+        renderHeader={renderHeader}
+        renderFooter={renderFooter}
+        style={[styles.container, style]}
+        noBorder={noBorder}
+      >
         {items && items.length
           ? items.map(item => {
               if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
