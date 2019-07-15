@@ -80,16 +80,11 @@ class Form extends Component<FormPropsType, {}> {
   }
 
   public render() {
-    const { items, renderHeader, renderFooter, form, noBorder, style } = this.props
+    const { items, renderHeader, renderFooter, form, style } = this.props
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
     return (
-      <List
-        renderHeader={renderHeader}
-        renderFooter={renderFooter}
-        style={[styles.container, style]}
-        noBorder={noBorder}
-      >
+      <List renderHeader={renderHeader} renderFooter={renderFooter} style={[styles.container, style]}>
         {items && items.length
           ? items.map(item => {
               if (allowedFormItemTypes.indexOf(item.componentName) >= 0) {
@@ -115,7 +110,8 @@ class Form extends Component<FormPropsType, {}> {
               return item.props.custom ? this[item.props.id](child) : child
             })
           : null}
-        <View style={{ height: noBorder ? 1 : 0 }} />
+        {/* <View style={{ height: noBorder ? 1 : 0 }} /> */}
+        <View style={{ height: 0 }} />
       </List>
     )
   }
