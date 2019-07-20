@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { DatePicker, List } from '@sishuguojixuefu/antd-mobile-rn'
+import { List } from '@sishuguojixuefu/antd-mobile-rn'
+// @ts-ignore
+import DatePicker from 'antd-mobile-rn/lib/datePicker'
 import omit from 'lodash.omit'
 import { DatePickerProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
