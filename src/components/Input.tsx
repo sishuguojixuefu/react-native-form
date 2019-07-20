@@ -13,6 +13,7 @@ export default class Input extends Component<InputPropsType, {}> {
     required: false,
     placeholder: '请输入',
     textAlign: 'right',
+    maxLength: 0,
   }
 
   public componentWillMount() {
@@ -27,7 +28,7 @@ export default class Input extends Component<InputPropsType, {}> {
   }
 
   public render() {
-    const { placeholder, label, required, form, id, textAlign } = this.props
+    const { placeholder, label, required, form, id, textAlign, maxLength } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)}>
@@ -42,6 +43,7 @@ export default class Input extends Component<InputPropsType, {}> {
             onChange={this._onChange}
             labelNumber={label ? stringWidth(label) / 2 + 1 : 0}
             placeholder={placeholder}
+            maxLength={maxLength && maxLength > 0 ? maxLength : undefined}
           >
             <Label label={label} required={required} />
           </InputItem>
