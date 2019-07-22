@@ -59,7 +59,7 @@ class Form extends Component<FormPropsType, {}> {
   }
 
   /**
-   * 获取一个序列化后的values键值对象
+   * 获取一个序列化后的 values 键值对象
    */
   public getValues = () => {
     return this.values
