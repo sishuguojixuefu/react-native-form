@@ -6,7 +6,7 @@ import kindOf from 'kind-of'
 import { CalculateProps } from '../utils/PropTypes'
 
 class SsCalculateView extends Component<any, any> {
-  public render() {
+  render() {
     const { title, computedValue } = this.props
     return (
       <View
@@ -21,30 +21,30 @@ class SsCalculateView extends Component<any, any> {
 
 export default class SsCalculate extends Component<CalculateProps, any> {
   private subscription: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
     textAlign: 'right',
     upper: true,
   }
 
-  public constructor(props) {
+  constructor(props) {
     super(props)
     this.state = {
       value: 0,
     }
   }
 
-  public componentDidMount() {
+  componentDidMount() {
     this.subscription = DeviceEventEmitter.addListener('SsDynamicFormValueChanged', ({ values }) => {
       this.refresh(values)
     })
   }
 
-  public componentWillUnmount() {
+  componentWillUnmount() {
     this.subscription.remove()
   }
 
-  public refresh = (values: any) => {
+  refresh = (values: any) => {
     try {
       const { formula } = this.props
       let expression = ''
@@ -64,7 +64,7 @@ export default class SsCalculate extends Component<CalculateProps, any> {
     }
   }
 
-  public render() {
+  render() {
     const { label, placeholder } = this.props
     const { value } = this.state
     return <SsCalculateView title={label} placeholder={placeholder} computedValue={value} />

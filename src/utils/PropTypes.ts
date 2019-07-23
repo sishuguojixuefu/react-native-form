@@ -175,4 +175,5 @@ export interface LocationProps extends FormItemOptionPropsType {
 export interface CalculateProps extends FormItemOptionPropsType {
   label: string
   formula: any[]
+  onChange?: (value: any) => void
 }

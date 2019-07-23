@@ -32,11 +32,11 @@ export default class Input extends Component<InputPropsType, {}> {
     const { placeholder, label, required, form, id, textAlign, maxLength, last } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (
-      <ErrorTip error={form.getFieldError(id)} last>
+      <ErrorTip error={form.getFieldError(id)} last={last}>
         {this.fieldDecorator(
           <InputItem
             {...omitDefaultValueProps}
-            last={last}
+            last
             clear
             style={{ marginLeft: 5 }}
             itemStyle={{ marginLeft: 0 }}
