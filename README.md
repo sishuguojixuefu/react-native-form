@@ -30,13 +30,6 @@ $ yarn add @sishuguojixuefu/react-native-form
 | noBorder            | 是否显示 border                                             | boolean                 | true   |
 | style               | 样式                                                        | object                  | -      |
 
-## 方法
-
-| 属性             | 说明                          |
-| ---------------- | ----------------------------- |
-| getFormItemTypes | 获取 items 允许传入的组件类型 |
-| getRules         | 获取 items 允许传入的 rules   |
-
 ## 参考链接
 
 - [React - 修改 children(上)](http://t.cn/E9XKVGW)

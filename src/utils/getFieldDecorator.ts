@@ -1,4 +1,4 @@
-import Rules from './Rules'
+import { getRules } from './Rules'
 import { RulePropsType } from './PropTypes'
 
 const getFieldDecorator = (
@@ -9,7 +9,7 @@ const getFieldDecorator = (
   originRules?: RulePropsType,
   restOptions?: object
 ) => {
-  const rules = Rules.getRules(required, originRules)
+  const rules = getRules(required, originRules)
 
   const fieldDecorator = form.getFieldDecorator(id, {
     initialValue: defaultValue,
