@@ -6,7 +6,8 @@ const getFieldDecorator = (
   id?: string,
   defaultValue?: string | string[],
   required?: boolean,
-  originRules?: RulePropsType
+  originRules?: RulePropsType,
+  restOptions?: object
 ) => {
   const rules = Rules.getRules(required, originRules)
 
@@ -14,6 +15,7 @@ const getFieldDecorator = (
     initialValue: defaultValue,
     rules,
     validateFirst: true,
+    ...restOptions,
   })
 
   return fieldDecorator

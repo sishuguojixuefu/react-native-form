@@ -19,7 +19,7 @@ class Form extends Component<FormPropsType, {}> {
       childs.forEach((item: any) => {
         if (item.props.custom) {
           const { id, initialValue, required, rules } = item.props
-          this[id] = getFieldDecorator(props.form, id, initialValue, required, rules)
+          this[id] = getFieldDecorator(props.form, id, initialValue, required, rules, props.options)
         }
       })
     }

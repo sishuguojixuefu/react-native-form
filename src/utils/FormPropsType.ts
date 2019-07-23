@@ -27,4 +27,5 @@ export default interface FormPropsType {
    */
   form?: any
   style?: ViewStyle
+  options?: object
 }
