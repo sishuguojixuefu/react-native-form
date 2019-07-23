@@ -38,8 +38,8 @@ class Form extends Component<FormPropsType, {}> {
   private _onChange = (id: string, value: any) => {
     // const { onChange } = this.props
     // onChange && onChange(id, value)
-    console.log(this.props.form.values)
-    DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.props.form.values })
+    console.log(this.props.form.getFieldsValue())
+    DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.props.form.getFieldsValue() })
   }
 
   render() {
