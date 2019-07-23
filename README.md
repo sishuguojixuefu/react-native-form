@@ -21,22 +21,21 @@ $ yarn add @sishuguojixuefu/react-native-form
 - Input: 普通的输入框
 - NumberInput: 数字输入框
 
-## API
-
-### 属性
+## 属性
 
 | 属性                | 说明                                                        | 类型                    | 默认值 |
 | ------------------- | ----------------------------------------------------------- | ----------------------- | ------ |
 | wrappedComponentRef | `wrappedComponentRef={ref => {this.form = ref.props.form}}` | Function                | -      |
-| noBorder            | 是否显示 border                                             | boolean                 | true   |
 | items               | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType       | `FormOptionPropsType[]` | -      |
+| noBorder            | 是否显示 border                                             | boolean                 | true   |
+| style               | 样式                                                        | object                  | -      |
 
-#### 方法
+## 方法
 
-| 属性             | 说明                          | 类型         |
-| ---------------- | ----------------------------- | ------------ |
-| getFormItemTypes | 获取 items 允许传入的组件类型 | `(): arrary` |
-| getRules         | 获取 items 允许传入的 rules   | `(): arrary` |
+| 属性             | 说明                          |
+| ---------------- | ----------------------------- |
+| getFormItemTypes | 获取 items 允许传入的组件类型 |
+| getRules         | 获取 items 允许传入的 rules   |
 
 ## 参考链接
 
