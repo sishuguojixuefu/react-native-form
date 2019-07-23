@@ -4,13 +4,14 @@ import { StyleSheet, Text, View } from 'react-native'
 interface Props {
   error: string
   children: JSX.Element | JSX.Element[]
+  last: boolean
 }
 
 class ErrorTip extends Component<Props> {
   render() {
-    const { children, error } = this.props
+    const { children, error, last } = this.props
     return (
-      <View>
+      <View style={!last && styles.container}>
         {children}
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
       </View>
@@ -19,6 +20,10 @@ class ErrorTip extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    borderBottomColor: '#dddddd',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
   errorText: {
     color: 'red',
     fontSize: 14,
