@@ -14,6 +14,7 @@ export default class Input extends Component<InputPropsType, {}> {
     placeholder: '请输入',
     textAlign: 'right',
     maxLength: 0,
+    last: false,
   }
 
   componentWillMount() {
@@ -28,14 +29,14 @@ export default class Input extends Component<InputPropsType, {}> {
   }
 
   render() {
-    const { placeholder, label, required, form, id, textAlign, maxLength } = this.props
+    const { placeholder, label, required, form, id, textAlign, maxLength, last } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
           <InputItem
             {...omitDefaultValueProps}
-            last
+            last={last}
             clear
             style={{ marginLeft: 5 }}
             itemStyle={{ marginLeft: 0 }}

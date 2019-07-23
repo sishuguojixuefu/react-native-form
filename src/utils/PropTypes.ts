@@ -92,6 +92,7 @@ export interface InputPropsType extends FormItemOptionPropsType {
   textAlign?: 'left' | 'center' | 'right'
   extra?: React.ReactNode
   maxLength?: number
+  last?: boolean
 }
 
 /**

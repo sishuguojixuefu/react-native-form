@@ -10,7 +10,7 @@ class ErrorTip extends Component<Props> {
   render() {
     const { children, error } = this.props
     return (
-      <View style={styles.container}>
+      <View>
         {children}
         {error ? <Text style={styles.errorText}>{error}</Text> : null}
       </View>
@@ -19,10 +19,6 @@ class ErrorTip extends Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // borderBottomColor: '#dddddd',
-    // borderBottomWidth: StyleSheet.hairlineWidth,
-  },
   errorText: {
     color: 'red',
     fontSize: 14,
