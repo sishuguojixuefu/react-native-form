@@ -112,6 +112,7 @@ export interface SsSelectPropsType extends FormItemOptionPropsType {
   onChange?: (value?: React.ReactText[]) => void
   options: string[] // 选项
   cols?: number // 列数
+  last?: boolean
 }
 
 /**

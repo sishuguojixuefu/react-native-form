@@ -20,6 +20,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 - Input: 普通的输入框
 - NumberInput: 数字输入框
+- SsSelect: Picker
 
 ## 属性
 
