@@ -1,4 +1,4 @@
-import { rules as Rules } from './utils/Rules'
+import Rules from './Rules'
 import Form from './Form'
 
 export { Rules }
