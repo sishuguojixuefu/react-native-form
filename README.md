@@ -90,6 +90,7 @@ export default class HelloWorldApp extends Component {
 ## 支持的组件
 
 - Input: 普通的输入框
+- NumberInput: 数字输入框
 
 ## 参考链接
 

@@ -14,7 +14,9 @@ import SsCalculate from './SsCalculate'
 import SsImagePicker from './SsImagePicker'
 
 const NumberInput = (props: InputPropsType) => {
-  return <Input {...props} type="number" rules={props.rules ? [...props.rules, 'number'] : ['number']} />
+  return (
+    <Input {...props} type="number" rules={props.rules ? [...props.rules, 'number'] : ['number']} last={props.last} />
+  )
 }
 
 const SsDropDown = (props: SsDropDownPropsType) => {
