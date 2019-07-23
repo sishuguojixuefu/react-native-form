@@ -84,10 +84,15 @@ module.exports = {
     'react-native/no-color-literals': 0,
     'react-native/no-raw-text': 0,
     'react-native/no-inline-styles': 0,
-    '@typescript-eslint/explicit-function-return-type': {
-      allowExpressions: true,
-      allowTypedFunctionExpressions: true,
-    },
+    '@typescript-eslint/explicit-member-accessibility': [2, { accessibility: 'no-public' }],
+    '@typescript-eslint/no-empty-interface': 1,
+    '@typescript-eslint/explicit-function-return-type': [
+      0,
+      {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true,
+      },
+    ],
     '@typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-use-before-define': [
       2,
@@ -98,5 +103,6 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-unused-vars': [1, { args: 'none' }],
+    '@typescript-eslint/no-non-null-assertion': 0,
   },
 }

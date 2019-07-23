@@ -25,16 +25,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 | items               | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
 | wrappedComponentRef | `wrappedComponentRef={ref => {this.formRef = ref}}`   | Function                | -      |
 | ref                 | ref={ref => {this.rcFormRef = ref}}                   | Function                | -      |
-| noBorder            | 是否显示 border                                       | boolean                 | false  |
-
-### 方法
-
-#### 高级方法
-
-| 方法                  | 说明                                         | 类型                        | 默认值 |
-| --------------------- | -------------------------------------------- | --------------------------- | ------ |
-| this.formRef.onChange | 表单 Change 事件，可以用于和状态管理工具交互 | `(id:string,value) => void` | -      |
-|                       |                                              |                             |
+| noBorder            | 是否显示 border                                       | boolean                 | true   |
 
 #### 低级方法
 
@@ -108,3 +99,8 @@ export default class HelloWorldApp extends Component {
 - [React - 修改 children(下)](http://t.cn/E9XKYDU)
 - [javascript 高阶函数介绍](http://t.cn/E9SPeN1)
 - [高阶函数，你怎么那么漂亮呢！](http://t.cn/RmB0uKp)
+
+## TODO
+
+- Picker cols 为 1 时返回的数据结构
+- 清除表单

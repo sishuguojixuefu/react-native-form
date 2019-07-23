@@ -9,9 +9,13 @@ import FormPropsType from './utils/FormPropsType'
 import getFieldDecorator from './utils/getFieldDecorator'
 
 class Form extends Component<FormPropsType, {}> {
+  static defaultProps = {
+    noBorder: true,
+  }
+
   private values: object
 
-  public constructor(props: FormPropsType) {
+  constructor(props: FormPropsType) {
     super(props)
     this.values = {}
     // 数据驱动
@@ -61,25 +65,25 @@ class Form extends Component<FormPropsType, {}> {
   /**
    * 获取一个序列化后的 values 键值对象
    */
-  public getValues = () => {
+  getValues = () => {
     return this.values
   }
 
   /**
    * 获取 items 允许传入的 ItemType
    */
-  public getAllowedFormItemTypes = () => {
+  getAllowedFormItemTypes = () => {
     return Object.keys(FormItem)
   }
 
   /**
    * 获取 items 允许传入的 rules
    */
-  public getAllowedFormRules = () => {
+  getAllowedFormRules = () => {
     return Object.keys(Rules)
   }
 
-  public render() {
+  render() {
     const { items, renderHeader, renderFooter, form, noBorder, style } = this.props
     const allowedFormItemTypes = this.getAllowedFormItemTypes()
     const childs = this._getChilds()
