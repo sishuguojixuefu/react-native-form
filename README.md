@@ -87,11 +87,9 @@ export default class HelloWorldApp extends Component {
 }
 ```
 
-## 依赖
+## 支持的组件
 
-- [rc-form](http://t.cn/EKrwFUy): React 高阶 Form 组件(web & react-native)
-- [kind-of](http://t.cn/E9KortF): 获取一个值的原生类型
-- [string-width](http://t.cn/E9Kac4p): 获取一个字符串视觉上的宽度 - 需要显示数字和字母
+- Input: 普通的输入框
 
 ## 参考链接
 

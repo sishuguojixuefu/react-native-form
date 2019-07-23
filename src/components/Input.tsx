@@ -9,14 +9,14 @@ import ErrorTip from './helper/ErrorTip'
 
 export default class Input extends Component<InputPropsType, {}> {
   private fieldDecorator: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
     placeholder: '请输入',
     textAlign: 'right',
     maxLength: 0,
   }
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, required, rules } = this.props
     const defaultStrValue = defaultValue && defaultValue.toString()
     this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, required, rules)
@@ -27,7 +27,7 @@ export default class Input extends Component<InputPropsType, {}> {
     onChange && onChange(value)
   }
 
-  public render() {
+  render() {
     const { placeholder, label, required, form, id, textAlign, maxLength } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (
