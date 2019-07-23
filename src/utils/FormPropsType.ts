@@ -26,9 +26,5 @@ export default interface FormPropsType {
    * rc-form传入，rc-form没有类型声明文件
    */
   form?: any
-  /**
-   * 表单Change事件，可以用于和状态管理工具交互
-   */
-  onChange?: (id: string, value) => void
   style?: ViewStyle
 }

@@ -35,10 +35,7 @@ class Form extends Component<FormPropsType, {}> {
     return childs
   }
 
-  private _onChange = (id: string, value: any) => {
-    // const { onChange } = this.props
-    // onChange && onChange(id, value)
-    console.log(this.props.form.getFieldsValue())
+  private _onChange = () => {
     DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.props.form.getFieldsValue() })
   }
 
@@ -58,7 +55,7 @@ class Form extends Component<FormPropsType, {}> {
                 return React.createElement(FormItem[item.componentName], {
                   key: item.props.id,
                   form,
-                  onChange: (value: any) => this._onChange(item.props.id, value),
+                  onChange: () => this._onChange(),
                   ...item.props,
                 })
               }
@@ -71,7 +68,7 @@ class Form extends Component<FormPropsType, {}> {
                 key: item.props.id || index.toString(),
                 form,
                 id: item.props.id,
-                onChange: (value: any) => this._onChange(item.props.id, value),
+                onChange: () => this._onChange(),
                 ...item.props,
               })
               return item.props.custom ? this[item.props.id](child) : child
