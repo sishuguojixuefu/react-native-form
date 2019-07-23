@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 interface Props {
   error: string
   children: JSX.Element | JSX.Element[]
-  last: boolean
+  last?: boolean
 }
 
 class ErrorTip extends Component<Props> {
