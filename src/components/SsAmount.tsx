@@ -22,16 +22,10 @@ export default class SsAmount extends Component<SsAmountProps, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, rules, required } = this.props
+    const { form, id, initialValue, rules } = this.props
     const defaultStrValue = initialValue && initialValue.toString()
     this._getChineseAmount(defaultStrValue)
-    this.fieldDecorator = getFieldDecorator(
-      form,
-      id,
-      defaultStrValue,
-      required,
-      rules ? [...rules, 'money'] : ['money']
-    )
+    this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, rules ? [...rules, 'money'] : ['money'])
   }
 
   private _onChange = (value: string) => {

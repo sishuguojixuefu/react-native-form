@@ -14,8 +14,8 @@ export default class SsDate extends Component<DatePickerProps, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
+    const { form, id, initialValue, rules } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, rules)
   }
 
   private _onChange = (value: Date) => {

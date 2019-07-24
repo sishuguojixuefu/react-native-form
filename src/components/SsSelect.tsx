@@ -16,8 +16,8 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, [initialValue], required)
+    const { form, id, initialValue, rules } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, [initialValue], rules)
   }
 
   private _onChange = (value?: React.ReactText[]): void => {

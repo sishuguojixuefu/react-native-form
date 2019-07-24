@@ -16,9 +16,9 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, rules, required } = this.props
+    const { form, id, initialValue, rules } = this.props
     this.inputed = initialValue ? initialValue.length : 0
-    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, rules)
   }
 
   private _onChange = (value?: string) => {

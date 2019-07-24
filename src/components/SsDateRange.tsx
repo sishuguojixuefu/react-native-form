@@ -13,9 +13,9 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   private endDate: Date = new Date()
 
   componentWillMount() {
-    const { form, id, initialValue, rules, required } = this.props
-    this.startFieldDecorator = getFieldDecorator(form, `${id}-1`, initialValue, required, rules)
-    this.endFieldDecorator = getFieldDecorator(form, `${id}-2`, initialValue, required, rules)
+    const { form, id, initialValue, rules } = this.props
+    this.startFieldDecorator = getFieldDecorator(form, `${id}-1`, initialValue, rules)
+    this.endFieldDecorator = getFieldDecorator(form, `${id}-2`, initialValue, rules)
   }
 
   private _onChangeStartDate = (value: Date) => {

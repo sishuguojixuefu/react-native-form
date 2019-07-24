@@ -18,9 +18,9 @@ export default class Input extends Component<InputPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, required, rules } = this.props
+    const { form, id, initialValue, rules } = this.props
     const defaultStrValue = initialValue && initialValue.toString()
-    this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, required, rules)
+    this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, rules)
   }
 
   private _onChange = (value: string) => {

@@ -12,8 +12,8 @@ export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, initialValue, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, [initialValue], required)
+    const { form, id, initialValue, rules } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, [initialValue], rules)
   }
 
   render() {

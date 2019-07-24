@@ -5,11 +5,10 @@ const getFieldDecorator = (
   form: any,
   id?: string,
   initialValue?: string | (string | undefined)[],
-  required?: boolean,
   originRules?: RulePropsType,
   restOptions?: object
 ) => {
-  const rules = getRules(required, originRules)
+  const rules = getRules(originRules)
 
   const fieldDecorator = form.getFieldDecorator(id, {
     initialValue,

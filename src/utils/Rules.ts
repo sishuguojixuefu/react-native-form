@@ -150,11 +150,8 @@ const rules = {
   },
 }
 
-export const getRules = (required?: boolean, originRules?: RulePropsType) => {
+export const getRules = (originRules?: RulePropsType) => {
   const rulesObj: any = []
-  if (required) {
-    rulesObj.push(rules.required)
-  }
   originRules &&
     originRules.forEach((item: any) => {
       if (kindOf(item) === 'string') {
