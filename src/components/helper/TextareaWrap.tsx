@@ -15,7 +15,7 @@ export default class TextareaWrap extends Component<Props, {}> {
   render() {
     const { required, label, children, error, count, inputed, last } = this.props
     return (
-      <View style={last && styles.container}>
+      <View style={!last && styles.container}>
         <View style={styles.label}>
           <Image
             source={require('../../../images/required.png')}
