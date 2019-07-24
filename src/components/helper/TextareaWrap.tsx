@@ -8,13 +8,14 @@ interface Props {
   label: string
   count?: number
   inputed: number
+  last: boolean
 }
 
 export default class TextareaWrap extends Component<Props, {}> {
   render() {
-    const { required, label, children, error, count, inputed } = this.props
+    const { required, label, children, error, count, inputed, last } = this.props
     return (
-      <View style={styles.container}>
+      <View style={last && styles.container}>
         <View style={styles.label}>
           <Image
             source={require('../../../images/required.png')}

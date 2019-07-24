@@ -12,6 +12,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
     required: false,
     placeholder: '请输入',
     count: 0,
+    last: false,
   }
 
   componentWillMount() {
@@ -27,7 +28,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
   }
 
   render() {
-    const { placeholder, label, required, form, id, count } = this.props
+    const { placeholder, label, required, form, id, count, last } = this.props
     const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <TextareaWrap
@@ -36,6 +37,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
         required={required}
         count={count} // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
         inputed={this.inputed}
+        last
       >
         {this.fieldDecorator(
           <TextareaItem

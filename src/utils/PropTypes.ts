@@ -109,6 +109,7 @@ export interface TextareaPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: TextAreaEventHandle
   count?: number // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
+  last?: boolean
 }
 
 /**
