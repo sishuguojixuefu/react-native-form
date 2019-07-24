@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { View, StyleSheet, DeviceEventEmitter } from 'react-native'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 import { createForm } from 'rc-form'
-import omit from 'lodash.omit'
 import FormItem from './components'
 import FormPropsType from './utils/FormPropsType'
 import getFieldDecorator from './utils/getFieldDecorator'
@@ -65,13 +64,12 @@ class Form extends Component<FormPropsType, {}> {
           : null}
         {childs && childs.length
           ? childs.map((item: any, index: number) => {
-              const omitDefaultValueProps = omit(item.props, ['defaultValue'])
               const child = React.cloneElement(item, {
                 key: item.props.id || index.toString(),
                 form,
                 id: item.props.id,
                 onChange: () => this._onChange(),
-                ...omitDefaultValueProps,
+                ...item.props,
               })
               return item.props.custom ? this[item.props.id](child) : child
             })
