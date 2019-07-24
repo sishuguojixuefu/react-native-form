@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default class TextareaWrap extends Component<Props, {}> {
-  public render() {
+  render() {
     const { required, label, children, error, count, inputed } = this.props
     return (
       <View style={styles.container}>

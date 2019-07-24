@@ -8,13 +8,13 @@ import TextareaWrap from './helper/TextareaWrap'
 export default class Textarea extends Component<TextareaPropsType, {}> {
   private fieldDecorator: any
   private inputed = 0
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
     placeholder: '请输入',
     count: 0,
   }
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, rules, required } = this.props
     this.inputed = defaultValue ? defaultValue.length : 0
     this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
@@ -26,7 +26,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
     onChange && onChange(value)
   }
 
-  public render() {
+  render() {
     const { placeholder, label, required, form, id, count } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (
