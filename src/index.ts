@@ -5,7 +5,7 @@ export { Rules }
 export * from './components'
 export interface PickerPropTypes {
   label: string
-  value: (string | undefined)[]
+  value: string
 }
 
 export default Form
