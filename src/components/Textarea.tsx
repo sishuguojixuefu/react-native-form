@@ -37,7 +37,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
         required={required}
         count={count} // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
         inputed={this.inputed}
-        last
+        last={last}
       >
         {this.fieldDecorator(
           <TextareaItem

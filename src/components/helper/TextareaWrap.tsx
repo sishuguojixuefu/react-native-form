@@ -8,7 +8,7 @@ interface Props {
   label: string
   count?: number
   inputed: number
-  last: boolean
+  last?: boolean
 }
 
 export default class TextareaWrap extends Component<Props, {}> {
