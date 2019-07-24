@@ -7,7 +7,7 @@ import Label from './helper/Label'
 const { CheckboxItem } = Checkbox
 
 export default class SSMultiSelectView extends Component<any, any> {
-  public constructor(props: any) {
+  constructor(props: any) {
     super(props)
     this.state = {
       modalVisible: true,

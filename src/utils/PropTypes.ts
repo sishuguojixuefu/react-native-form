@@ -118,7 +118,7 @@ export interface TextareaPropsType extends FormItemOptionPropsType {
 export interface SsSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void
-  options: { label: string; value: string }[] // 选项
+  options: ({ label: string; value: string } | string)[] // 选项
   cols?: number // 列数
   last?: boolean
 }
@@ -129,7 +129,7 @@ export interface SsSelectPropsType extends FormItemOptionPropsType {
 export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void // onChange事件
-  options: { label: string; value: string }[] // 选项
+  options: ({ label: string; value: string } | string)[] // 选项
 }
 
 /**
@@ -138,7 +138,7 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
 export interface SsDropDownPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void // onChange事件
-  options: { label: string; value: string }[] // 选项
+  options: ({ label: string; value: string } | string)[] // 选项
   multiple: boolean
 }
 

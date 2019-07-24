@@ -9,7 +9,6 @@ const getFieldDecorator = (
   restOptions?: object
 ) => {
   const rules = getRules(originRules)
-
   const fieldDecorator = form.getFieldDecorator(id, {
     initialValue,
     rules,
