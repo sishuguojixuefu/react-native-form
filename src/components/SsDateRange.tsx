@@ -12,7 +12,7 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   private startDate: Date = new Date()
   private endDate: Date = new Date()
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, rules, required } = this.props
     this.startFieldDecorator = getFieldDecorator(form, 'id+1', defaultValue, required, rules)
     this.endFieldDecorator = getFieldDecorator(form, 'id+2', defaultValue, required, rules)
@@ -30,7 +30,7 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
     onChange && onChange([this.startDate, value])
   }
 
-  public render() {
+  render() {
     const { label, required, form } = this.props
     return (
       <View>

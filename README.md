@@ -18,6 +18,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 ## 内置组件
 
+- SsDescription: 描述组件
 - Input: 普通的输入框
 - NumberInput: 数字输入框
 - SsSelect: Picker

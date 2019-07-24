@@ -6,12 +6,12 @@ import getFieldDecorator from '../utils/getFieldDecorator'
 
 export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
   private fieldDecorator: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
     placeholder: '请输入',
   }
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, required } = this.props
     let initialValue: string[] | string | undefined = defaultValue
     if (defaultValue) {
@@ -20,7 +20,7 @@ export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
     this.fieldDecorator = getFieldDecorator(form, id, initialValue, required)
   }
 
-  public render() {
+  render() {
     const { label, required, form, id, onChange, options } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>

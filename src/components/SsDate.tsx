@@ -10,11 +10,11 @@ import Label from './helper/Label'
 
 export default class SsDate extends Component<DatePickerProps, {}> {
   private fieldDecorator: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
   }
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, rules, required } = this.props
     this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
   }
@@ -24,7 +24,7 @@ export default class SsDate extends Component<DatePickerProps, {}> {
     onChange && onChange(value)
   }
 
-  public render() {
+  render() {
     const { label, required, form, id, placeholder, type } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue'])
     return (

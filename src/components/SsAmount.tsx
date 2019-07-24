@@ -14,14 +14,14 @@ const nzhCn = nzh.cn
 export default class SsAmount extends Component<SsAmountProps, {}> {
   private fieldDecorator: any
   private chineseAmount = ''
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
     placeholder: '请输入',
     textAlign: 'right',
     upper: true,
   }
 
-  public componentWillMount() {
+  componentWillMount() {
     const { form, id, defaultValue, rules, required } = this.props
     const defaultStrValue = defaultValue && defaultValue.toString()
     this._getChineseAmount(defaultStrValue)
@@ -52,7 +52,7 @@ export default class SsAmount extends Component<SsAmountProps, {}> {
     }
   }
 
-  public render() {
+  render() {
     const { placeholder, label, required, form, id, textAlign, upper } = this.props
     const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
     return (

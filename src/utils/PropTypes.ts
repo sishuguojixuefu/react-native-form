@@ -83,6 +83,13 @@ export interface FormItemOptionPropsType {
 }
 
 /**
+ * SsDescription组件PropsType
+ */
+export interface SsDescriptionPropsType extends FormItemOptionPropsType {
+  label: string // 标签
+}
+
+/**
  * Input组件PropsType
  */
 export interface InputPropsType extends FormItemOptionPropsType {
