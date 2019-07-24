@@ -15,9 +15,9 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.inputed = defaultValue ? defaultValue.length : 0
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+    const { form, id, initialValue, rules, required } = this.props
+    this.inputed = initialValue ? initialValue.length : 0
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
   }
 
   private _onChange = (value?: string) => {
@@ -28,7 +28,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
 
   render() {
     const { placeholder, label, required, form, id, count } = this.props
-    const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
+    const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <TextareaWrap
         error={form.getFieldError(id)}
@@ -39,7 +39,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
       >
         {this.fieldDecorator(
           <TextareaItem
-            {...omitDefaultValueProps}
+            {...omitProps}
             last
             clear // 注意：antd没有实现label、没有实现安卓的clear
             autoHeight

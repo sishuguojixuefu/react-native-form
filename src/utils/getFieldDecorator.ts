@@ -4,7 +4,7 @@ import { RulePropsType } from './PropTypes'
 const getFieldDecorator = (
   form: any,
   id?: string,
-  defaultValue?: string | string[],
+  initialValue?: string | (string | undefined)[],
   required?: boolean,
   originRules?: RulePropsType,
   restOptions?: object
@@ -12,7 +12,7 @@ const getFieldDecorator = (
   const rules = getRules(required, originRules)
 
   const fieldDecorator = form.getFieldDecorator(id, {
-    initialValue: defaultValue,
+    initialValue,
     rules,
     validateFirst: true,
     ...restOptions,

@@ -7,21 +7,32 @@ import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 
-export class SsRatingView extends Component<any, any> {
-  private ratingCompleted = (nValue: number) => {
-    const { onChange } = this.props
-    onChange(nValue)
+export interface SsRatingViewPropsType {
+  onChange?: (value: number) => void
+  label: string
+  required?: boolean
+  initialValue?: number
+}
+
+export class SsRatingView extends Component<SsRatingViewPropsType, any> {
+  static defaultProps = {
+    required: false,
   }
 
-  public render() {
-    const { label, required, defaultValue } = this.props
+  private ratingCompleted = (nValue: number) => {
+    const { onChange } = this.props
+    onChange && onChange(nValue)
+  }
+
+  render() {
+    const { label, required, initialValue } = this.props
     return (
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
         <Label required={required} label={label} />
         <AirbnbRating
           reviews={[]}
           showRating={false}
-          defaultRating={defaultValue}
+          defaultRating={initialValue}
           count={5}
           onFinishRating={this.ratingCompleted}
         />
@@ -32,21 +43,21 @@ export class SsRatingView extends Component<any, any> {
 
 export default class SsRating extends Component<RatingProps, {}> {
   private fieldDecorator: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
   }
 
-  public componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+  componentWillMount() {
+    const { form, id, initialValue, rules, required } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
   }
 
-  public render() {
-    const { label, required, form, id, onChange, defaultValue } = this.props
+  render() {
+    const { label, required, form, id, onChange, initialValue } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <SsRatingView label={label} required={required} onChange={onChange} defaultValue={defaultValue} />
+          <SsRatingView label={label} required={required} onChange={onChange} initialValue={Number(initialValue)} />
         )}
       </ErrorTip>
     )

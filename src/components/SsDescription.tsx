@@ -8,8 +8,8 @@ export default class SsDescription extends Component<SsDescriptionPropsType, {}>
   private fieldDecorator: any
 
   componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+    const { form, id, initialValue, rules, required } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
   }
 
   render() {

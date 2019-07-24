@@ -10,7 +10,7 @@ import Label from './helper/Label'
 import { ImagePickerProps } from '../utils/PropTypes'
 
 export class SsImagePickerView extends Component<any, any> {
-  public constructor(props) {
+  constructor(props) {
     super(props)
     this.state = {
       value: [],
@@ -18,17 +18,17 @@ export class SsImagePickerView extends Component<any, any> {
     }
   }
 
-  public setModalVisible = (visible: boolean) => {
+  setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
   }
 
-  public setImgs(imgs: never[]) {
+  setImgs(imgs: never[]) {
     this.setState({
       value: imgs,
     })
   }
 
-  public dismissModal = () => {
+  dismissModal = () => {
     this.setModalVisible(false)
   }
 
@@ -77,7 +77,7 @@ export class SsImagePickerView extends Component<any, any> {
       })
   }
 
-  public render() {
+  render() {
     const { value } = this.state
     const { label, required } = this.props
     const imgUrls = this.state.value.map((item, index) => {
@@ -117,18 +117,18 @@ export class SsImagePickerView extends Component<any, any> {
   }
 }
 
-export default class SsImagePicker extends Component<ImagePickerProps, {}> {
+export default class SsImagePicker extends Component<ImagePickerProps, any> {
   private fieldDecorator: any
-  public static defaultProps = {
+  static defaultProps = {
     required: false,
   }
 
-  public componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+  componentWillMount() {
+    const { form, id, initialValue, rules, required } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
   }
 
-  public render() {
+  render() {
     const { label, required, form, id, onChange } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>

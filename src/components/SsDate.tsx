@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 // @ts-ignore
 import DatePicker from 'antd-mobile-rn/lib/date-picker'
-import omit from 'lodash.omit'
 import { DatePickerProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
@@ -15,8 +14,8 @@ export default class SsDate extends Component<DatePickerProps, {}> {
   }
 
   componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.fieldDecorator = getFieldDecorator(form, id, defaultValue, required, rules)
+    const { form, id, initialValue, rules, required } = this.props
+    this.fieldDecorator = getFieldDecorator(form, id, initialValue, required, rules)
   }
 
   private _onChange = (value: Date) => {
@@ -26,11 +25,10 @@ export default class SsDate extends Component<DatePickerProps, {}> {
 
   render() {
     const { label, required, form, id, placeholder, type } = this.props
-    const omitDefaultValueProps = omit(this.props, ['defaultValue'])
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <DatePicker mode={type} onChange={this._onChange} extra={placeholder} {...omitDefaultValueProps}>
+          <DatePicker {...this.props} mode={type} onChange={this._onChange} extra={placeholder}>
             <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
               <Label required={required} label={label} />
             </List.Item>

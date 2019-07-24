@@ -9,7 +9,7 @@ export default {
         id: 'Input-0',
         label: '单行输入框',
         placeholder: '请输入',
-        defaultValue: '杨俊宁',
+        initialValue: '杨俊宁',
         required: true,
         rules: [
           {
@@ -31,7 +31,7 @@ export default {
         id: 'NumberInput-1',
         label: '数字输入框',
         placeholder: '请输入',
-        defaultValue: 18,
+        initialValue: 18,
         required: true,
         rules: [],
         icon: '',
@@ -44,7 +44,7 @@ export default {
         id: 'Textarea-2',
         label: '多行输入框',
         placeholder: '请输入',
-        defaultValue: '哈哈哈哈\n啦啦啦啦\n萨达快速登记',
+        initialValue: '哈哈哈哈\n啦啦啦啦\n萨达快速登记',
         required: true,
         rules: [],
         icon: '',
@@ -57,7 +57,7 @@ export default {
         id: 'SsSelect-3', // id是随机生成的
         label: '单选框',
         placeholder: '请选择',
-        defaultValue: '袁振',
+        initialValue: '袁振',
         required: true,
         icon: '',
         options: ['杨俊宁', '袁振', '吕红鹏'], // 特有类型
@@ -70,7 +70,7 @@ export default {
         id: 'SsDate-5',
         label: '日期',
         placeholder: '请选择',
-        defaultValue: new Date(), // 注意，这是个时间
+        initialValue: new Date(), // 注意，这是个时间
         required: true,
         type: 'date',
       },
@@ -82,7 +82,7 @@ export default {
         id: 'SsAmount-10',
         label: '金额(元)',
         placeholder: '请输入',
-        defaultValue: 999999999,
+        initialValue: 999999999,
         required: true,
         icon: '',
         rules: [],

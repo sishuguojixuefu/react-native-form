@@ -22,8 +22,8 @@ export default class SsAmount extends Component<SsAmountProps, {}> {
   }
 
   componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    const defaultStrValue = defaultValue && defaultValue.toString()
+    const { form, id, initialValue, rules, required } = this.props
+    const defaultStrValue = initialValue && initialValue.toString()
     this._getChineseAmount(defaultStrValue)
     this.fieldDecorator = getFieldDecorator(
       form,
@@ -54,12 +54,12 @@ export default class SsAmount extends Component<SsAmountProps, {}> {
 
   render() {
     const { placeholder, label, required, form, id, textAlign, upper } = this.props
-    const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
+    const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
           <InputItem
-            {...omitDefaultValueProps}
+            {...omitProps}
             last
             clear
             extra="￥"

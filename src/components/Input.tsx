@@ -18,8 +18,8 @@ export default class Input extends Component<InputPropsType, {}> {
   }
 
   componentWillMount() {
-    const { form, id, defaultValue, required, rules } = this.props
-    const defaultStrValue = defaultValue && defaultValue.toString()
+    const { form, id, initialValue, required, rules } = this.props
+    const defaultStrValue = initialValue && initialValue.toString()
     this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, required, rules)
   }
 
@@ -30,12 +30,12 @@ export default class Input extends Component<InputPropsType, {}> {
 
   render() {
     const { placeholder, label, required, form, id, textAlign, maxLength, last } = this.props
-    const omitDefaultValueProps = omit(this.props, ['defaultValue', 'error', 'labelNumber'])
+    const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
         {this.fieldDecorator(
           <InputItem
-            {...omitDefaultValueProps}
+            {...omitProps}
             last
             clear
             style={{ marginLeft: 5 }}

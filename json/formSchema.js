@@ -10,7 +10,7 @@ export default {
         id: 'Input-0',
         label: '单行输入框',
         placeholder: '请输入',
-        defaultValue: '', // rc-form 要求
+        initialValue: '', // rc-form 要求
         required: true,
         rules: [{ type: 'zh', message: '这是自定义的错误提示' }],
         icon: '',
@@ -23,7 +23,7 @@ export default {
         id: 'NumberInput-1',
         label: '数字输入框',
         placeholder: '请输入',
-        defaultValue: '',
+        initialValue: '',
         required: true,
         rules: [{ type: 'number', message: '这是自定义的错误提示' }],
         icon: '',
@@ -36,7 +36,7 @@ export default {
         id: 'Textarea-2',
         label: '多行输入框',
         placeholder: '请输入',
-        defaultValue: '',
+        initialValue: '',
         required: true,
         rules: [{ type: '', message: '' }],
         icon: '',
@@ -50,7 +50,7 @@ export default {
         id: 'SsSelect-3',
         label: '单选框',
         placeholder: '请输入',
-        defaultValue: '',
+        initialValue: '',
         required: true,
         icon: '',
         options: ['选项1', '选项2', '选项3'],
@@ -63,7 +63,7 @@ export default {
         id: 'SsMultiSelect-4',
         label: '多选框',
         placeholder: '请输入',
-        defaultValue: [], // 注意，这是个数组
+        initialValue: [], // 注意，这是个数组
         required: true,
         icon: '',
         options: ['选项1', '选项2', '选项3', '选项4'],
@@ -76,7 +76,7 @@ export default {
         id: 'SsDate-5',
         label: '日期',
         placeholder: '请选择',
-        defaultValue: new Date(), // 注意，这是个时间
+        initialValue: new Date(), // 注意，这是个时间
         required: true,
         icon: '',
         type: 'date',
@@ -90,7 +90,7 @@ export default {
         label: ['开始时间', '结束时间'], // 注意，这是个数组
         pcLabel: '日期范围', // 注意，这是pc端的
         placeholder: ['开始时间', '结束时间'], // 注意，这是个数组
-        defaultValue: [new Date(), new Date()], // 注意，这是个数组
+        initialValue: [new Date(), new Date()], // 注意，这是个数组
         required: true,
         icon: '',
         type: 'date', // date、time、datetime、year、month
@@ -103,7 +103,7 @@ export default {
         id: 'SsDropDown-7',
         label: '下拉框',
         placeholder: '请选择',
-        defaultValue: [], // 注意：这是个数组
+        initialValue: [], // 注意：这是个数组
         required: false,
         icon: '',
         multiple: false,
@@ -116,7 +116,7 @@ export default {
         name: '图片',
         id: 'SsImagePicker-8',
         label: '图片',
-        defaultValue: [], // 注意，这是网络链接组成的数组
+        initialValue: [], // 注意，这是网络链接组成的数组
         required: false,
         icon: '',
         limit: 3,
@@ -129,7 +129,7 @@ export default {
         id: 'SsAnnex-9',
         label: '附件',
         placeholder: '点击上传',
-        defaultValue: [{ url: '', fileKey: '', name: '' }], // 注意，这是数组
+        initialValue: [{ url: '', fileKey: '', name: '' }], // 注意，这是数组
         required: false,
         icon: '',
         type: 'word', // 注意：这个是文件的类型
@@ -145,7 +145,7 @@ export default {
         id: 'SsAmount-10',
         label: '金额(元)',
         placeholder: '请输入',
-        defaultValue: 8,
+        initialValue: 8,
         required: false,
         icon: '',
         rules: [{ type: 'number', message: '请输入有效的数字' }],
@@ -157,7 +157,7 @@ export default {
       props: {
         name: '说明文字',
         id: 'SsDescription-11',
-        defaultValue: '',
+        initialValue: '',
         icon: '',
       },
     },
@@ -179,7 +179,7 @@ export default {
         id: 'SsRating-13',
         label: '评分',
         icon: 'icon-pingfen',
-        defaultValue: 0,
+        initialValue: 0,
         required: false,
         max: 5,
         allowHalf: false,
@@ -192,7 +192,7 @@ export default {
         name: '地点',
         label: '地点',
         placeholder: '获取',
-        defaultValue: '月球寂静海',
+        initialValue: '月球寂静海',
         required: false,
         icon: '',
       },
@@ -205,7 +205,7 @@ export default {
         name: '部门',
         label: '部门',
         placeholder: '请选择',
-        defaultValue: [],
+        initialValue: [],
         required: false,
         icon: 'icon-bumen',
         multiple: false,
@@ -219,7 +219,7 @@ export default {
         name: '联系人',
         label: '联系人',
         placeholder: '请选择',
-        defaultValue: [],
+        initialValue: [],
         required: false,
         icon: 'icon-lianxiren',
         multiple: false,
@@ -233,7 +233,7 @@ export default {
         name: '外部联系人',
         label: '外部联系人',
         placeholder: '请选择',
-        defaultValue: [],
+        initialValue: [],
         required: false,
         icon: 'icon-lianxirenguanli',
         multiple: false,

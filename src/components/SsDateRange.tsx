@@ -13,9 +13,9 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   private endDate: Date = new Date()
 
   componentWillMount() {
-    const { form, id, defaultValue, rules, required } = this.props
-    this.startFieldDecorator = getFieldDecorator(form, 'id+1', defaultValue, required, rules)
-    this.endFieldDecorator = getFieldDecorator(form, 'id+2', defaultValue, required, rules)
+    const { form, id, initialValue, rules, required } = this.props
+    this.startFieldDecorator = getFieldDecorator(form, `${id}-1`, initialValue, required, rules)
+    this.endFieldDecorator = getFieldDecorator(form, `${id}-2`, initialValue, required, rules)
   }
 
   private _onChangeStartDate = (value: Date) => {
@@ -31,10 +31,10 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   }
 
   render() {
-    const { label, required, form } = this.props
+    const { id, label, required, form } = this.props
     return (
       <View>
-        <ErrorTip error={form.getFieldError('id+1')}>
+        <ErrorTip error={form.getFieldError(`${id}-1`)}>
           {this.startFieldDecorator(
             <DatePicker onChange={this._onChangeStartDate} extra="请选择" {...this.props}>
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
@@ -43,7 +43,7 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
             </DatePicker>
           )}
         </ErrorTip>
-        <ErrorTip error={form.getFieldError('id+2')}>
+        <ErrorTip error={form.getFieldError(`${id}-2`)}>
           {this.endFieldDecorator(
             <DatePicker onChange={this._onChangeEndDate} extra="请选择" {...this.props}>
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
