@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputPropsType, SsDropDownPropsType } from '../utils/PropTypes'
 import Input from './Input'
+import Switch from './Switch'
 import Textarea from './Textarea'
 import SsSelect from './SsSelect'
 import SsDate from './SsDate'
@@ -42,6 +43,7 @@ export {
   SsCalculate,
   SsDropDown,
   SsImagePicker,
+  Switch,
 }
 export default {
   Input,
@@ -58,4 +60,5 @@ export default {
   SsCalculate,
   SsDropDown,
   SsImagePicker,
+  Switch,
 }
