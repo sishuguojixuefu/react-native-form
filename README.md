@@ -20,12 +20,12 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 > 自定义内置组件的开发示例：http://t.cn/AijGYRMJ
 
-- SsDescription: 描述组件
 - Input: 普通的输入框
 - NumberInput: 数字输入框
 - Switch: 开关组件
-- SsSelect: Picker
+- SsSelect: 选择器
 - SsDate: 日期选择器
+- SsDescription: 描述组件
 
 > 一些特定业务组件无法内置，这种业务组件的开发请参考：http://t.cn/AijGjjVs
 
