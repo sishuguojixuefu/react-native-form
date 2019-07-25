@@ -41,8 +41,7 @@ export default class Input extends Component<SwitchPropsType, any> {
 
   componentWillMount() {
     const { form, id, initialValue, rules } = this.props
-    const defaultStrValue = initialValue && initialValue.toString()
-    this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, rules, { valuePropName: 'checked' })
+    this.fieldDecorator = getFieldDecorator(form, id, Boolean(initialValue), rules, { valuePropName: 'checked' })
   }
 
   // private _onChange = (checked: boolean) => {
