@@ -9,6 +9,7 @@ interface Props {
   label: string
   required?: boolean
   onChange?: (checked: boolean) => void
+  checked?: boolean
 }
 
 class SwitchItem extends Component<Props, any> {
@@ -23,10 +24,11 @@ class SwitchItem extends Component<Props, any> {
     }
   }
 
-  _onChange = checked => {
+  private _onChange = (checked: boolean) => {
     const { onChange } = this.props
-    onChange && onChange(checked)
-    this.setState({ checked })
+    this.setState({ checked }, () => {
+      onChange && onChange(checked)
+    })
   }
 
   render() {
@@ -58,10 +60,7 @@ export default class Input extends Component<SwitchPropsType, any> {
   }
 
   private _onChange = (checked: boolean) => {
-    const { form, id, onChange } = this.props
-    form.setFieldsValue({
-      [id]: checked,
-    })
+    const { onChange } = this.props
     onChange && onChange(checked)
   }
 
