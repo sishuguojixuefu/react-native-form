@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { List } from '@sishuguojixuefu/antd-mobile-rn'
 // @ts-ignore
 import DatePicker from 'antd-mobile-rn/lib/date-picker'
-import { DatePickerProps } from '../utils/PropTypes'
+import { SsDateProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 
-export default class SsDate extends Component<DatePickerProps, {}> {
+export default class SsDate extends Component<SsDateProps, any> {
   private fieldDecorator: any
   static defaultProps = {
     required: false,

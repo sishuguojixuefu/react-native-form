@@ -154,10 +154,12 @@ export interface SsDropDownPropsType extends FormItemOptionPropsType {
 /**
  * SsDate组件PropsType
  */
-export interface DatePickerProps extends FormItemOptionPropsType {
+export interface SsDateProps extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value: Date) => void
   type: 'year' | 'month' | 'date' | 'datetime' | 'time'
+  minDate: Date
+  maxDate: Date
 }
 
 /**
