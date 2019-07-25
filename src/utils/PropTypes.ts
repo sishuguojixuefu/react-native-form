@@ -92,6 +92,15 @@ export interface SsDescriptionPropsType extends FormItemOptionPropsType {
 /**
  * Input组件PropsType
  */
+export interface SwitchPropsType extends FormItemOptionPropsType {
+  label: string // 标签
+  onChange?: (checked: boolean) => void
+  last?: boolean
+}
+
+/**
+ * Input组件PropsType
+ */
 export interface InputPropsType extends FormItemOptionPropsType {
   label: string // 标签
   onChange?: (value: string) => void
