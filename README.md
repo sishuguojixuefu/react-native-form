@@ -25,6 +25,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 - NumberInput: 数字输入框
 - Switch: 开关组件
 - SsSelect: Picker
+- SsDate: 日期选择器
 
 > 一些特定业务组件无法内置，这种业务组件的开发请参考：http://t.cn/AijGjjVs
 
