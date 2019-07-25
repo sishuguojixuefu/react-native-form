@@ -61,7 +61,9 @@ export default class Input extends Component<SwitchPropsType, any> {
 
   private _onChange = (checked: boolean) => {
     const { onChange } = this.props
-    onChange && onChange(checked)
+    if (checked === false || checked === true) {
+      onChange && onChange(checked)
+    }
   }
 
   render() {
