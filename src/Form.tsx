@@ -6,7 +6,7 @@ import FormItem from './components'
 import FormPropsType from './utils/FormPropsType'
 import getFieldDecorator from './utils/getFieldDecorator'
 
-class Form extends Component<FormPropsType, {}> {
+class Form extends Component<FormPropsType, any> {
   static defaultProps = {
     noBorder: true,
   }
@@ -35,8 +35,12 @@ class Form extends Component<FormPropsType, {}> {
     return childs
   }
 
-  private _onChange = () => {
-    DeviceEventEmitter.emit('SsDynamicFormValueChanged', { values: this.props.form.getFieldsValue() })
+  private _onChange = (id: string, value: any) => {
+    const { onChange } = this.props
+    onChange && onChange(id, value)
+    DeviceEventEmitter.emit('SsDynamicFormValueChanged', {
+      values: this.props.form.getFieldsValue(),
+    })
   }
 
   render() {
@@ -55,7 +59,7 @@ class Form extends Component<FormPropsType, {}> {
                 return React.createElement(FormItem[item.componentName], {
                   key: item.props.id,
                   form,
-                  onChange: () => this._onChange(),
+                  onChange: value => this._onChange(item.props.id, value),
                   ...item.props,
                 })
               }
@@ -68,7 +72,7 @@ class Form extends Component<FormPropsType, {}> {
                 key: item.props.id || index.toString(),
                 form,
                 id: item.props.id,
-                onChange: () => this._onChange(),
+                onChange: value => this._onChange(item.props.id, value),
                 ...item.props,
               })
               return item.props.custom ? this[item.props.id](child) : child
