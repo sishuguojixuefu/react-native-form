@@ -7,7 +7,7 @@ import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 import ErrorTip from './helper/ErrorTip'
 
-export default class Input extends Component<InputPropsType, {}> {
+export default class Input extends Component<InputPropsType, any> {
   private fieldDecorator: any
   static defaultProps = {
     required: false,

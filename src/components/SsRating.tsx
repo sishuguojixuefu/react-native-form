@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import { AirbnbRating } from 'react-native-ratings'

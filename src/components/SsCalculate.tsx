@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import { View, Text, DeviceEventEmitter } from 'react-native'
 import math from 'mathjs'

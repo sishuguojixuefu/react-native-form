@@ -1,4 +1,3 @@
-/* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import { View, Modal } from 'react-native'
 import ImageCropPicker from 'react-native-image-crop-picker'
