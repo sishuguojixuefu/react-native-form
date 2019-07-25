@@ -23,6 +23,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 - NumberInput: 数字输入框
 - Switch: 开关组件
 - SsSelect: Picker
+- SsDate: 日期选择器
 
 ## 属性
 
