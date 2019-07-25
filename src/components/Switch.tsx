@@ -10,19 +10,15 @@ interface Props {
   required?: boolean
   checked?: boolean
   onChange?: (checked: boolean) => void
-  form: any
-  id: string
 }
 
 class SwitchItem extends Component<Props, any> {
   static defaultProps = {
     required: false,
-    checked: false,
   }
 
   render() {
-    const { label, required, onChange, form, id } = this.props
-    const checked = form.getFieldValue(id)
+    const { label, required, onChange, checked } = this.props
     return (
       <List.Item
         {...this.props}
@@ -49,20 +45,18 @@ export default class Input extends Component<SwitchPropsType, any> {
     this.fieldDecorator = getFieldDecorator(form, id, defaultStrValue, rules, { valuePropName: 'checked' })
   }
 
-  private _onChange = (checked: boolean) => {
-    const { form, id } = this.props
-    form.setFieldsValue({
-      [id]: checked,
-    })
-  }
+  // private _onChange = (checked: boolean) => {
+  //   const { form, id } = this.props
+  //   form.setFieldsValue({
+  //     [id]: checked,
+  //   })
+  // }
 
   render() {
     const { label, required, form, id, last } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
-        {this.fieldDecorator(
-          <SwitchItem label={label} required={required} onChange={this._onChange} form={form} id={id} />
-        )}
+        {this.fieldDecorator(<SwitchItem label={label} required={required} />)}
       </ErrorTip>
     )
   }
