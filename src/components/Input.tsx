@@ -30,7 +30,7 @@ export default class Input extends Component<InputPropsType, any> {
   }
 
   render() {
-    const { placeholder, label, required, form, id, textAlign, maxLength, last, multiline, height } = this.props
+    const { icon, placeholder, label, required, form, id, textAlign, maxLength, last, multiline, height } = this.props
     const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
@@ -48,7 +48,7 @@ export default class Input extends Component<InputPropsType, any> {
             placeholder={placeholder}
             maxLength={maxLength && maxLength > 0 ? maxLength : undefined}
           >
-            <Label label={label} required={required} />
+            <Label label={label} icon={icon} required={required} />
           </InputItem>
         )}
       </ErrorTip>

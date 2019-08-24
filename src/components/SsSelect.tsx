@@ -39,13 +39,13 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
   }
 
   render() {
-    const { placeholder, label, required, form, id, cols, last } = this.props
+    const { icon, placeholder, label, required, form, id, cols, last } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
         {this.fieldDecorator(
           <Picker {...this.props} cols={cols} onChange={this._onChange} extra={placeholder} data={this._getData()}>
             <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last wrap>
-              <Label required={required} label={label} />
+              <Label required={required} label={label} icon={icon} />
             </List.Item>
           </Picker>
         )}
