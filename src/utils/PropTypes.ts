@@ -109,6 +109,8 @@ export interface InputPropsType extends FormItemOptionPropsType {
   extra?: React.ReactNode
   maxLength?: number
   last?: boolean
+  multiline?: boolean
+  height?: number
 }
 
 /**

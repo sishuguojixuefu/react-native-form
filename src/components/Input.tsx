@@ -15,6 +15,7 @@ export default class Input extends Component<InputPropsType, any> {
     textAlign: 'right',
     maxLength: 0,
     last: false,
+    multiline: false,
   }
 
   componentWillMount() {
@@ -29,17 +30,18 @@ export default class Input extends Component<InputPropsType, any> {
   }
 
   render() {
-    const { placeholder, label, required, form, id, textAlign, maxLength, last } = this.props
+    const { placeholder, label, required, form, id, textAlign, maxLength, last, multiline, height } = this.props
     const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
         {this.fieldDecorator(
           <InputItem
+            multiline={multiline}
             {...omitProps}
             last
             clear
-            style={{ marginLeft: 5 }}
-            itemStyle={{ marginLeft: 0 }}
+            style={{ marginLeft: 5, height }}
+            itemStyle={{ marginLeft: 0, height }}
             textAlign={textAlign}
             onChange={this._onChange}
             labelNumber={label ? stringWidth(label) / 2 + 1 : 0}
