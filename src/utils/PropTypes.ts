@@ -148,6 +148,7 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
  * SsDropDown组件PropsType
  */
 export interface SsDropDownPropsType extends FormItemOptionPropsType {
+  icon: ImageSourcePropType
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void // onChange事件
   options: ({ label: string; value: string } | string)[] // 选项
