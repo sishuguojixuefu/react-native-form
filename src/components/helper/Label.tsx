@@ -21,7 +21,7 @@ class Label extends Component<Props> {
           source={require('../../../images/required.png')}
           style={{ width: 9, height: required ? 9 : 0, marginHorizontal: 3 }}
         />
-        {icon && <Image source={icon} style={{ width: 30, height: 30, borderRadius: 15, marginHorizontal: 3 }} />}
+        {icon && <Image source={icon} style={{ width: 30, height: 30, marginHorizontal: 3 }} />}
         {!icon && label && <Text style={styles.text}>{label}</Text>}
       </View>
     )
