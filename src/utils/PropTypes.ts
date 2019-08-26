@@ -101,7 +101,7 @@ export interface SwitchPropsType extends FormItemOptionPropsType {
  * Input组件PropsType
  */
 export interface InputPropsType extends FormItemOptionPropsType {
-  icon: ImageSourcePropType
+  icon?: ImageSourcePropType
   label: string // 标签
   onChange?: (value: string) => void
   type?: 'text' | 'bankCard' | 'phone' | 'password' | 'number' | 'digit' | KeyboardTypeOptions // 类型
@@ -127,7 +127,7 @@ export interface TextareaPropsType extends FormItemOptionPropsType {
  * SsSelect组件PropsType
  */
 export interface SsSelectPropsType extends FormItemOptionPropsType {
-  icon: ImageSourcePropType
+  icon?: ImageSourcePropType
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void
   options: ({ label: string; value: string } | string)[] // 选项
@@ -148,7 +148,7 @@ export interface SsMultiSelectPropsType extends FormItemOptionPropsType {
  * SsDropDown组件PropsType
  */
 export interface SsDropDownPropsType extends FormItemOptionPropsType {
-  icon: ImageSourcePropType
+  icon?: ImageSourcePropType
   label: string // 标签
   onChange?: (value?: React.ReactText[]) => void // onChange事件
   options: ({ label: string; value: string } | string)[] // 选项
