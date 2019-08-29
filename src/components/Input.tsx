@@ -40,8 +40,8 @@ export default class Input extends Component<InputPropsType, any> {
             {...omitProps}
             last
             clear
-            style={{ marginLeft: 5, height }}
-            itemStyle={{ marginLeft: 0, height }}
+            style={height ? { marginLeft: 5, height } : { marginLeft: 5 }}
+            itemStyle={height ? { marginLeft: 0, height } : { marginLeft: 0, height }}
             textAlign={textAlign}
             onChange={this._onChange}
             labelNumber={label ? stringWidth(label) / 2 + 1 : 0}
