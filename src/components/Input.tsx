@@ -40,7 +40,11 @@ export default class Input extends Component<InputPropsType, any> {
             {...omitProps}
             last
             clear
-            style={height ? { height, marginLeft: 5, fontSize: 16 } : { marginLeft: 5, fontSize: 16 }}
+            style={
+              height
+                ? { height, marginLeft: 5, fontSize: 16, color: '#6c6c6c' }
+                : { marginLeft: 5, fontSize: 16, color: '#6c6c6c' }
+            }
             itemStyle={height ? { height, marginLeft: 0 } : { marginLeft: 0 }}
             textAlign={textAlign}
             onChange={this._onChange}
