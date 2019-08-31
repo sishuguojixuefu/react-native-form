@@ -36,7 +36,7 @@ export default class Textarea extends Component<TextareaPropsType, {}> {
         label={label}
         required={required}
         count={count} // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
-        inputed={this.inputed || (form.getFieldValue(id) && form.getFieldValue(id).length)}
+        inputed={this.inputed || (form.getFieldValue(id) && form.getFieldValue(id).length) || 0}
         last={last}
       >
         {this.fieldDecorator(
