@@ -31,12 +31,17 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
   }
 
   render() {
-    const { id, label, required, form } = this.props
+    const { id, label, required, form, placeholder, initialValue } = this.props
     return (
       <View>
         <ErrorTip error={form.getFieldError(`${id}-1`)}>
           {this.startFieldDecorator(
-            <DatePicker onChange={this._onChangeStartDate} extra="请选择" {...this.props}>
+            <DatePicker
+              {...this.props}
+              onChange={this._onChangeStartDate}
+              maxDate={initialValue![1] || form.getFieldValue(`${id}-2`) || '2030-1-1'}
+              extra={placeholder![0]}
+            >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
                 <Label required={required} label={label[0]} />
               </List.Item>
@@ -45,7 +50,12 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
         </ErrorTip>
         <ErrorTip error={form.getFieldError(`${id}-2`)}>
           {this.endFieldDecorator(
-            <DatePicker onChange={this._onChangeEndDate} extra="请选择" {...this.props}>
+            <DatePicker
+              {...this.props}
+              onChange={this._onChangeEndDate}
+              minDate={initialValue![1] || form.getFieldValue(`${id}-1`) || '2000-1-1'}
+              extra={placeholder![1]}
+            >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
                 <Label required={required} label={label[1]} />
               </List.Item>
