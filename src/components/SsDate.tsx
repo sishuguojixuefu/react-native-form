@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { List } from '@sishuguojixuefu/antd-mobile-rn'
-// @ts-ignore
-import DatePicker from 'antd-mobile-rn/lib/date-picker'
+import { List, DatePicker } from '@sishuguojixuefu/antd-mobile-rn'
 import { SsDateProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
