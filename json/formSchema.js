@@ -107,7 +107,7 @@ export default {
         required: false,
         icon: '',
         multiple: false,
-        options: [{ value: '选项1' }, { value: '选项2' }, { value: '选项3' }],
+        options: ['选项1', '选项2', '选项3'],
       },
     },
     {
