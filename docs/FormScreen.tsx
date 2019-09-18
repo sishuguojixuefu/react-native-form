@@ -60,7 +60,7 @@ class FormScreen extends BaseScreen<BaseScreenProps, any> {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <Form wrappedComponentRef={onFormRef}>
+        <Form wrappedaComponentRef={onFormRef}>
           <Input
             id="username"
             label="姓名"

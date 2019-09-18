@@ -6,14 +6,14 @@ const getFieldDecorator = (
   id?: string,
   initialValue?: string | (string | undefined)[] | boolean,
   originRules?: RulePropsType,
-  restOptions?: object
+  options?: object
 ) => {
   const rules = getRules(originRules)
   const fieldDecorator = form.getFieldDecorator(id, {
     initialValue,
     rules,
     validateFirst: true,
-    ...restOptions,
+    ...options,
   })
 
   return fieldDecorator

@@ -37,10 +37,3 @@ $ yarn add @sishuguojixuefu/react-native-form
 | items               | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType       | `FormOptionPropsType[]` | -      |
 | noBorder            | 是否显示 border                                             | boolean                 | true   |
 | style               | 样式                                                        | object                  | -      |
-
-## 参考链接
-
-- [React - 修改 children(上)](http://t.cn/E9XKVGW)
-- [React - 修改 children(下)](http://t.cn/E9XKYDU)
-- [javascript 高阶函数介绍](http://t.cn/E9SPeN1)
-- [高阶函数，你怎么那么漂亮呢！](http://t.cn/RmB0uKp)
