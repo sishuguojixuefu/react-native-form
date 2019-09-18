@@ -86,7 +86,7 @@ export default {
       componentName: 'SsDateRange',
       props: {
         name: '日期范围',
-        id: 'SsDate-6',
+        id: ['startTime', 'endTime'],
         label: ['开始时间', '结束时间'], // 注意，这是个数组
         pcLabel: '日期范围', // 注意，这是pc端的
         placeholder: ['开始时间', '结束时间'], // 注意，这是个数组
