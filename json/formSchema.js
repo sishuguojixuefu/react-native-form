@@ -178,7 +178,7 @@ export default {
         name: '评分',
         id: 'SsRating-13',
         label: '评分',
-        icon: 'icon-pingfen',
+        icon: '',
         initialValue: 0,
         required: false,
         max: 5,
