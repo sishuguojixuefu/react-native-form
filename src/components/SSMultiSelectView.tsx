@@ -10,7 +10,7 @@ export default class SSMultiSelectView extends Component<any, any> {
   constructor(props: any) {
     super(props)
     this.state = {
-      modalVisible: true,
+      modalVisible: false,
       selectedArr: [], // 选中的数据
       firstItemString: '',
       dataArr: [], // 总数据 点击展示时

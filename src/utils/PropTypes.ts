@@ -84,8 +84,11 @@ export interface FormItemOptionPropsType {
 /**
  * SsDescription组件PropsType
  */
-export interface SsDescriptionPropsType extends FormItemOptionPropsType {
-  label: string // 标签
+export interface SsDescriptionPropsType {
+  name?: string // 组件名
+  id: string // id
+  initialValue?: string // 初始值
+  icon?: string
 }
 
 /**
