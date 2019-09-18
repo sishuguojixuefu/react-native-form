@@ -191,9 +191,12 @@ export interface SsAmountProps extends InputPropsType {
   upper?: boolean // 是否显示大写
 }
 
-export interface RatingProps extends FormItemOptionPropsType {
+export interface RatingProps {
   label: string
+  allowHalf?: boolean
   onChange?: (value: number) => void
+  initialValue?: number
+  required?: boolean
 }
 
 export interface ImagePickerProps extends FormItemOptionPropsType {

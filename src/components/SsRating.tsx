@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import { AirbnbRating } from 'react-native-ratings'
+import { AirbnbRating, Rating } from 'react-native-ratings'
 import { RatingProps } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 
-export interface SsRatingViewPropsType {
-  onChange?: (value: number) => void
-  label: string
-  required?: boolean
-  initialValue?: number
-}
-
-export class SsRatingView extends Component<SsRatingViewPropsType, any> {
+export class SsRatingView extends Component<RatingProps, any> {
   static defaultProps = {
     required: false,
   }
@@ -24,17 +17,26 @@ export class SsRatingView extends Component<SsRatingViewPropsType, any> {
   }
 
   render() {
-    const { label, required, initialValue } = this.props
+    const { label, required, initialValue, allowHalf } = this.props
     return (
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingRight: 10, paddingVertical: 8 }}>
         <Label required={required} label={label} />
-        <AirbnbRating
-          reviews={[]}
-          showRating={false}
-          defaultRating={initialValue}
-          count={5}
-          onFinishRating={this.ratingCompleted}
-        />
+        {allowHalf ? (
+          <Rating
+            showRating={false}
+            startingValue={initialValue}
+            ratingCount={5}
+            onFinishRating={this.ratingCompleted}
+          />
+        ) : (
+          <AirbnbRating
+            reviews={[]}
+            showRating={false}
+            defaultRating={initialValue}
+            count={5}
+            onFinishRating={this.ratingCompleted}
+          />
+        )}
       </View>
     )
   }
