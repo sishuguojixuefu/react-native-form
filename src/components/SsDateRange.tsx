@@ -14,8 +14,8 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
 
   componentWillMount() {
     const { form, id, initialValue, rules } = this.props
-    this.startFieldDecorator = getFieldDecorator(form, `${id}-1`, initialValue![0], rules)
-    this.endFieldDecorator = getFieldDecorator(form, `${id}-2`, initialValue![1], rules)
+    this.startFieldDecorator = getFieldDecorator(form, id[0], initialValue![0], rules)
+    this.endFieldDecorator = getFieldDecorator(form, id[1], initialValue![1], rules)
   }
 
   private _onChangeStartDate = (value: Date) => {
@@ -34,12 +34,12 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
     const { id, label, required, form, placeholder, initialValue } = this.props
     return (
       <View>
-        <ErrorTip error={form.getFieldError(`${id}-1`)}>
+        <ErrorTip error={form.getFieldError(id[0])}>
           {this.startFieldDecorator(
             <DatePicker
               {...this.props}
               onChange={this._onChangeStartDate}
-              maxDate={form.getFieldValue(`${id}-2`) || initialValue![1] || '2030-1-1'}
+              maxDate={form.getFieldValue(id[1]) || initialValue![1] || '2030-1-1'}
               extra={placeholder![0]}
             >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
@@ -48,12 +48,12 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
             </DatePicker>
           )}
         </ErrorTip>
-        <ErrorTip error={form.getFieldError(`${id}-2`)}>
+        <ErrorTip error={form.getFieldError(id[1])}>
           {this.endFieldDecorator(
             <DatePicker
               {...this.props}
               onChange={this._onChangeEndDate}
-              minDate={form.getFieldValue(`${id}-1`) || initialValue![1] || '2000-1-1'}
+              minDate={form.getFieldValue(id[0]) || initialValue![1] || '2000-1-1'}
               extra={placeholder![1]}
             >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>

@@ -24,6 +24,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 - NumberInput: 数字输入框
 - SsSelect: 选择器
 - SsDate: 日期选择器
+- SsDateRange: 日期范围选择器
 - SsDescription: 描述组件
 - Switch: 开关组件
 

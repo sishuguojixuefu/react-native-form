@@ -174,7 +174,7 @@ export interface SsDateProps extends FormItemOptionPropsType {
  */
 export interface SsDateRangeProps {
   name?: string // 组件名
-  id: string // id
+  id: string[] // id
   placeholder?: string[] // 备注
   initialValue?: string[] // 初始值
   required?: boolean // 是否必要
