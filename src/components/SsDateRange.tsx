@@ -39,7 +39,7 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
             <DatePicker
               {...this.props}
               onChange={this._onChangeStartDate}
-              maxDate={initialValue![1] || form.getFieldValue(`${id}-2`) || '2030-1-1'}
+              maxDate={form.getFieldValue(`${id}-2`) || initialValue![1] || '2030-1-1'}
               extra={placeholder![0]}
             >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
@@ -53,7 +53,7 @@ export default class SsDateRange extends Component<SsDateRangeProps, {}> {
             <DatePicker
               {...this.props}
               onChange={this._onChangeEndDate}
-              minDate={initialValue![1] || form.getFieldValue(`${id}-1`) || '2000-1-1'}
+              minDate={form.getFieldValue(`${id}-1`) || initialValue![1] || '2000-1-1'}
               extra={placeholder![1]}
             >
               <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last>
