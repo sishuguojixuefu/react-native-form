@@ -10,7 +10,7 @@ export default {
         id: 'Input-0',
         label: '单行输入框',
         placeholder: '请输入',
-        initialValue: '', // rc-form 要求
+        initialValue: '',
         required: true,
         rules: [{ type: 'zh', message: '这是自定义的错误提示' }],
         icon: '',
