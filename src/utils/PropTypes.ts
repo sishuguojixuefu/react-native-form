@@ -75,7 +75,7 @@ export interface FormItemOptionPropsType {
   name?: string // 组件名
   id: string // id
   placeholder?: string // 备注
-  initialValue?: string[] | string // 初始值
+  initialValue?: string // 初始值
   required?: boolean // 是否必要
   rules?: RulePropsType // 规则
   form?: any
@@ -172,7 +172,14 @@ export interface SsDateProps extends FormItemOptionPropsType {
 /**
  * SsDateRange组件PropsType
  */
-export interface SsDateRangeProps extends FormItemOptionPropsType {
+export interface SsDateRangeProps {
+  name?: string // 组件名
+  id: string // id
+  placeholder?: string // 备注
+  initialValue?: string[] // 初始值
+  required?: boolean // 是否必要
+  rules?: RulePropsType // 规则
+  form?: any
   label: string[] // 标签
   onChange?: (value: Date | Date[]) => void
 }
