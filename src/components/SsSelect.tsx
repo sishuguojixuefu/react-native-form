@@ -45,6 +45,7 @@ export default class SsSelect extends Component<SsSelectPropsType, {}> {
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
         {this.fieldDecorator(
+          // @ts-ignore
           <Picker {...this.props} cols={cols} onChange={this._onChange} extra={placeholder} data={this._getData()}>
             <Item arrow="horizontal" style={{ paddingLeft: 0 }} last wrap>
               <Label required={required} label={label} icon={icon} />
