@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { List } from '@sishuguojixuefu/antd-mobile-rn'
+import { List, Picker } from '@sishuguojixuefu/antd-mobile-rn'
 // @ts-ignore
-import Picker from 'antd-mobile-rn/lib/picker'
+// import { Picker } from 'antd-mobile-rn'
 import { SsSelectPropsType } from '../utils/PropTypes'
 import ErrorTip from './helper/ErrorTip'
 import Label from './helper/Label'
