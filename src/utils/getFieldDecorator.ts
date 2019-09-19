@@ -4,7 +4,7 @@ import { RulePropsType } from './PropTypes'
 const getFieldDecorator = (
   form: any,
   id?: string,
-  initialValue?: string | (string | undefined)[] | boolean,
+  initialValue?: string | (string | undefined)[] | boolean | number,
   originRules?: RulePropsType,
   options?: object
 ) => {

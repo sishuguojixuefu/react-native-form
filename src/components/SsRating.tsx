@@ -6,7 +6,7 @@ import ErrorTip from './helper/ErrorTip'
 import getFieldDecorator from '../utils/getFieldDecorator'
 import Label from './helper/Label'
 
-export class SsRatingView extends Component<RatingProps, any> {
+export class SsRatingView extends Component<any, any> {
   static defaultProps = {
     required: false,
   }

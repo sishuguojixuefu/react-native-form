@@ -192,10 +192,13 @@ export interface SsAmountProps extends InputPropsType {
 }
 
 export interface RatingProps {
+  form?: any
+  id: string
   label: string
+  rules?: RulePropsType // 规则
   allowHalf?: boolean
   onChange?: (value: number) => void
-  initialValue?: number
+  initialValue: number
   required?: boolean
 }
 
