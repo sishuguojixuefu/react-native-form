@@ -12,41 +12,28 @@ export default class SSMultiSelectView extends Component<any, any> {
     this.state = {
       modalVisible: false,
       selectedArr: [], // 选中的数据
-      firstItemString: '',
       dataArr: [], // 总数据 点击展示时
     }
-    this.setDataArr(this.getData())
+  }
+
+  componentDidMount() {
+    this.setState({
+      dataArr: this.props.options.map(item => {
+        return {
+          label: item,
+          value: item,
+          checked: !!this.props.initialValue.find(iItem => item === iItem),
+        }
+      }),
+      selectedArr:
+        this.props.initialValue.map(item => {
+          return { label: item, value: item, checked: true }
+        }) || [],
+    })
   }
 
   private setModalVisible = (visible: boolean) => {
     this.setState({ modalVisible: visible })
-  }
-
-  private setDataArr = (arr: any[]) => {
-    this.setState({ dataArr: arr })
-  }
-
-  private setFirstItemString = (text: string) => {
-    this.setState({ firstItemString: text })
-  }
-
-  private getData = () => {
-    const { options } = this.props
-    return options.map(item => {
-      return {
-        label: item,
-        value: item,
-        checked: false,
-      }
-    })
-  }
-
-  private modalClose = () => {
-    this.setModalVisible(!this.state.modalVisible)
-  }
-
-  private modalShow = () => {
-    this.setModalVisible(!this.state.modalVisible)
   }
 
   private checkBoxChange = (event, item) => {
@@ -68,32 +55,7 @@ export default class SSMultiSelectView extends Component<any, any> {
           item.checked = false
         }
       })
-      this.setState({ dataArr: tempDataArr }, () => {})
-    }
-  }
-
-  private renderItem = ({ item, index }) => {
-    return (
-      <CheckboxItem key={index} onChange={event => this.checkBoxChange(event, item)} defaultChecked={item.checked} last>
-        {item.label}
-      </CheckboxItem>
-    )
-  }
-
-  private renderSelectedItem = ({ item, index }) => {
-    if (index === 0) {
-      return null
-    }
-    return <List.Item key={index} style={{ paddingRight: 30 }} last extra={item.label} onPress={this.modalShow} />
-  }
-
-  private firstSelected = () => {
-    const { selectedArr } = this.state
-    if (selectedArr.length) {
-      const item = selectedArr[0]
-      this.setFirstItemString(item.label)
-    } else {
-      this.setFirstItemString('无')
+      this.setState({ dataArr: tempDataArr })
     }
   }
 
@@ -102,9 +64,8 @@ export default class SSMultiSelectView extends Component<any, any> {
     const { dataArr } = this.state
     const selectArr = dataArr.filter(temp => temp.checked === true)
     this.setState({ selectedArr: selectArr }, () => {
-      onChange(this.state.selectedArr)
-      this.firstSelected()
-      this.modalClose()
+      onChange(this.state.selectedArr.map(item => item.value))
+      this.setModalVisible(false)
     })
   }
 
@@ -123,34 +84,52 @@ export default class SSMultiSelectView extends Component<any, any> {
       }
     }
     this.setState({ dataArr: tempDataArr })
-    this.modalClose()
+    this.setModalVisible(false)
+  }
+
+  private renderItem = ({ item, index }) => {
+    return (
+      <CheckboxItem
+        key={index}
+        onChange={event => this.checkBoxChange(event, item)}
+        defaultChecked={item.checked}
+        last
+        wrap
+      >
+        {item.label}
+      </CheckboxItem>
+    )
   }
 
   render() {
-    const { label, required, placeholder, initialValue } = this.props
-    const { dataArr, firstItemString, selectedArr, modalVisible } = this.state
+    const { label, required, placeholder } = this.props
+    const { dataArr, selectedArr, modalVisible } = this.state
     return (
       <View>
         <List.Item
+          wrap
           arrow="horizontal"
           style={{ paddingLeft: 0 }}
           last
-          extra={firstItemString || initialValue || placeholder}
-          onPress={this.modalShow}
+          extra={(selectedArr && selectedArr.map(item => item.label).toString()) || placeholder}
+          onPress={() => this.setModalVisible(true)}
         >
           <Label required={required} label={label} />
         </List.Item>
-        {selectedArr && selectedArr.length ? (
-          <List>{selectedArr.map((item, index) => this.renderSelectedItem({ item, index }))}</List>
-        ) : null}
-        <Modal popup visible={modalVisible} maskClosable animationType="slide-up" onClose={this.modalClose}>
+        <Modal
+          popup
+          visible={modalVisible}
+          maskClosable
+          animationType="slide-up"
+          onClose={() => this.setModalVisible(false)}
+        >
           <View style={styles.ModalView}>
             <View style={styles.ModalTopButtonView}>
               <TouchableOpacity activeOpacity={0.5} style={styles.ButtonStyle} onPress={this.cancelButtonAction}>
                 <Text style={styles.leftText}>取消</Text>
               </TouchableOpacity>
               <TouchableOpacity activeOpacity={0.5} style={styles.ButtonRightStyle} onPress={this.sureButtonAction}>
-                <Text style={styles.rightText}>确认</Text>
+                <Text style={styles.rightText}>确定</Text>
               </TouchableOpacity>
             </View>
             {dataArr && dataArr.length ? (
