@@ -127,11 +127,17 @@ export default class SSMultiSelectView extends Component<any, any> {
   }
 
   render() {
-    const { label, required } = this.props
+    const { label, required, placeholder, initialValue } = this.props
     const { dataArr, firstItemString, selectedArr, modalVisible } = this.state
     return (
       <View>
-        <List.Item arrow="horizontal" style={{ paddingLeft: 0 }} last extra={firstItemString} onPress={this.modalShow}>
+        <List.Item
+          arrow="horizontal"
+          style={{ paddingLeft: 0 }}
+          last
+          extra={firstItemString || initialValue || placeholder}
+          onPress={this.modalShow}
+        >
           <Label required={required} label={label} />
         </List.Item>
         {selectedArr && selectedArr.length ? (

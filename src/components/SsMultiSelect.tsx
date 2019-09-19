@@ -6,10 +6,6 @@ import getFieldDecorator from '../utils/getFieldDecorator'
 
 export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
   private fieldDecorator: any
-  static defaultProps = {
-    required: false,
-    placeholder: '请输入',
-  }
 
   componentWillMount() {
     const { form, id, initialValue, rules } = this.props
@@ -17,11 +13,18 @@ export default class SsMultiSelect extends Component<SsSelectPropsType, {}> {
   }
 
   render() {
-    const { label, required, form, id, onChange, options } = this.props
+    const { label, required, form, id, onChange, options, placeholder, initialValue } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <MultiSelectView label={label} required={required} onChange={onChange} options={options} />
+          <MultiSelectView
+            label={label}
+            required={required}
+            onChange={onChange}
+            options={options}
+            placeholder={placeholder}
+            initialValue={initialValue}
+          />
         )}
       </ErrorTip>
     )
