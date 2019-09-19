@@ -27,6 +27,7 @@
   },
   "files": [
     "src",
+    "dist",
     "images"
   ],
   "types": "dist/index.d.ts",
