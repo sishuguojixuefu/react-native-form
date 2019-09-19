@@ -126,7 +126,7 @@ export default class SSMultiSelectView extends Component<any, any> {
     this.modalClose()
   }
 
-  public render() {
+  render() {
     const { label, required } = this.props
     const { dataArr, firstItemString, selectedArr, modalVisible } = this.state
     return (

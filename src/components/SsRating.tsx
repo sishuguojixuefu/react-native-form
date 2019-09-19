@@ -54,11 +54,17 @@ export default class SsRating extends Component<RatingProps, {}> {
   }
 
   render() {
-    const { label, required, form, id, onChange, initialValue } = this.props
+    const { label, required, form, id, onChange, initialValue, allowHalf } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
         {this.fieldDecorator(
-          <SsRatingView label={label} required={required} onChange={onChange} initialValue={Number(initialValue)} />
+          <SsRatingView
+            label={label}
+            required={required}
+            onChange={onChange}
+            initialValue={Number(initialValue)}
+            allowHalf={allowHalf}
+          />
         )}
       </ErrorTip>
     )

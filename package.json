@@ -2,7 +2,7 @@
   "name": "@sishuguojixuefu/react-native-form",
   "version": "0.9.6",
   "description": "私塾动态表单组件",
-  "main": "dist/index.js",
+  "main": "src/index.tsx",
   "author": "sishu",
   "license": "MIT",
   "repository": {
@@ -26,7 +26,7 @@
     "prepublishOnly": "tsc -p ./tsconfig.json"
   },
   "files": [
-    "dist",
+    "src",
     "images"
   ],
   "types": "dist/index.d.ts",
