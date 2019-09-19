@@ -23,6 +23,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 - Input: 普通的输入框
 - NumberInput: 数字输入框
 - SsSelect: 选择器
+- SsMultiSelect: 多选选择器
 - SsDate: 日期选择器
 - SsDateRange: 日期范围选择器
 - SsDescription: 描述组件
@@ -34,9 +35,9 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 ## 属性
 
-| 属性                | 说明                                                        | 类型                    | 默认值 |
-| ------------------- | ----------------------------------------------------------- | ----------------------- | ------ |
-| ref | `ref={ref => {this.form = ref}` | Function                | -      |
-| items               | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType       | `FormOptionPropsType[]` | -      |
-| noBorder            | 是否显示 border                                             | boolean                 | true   |
-| style               | 样式                                                        | object                  | -      |
+| 属性     | 说明                                                  | 类型                    | 默认值 |
+| -------- | ----------------------------------------------------- | ----------------------- | ------ |
+| ref      | `ref={ref => {this.form = ref}`                       | Function                | -      |
+| items    | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
+| noBorder | 是否显示 border                                       | boolean                 | true   |
+| style    | 样式                                                  | object                  | -      |

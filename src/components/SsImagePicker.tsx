@@ -1,3 +1,4 @@
+/* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react'
 import { View, Modal } from 'react-native'
 import ImageCropPicker from 'react-native-image-crop-picker'
@@ -17,18 +18,18 @@ export class SsImagePickerView extends Component<any, any> {
     }
   }
 
-  setModalVisible = (visible: boolean) => {
-    this.setState({ modalVisible: visible })
-  }
-
-  setImgs(imgs: never[]) {
+  componentDidMount() {
     this.setState({
-      value: imgs,
+      value: this.props.initialValue.map(item => {
+        return {
+          url: item,
+        }
+      }),
     })
   }
 
-  dismissModal = () => {
-    this.setModalVisible(false)
+  setModalVisible = (visible: boolean) => {
+    this.setState({ modalVisible: visible })
   }
 
   private _onChange = value => {
@@ -38,52 +39,48 @@ export class SsImagePickerView extends Component<any, any> {
   }
 
   private _clickImgItem = (index?: number) => {
+    this.setState({ curIndex: index })
     this.setModalVisible(true)
   }
 
-  private _onAddImageClick = () => {
+  private _onAddImageClick = async () => {
     const { value } = this.state
-    ImageCropPicker.openPicker({
-      multiple: true,
-      waitAnimationEnd: false,
-      includeExif: true,
-      forceJpg: true,
-      maxFiles: 9 - value.length,
-      compressImageQuality: 0.5,
-    })
-      .then(images => {
-        let files: any = []
-        if (Array.isArray(images)) {
-          files = images.map((item, index) => ({
-            url: item.path,
-            id: index,
-            meta: { ...item },
-          }))
-        } else {
-          files = [
-            {
-              url: images.path,
-              id: 1,
-              meta: { ...images },
-            },
-          ]
-        }
-
-        this.setImgs(this.state.value.concat(files))
+    const { onChange } = this.props
+    try {
+      const images = await ImageCropPicker.openPicker({
+        multiple: true,
+        waitAnimationEnd: false,
+        includeExif: true,
+        forceJpg: true,
+        maxFiles: 9 - value.length,
+        compressImageQuality: 0.5,
       })
-      .catch(e => {
-        console.log(e)
-      })
+      let files: any = []
+      if (Array.isArray(images)) {
+        files = images.map((item, index) => ({
+          url: item.path,
+          id: index,
+          meta: { ...item },
+        }))
+      } else {
+        files = [
+          {
+            url: images.path,
+            id: 1,
+            meta: { ...images },
+          },
+        ]
+      }
+      this.setState({ value: this.state.value.concat(files) })
+      onChange(this.state.value)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   render() {
-    const { value } = this.state
+    const { value, curIndex } = this.state
     const { label, required } = this.props
-    const imgUrls = this.state.value.map((item, index) => {
-      return {
-        url: item.url,
-      }
-    })
     return (
       <View style={{ paddingVertical: 10 }}>
         <Label required={required} label={label} />
@@ -97,20 +94,20 @@ export class SsImagePickerView extends Component<any, any> {
             onAddImageClick={this._onAddImageClick}
           />
         </WingBlank>
-
-        {
-          <Modal visible={this.state.modalVisible} transparent onRequestClose={this.dismissModal}>
-            <ImageViewer
-              imageUrls={imgUrls}
-              onSwipeDown={() => {
-                console.log('onSwipeDown')
-              }}
-              enableSwipeDown
-              onCancel={this.dismissModal}
-              saveToLocalByLongPress={false}
-            />
-          </Modal>
-        }
+        <Modal visible={this.state.modalVisible} transparent onRequestClose={() => this.setModalVisible(false)}>
+          <ImageViewer
+            index={curIndex}
+            enableSwipeDown
+            saveToLocalByLongPress={false}
+            imageUrls={value.map(item => {
+              return {
+                url: item.url,
+              }
+            })}
+            onSwipeDown={() => this.setModalVisible(false)}
+            onClick={() => this.setModalVisible(false)}
+          />
+        </Modal>
       </View>
     )
   }
@@ -118,9 +115,6 @@ export class SsImagePickerView extends Component<any, any> {
 
 export default class SsImagePicker extends Component<ImagePickerProps, any> {
   private fieldDecorator: any
-  static defaultProps = {
-    required: false,
-  }
 
   componentWillMount() {
     const { form, id, initialValue, rules } = this.props
@@ -128,10 +122,12 @@ export default class SsImagePicker extends Component<ImagePickerProps, any> {
   }
 
   render() {
-    const { label, required, form, id, onChange } = this.props
+    const { label, required, form, id, onChange, initialValue } = this.props
     return (
       <ErrorTip error={form.getFieldError(id)}>
-        {this.fieldDecorator(<SsImagePickerView label={label} required={required} onChange={onChange} />)}
+        {this.fieldDecorator(
+          <SsImagePickerView label={label} required={required} onChange={onChange} initialValue={initialValue} />
+        )}
       </ErrorTip>
     )
   }
