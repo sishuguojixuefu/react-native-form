@@ -26,6 +26,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 - SsMultiSelect: 多选选择器
 - SsDate: 日期选择器
 - SsDateRange: 日期范围选择器
+- SsImagePicker: 图片选择组件
 - SsDescription: 描述组件
 - SsAmount: 金额输入组件
 - SsRating: 星星评分组件

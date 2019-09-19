@@ -53,7 +53,6 @@ export default class SsCalculate extends Component<CalculateProps, any> {
       calElements.forEach(item => {
         expression += item.toString()
       })
-      console.log(expression)
       const value = math.eval(expression).toFixed(2, 10)
       this.setState({
         value: value === 'Infinity' || isNaN(value) ? '' : value,
