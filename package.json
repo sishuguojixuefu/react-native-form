@@ -54,16 +54,12 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@sishuguojixuefu/antd-mobile-rn": "3.1.8-beta.10",
     "dayjs": "latest",
     "kind-of": "latest",
     "lodash.omit": "latest",
-    "mathjs": "^5.10.3",
+    "mathjs": "5.10.3",
     "nzh": "latest",
     "rc-form": "latest",
-    "react-native-amap3d": "latest",
-    "react-native-image-crop-picker": "latest",
-    "react-native-image-zoom-viewer": "latest",
     "react-native-ratings": "latest",
     "string-width": "latest"
   }

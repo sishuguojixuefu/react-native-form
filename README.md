@@ -10,7 +10,7 @@
 
 ## 安装
 
-> 如果要使用内置的组件，请确保安装并配置了 @sishuguojixuefu/antd-mobile-rn
+> 如果要使用内置的组件，请确保安装并配置了 @sishuguojixuefu/antd-mobile-rn、react-native-image-crop-picker、react-native-image-zoom-viewer
 
 ```sh
 $ yarn add @sishuguojixuefu/react-native-form
