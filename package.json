@@ -51,7 +51,10 @@
     "husky": "^2.2.0",
     "lint-staged": "^8.1.6",
     "prettier": "^1.17.1",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "react-native-image-crop-picker": "latest",
+    "react-native-image-zoom-viewer": "latest",
+    "@sishuguojixuefu/antd-mobile-rn": "latest"
   },
   "dependencies": {
     "dayjs": "latest",
