@@ -16,6 +16,7 @@ export default class Input extends Component<InputPropsType, any> {
     maxLength: 0,
     last: false,
     multiline: false,
+    clear: false,
   }
 
   componentWillMount() {
@@ -30,7 +31,20 @@ export default class Input extends Component<InputPropsType, any> {
   }
 
   render() {
-    const { icon, placeholder, label, required, form, id, textAlign, maxLength, last, multiline, height } = this.props
+    const {
+      icon,
+      placeholder,
+      label,
+      required,
+      form,
+      id,
+      textAlign,
+      maxLength,
+      last,
+      multiline,
+      height,
+      clear,
+    } = this.props
     const omitProps = omit(this.props, ['error', 'labelNumber'])
     return (
       <ErrorTip error={form.getFieldError(id)} last={last}>
@@ -39,7 +53,7 @@ export default class Input extends Component<InputPropsType, any> {
             multiline={multiline}
             {...omitProps}
             last
-            clear
+            clear={clear}
             style={
               height
                 ? { height, marginLeft: 5, fontSize: 16, color: '#6c6c6c' }

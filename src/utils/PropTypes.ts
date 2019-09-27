@@ -104,6 +104,7 @@ export interface SwitchPropsType extends FormItemOptionPropsType {
  * Input组件PropsType
  */
 export interface InputPropsType extends FormItemOptionPropsType {
+  clear?: boolean
   icon?: ImageSourcePropType
   label: string // 标签
   onChange?: (value: string) => void
