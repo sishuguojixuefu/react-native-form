@@ -13,7 +13,7 @@ export default {
         initialValue: '',
         required: true,
         rules: [{ type: 'zh', message: '这是自定义的错误提示' }],
-        icon: '',
+        icon: 'icon-danxingwenben',
       },
     },
     {
@@ -26,7 +26,7 @@ export default {
         initialValue: '',
         required: true,
         rules: [{ type: 'number', message: '这是自定义的错误提示' }],
-        icon: '',
+        icon: 'icon-shuzi',
       },
     },
     {
@@ -39,7 +39,7 @@ export default {
         initialValue: '',
         required: true,
         rules: [{ type: '', message: '' }],
-        icon: '',
+        icon: 'icon-duoxingwenben',
         count: 60, // 计数功能,兼具最大长度,默认为0,代表不开启计数功能
       },
     },
@@ -52,7 +52,7 @@ export default {
         placeholder: '请输入',
         initialValue: '',
         required: true,
-        icon: '',
+        icon: 'icon-radio-checked',
         options: ['选项1', '选项2', '选项3'],
       },
     },
@@ -65,7 +65,7 @@ export default {
         placeholder: '请输入',
         initialValue: [], // 注意，这是个数组
         required: true,
-        icon: '',
+        icon: 'icon-checkbox-checked',
         options: ['选项1', '选项2', '选项3', '选项4'],
       },
     },
@@ -78,7 +78,7 @@ export default {
         placeholder: '请选择',
         initialValue: new Date(), // 注意，这是个时间
         required: true,
-        icon: '',
+        icon: 'icon-riqi1',
         type: 'date',
       },
     },
@@ -92,7 +92,7 @@ export default {
         placeholder: ['开始时间', '结束时间'], // 注意，这是个数组
         initialValue: [new Date(), new Date()], // 注意，这是个数组
         required: true,
-        icon: '',
+        icon: 'icon-riqi1',
         type: 'date', // date、time、datetime、year、month
       },
     },
@@ -105,7 +105,7 @@ export default {
         placeholder: '请选择',
         initialValue: [], // 注意：这是个数组
         required: false,
-        icon: '',
+        icon: 'icon-xialakuang',
         multiple: false,
         options: ['选项1', '选项2', '选项3'],
       },
@@ -118,7 +118,7 @@ export default {
         label: '图片',
         initialValue: [], // 注意，这是网络链接组成的数组
         required: false,
-        icon: '',
+        icon: 'icon-tupian',
         limit: 3,
       },
     },
@@ -147,7 +147,7 @@ export default {
         placeholder: '请输入',
         initialValue: 8,
         required: false,
-        icon: '',
+        icon: 'icon-jine',
         rules: [{ type: 'number', message: '请输入有效的数字' }],
         upper: true, // 是否显示大写
       },
@@ -158,7 +158,7 @@ export default {
         name: '说明文字',
         id: 'SsDescription-11',
         initialValue: '',
-        icon: '',
+        icon: 'icon-shuoming',
       },
     },
     {
@@ -178,7 +178,7 @@ export default {
         name: '评分',
         id: 'SsRating-13',
         label: '评分',
-        icon: '',
+        icon: 'icon-pingfen',
         initialValue: 0,
         required: false,
         max: 5,
@@ -194,7 +194,7 @@ export default {
         placeholder: '获取',
         initialValue: '月球寂静海',
         required: false,
-        icon: '',
+        icon: 'icon-location',
       },
     },
     // 以下三个先不实现，不属于该组件负责范围
