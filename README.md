@@ -38,7 +38,7 @@ $ yarn add @sishuguojixuefu/react-native-form
 
 | 属性     | 说明                                                  | 类型                    | 默认值 |
 | -------- | ----------------------------------------------------- | ----------------------- | ------ |
-| ref      | `ref={ref => {this.form = ref}`                       | Function                | -      |
+| ref      | `ref={ref => {this.form = ref.props.form}`                       | Function                | -      |
 | items    | 动态表单渲染的依据，结构需严格遵守 FormItemsPropsType | `FormOptionPropsType[]` | -      |
 | noBorder | 是否显示 border                                       | boolean                 | true   |
 | style    | 样式                                                  | object                  | -      |
